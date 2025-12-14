@@ -21,18 +21,18 @@ export default function Header() {
       <nav className="container-custom">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-3 group">
-            <div className="relative">
+          <Link href="/" className="flex items-center space-x-2.5 group transition-opacity hover:opacity-90">
+            <div className="relative flex items-center justify-center">
               <Image
                 src="/logo.png"
                 alt="SiyaSphere"
                 width={150}
                 height={40}
-                className="h-8 w-auto lg:h-10 transition-transform group-hover:scale-105"
+                className="h-8 w-auto lg:h-10"
                 priority
               />
             </div>
-            <span className="hidden sm:block text-xl lg:text-2xl font-bold bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">
+            <span className="hidden sm:block text-xl lg:text-2xl font-bold text-white tracking-tight leading-none">
               SiyaSphere
             </span>
           </Link>
