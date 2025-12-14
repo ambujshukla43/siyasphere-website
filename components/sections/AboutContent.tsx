@@ -47,8 +47,8 @@ export default function AboutContent() {
               center.
             </p>
             <p className="text-lg text-gray-400 leading-relaxed">
-              Too many companies have invested in GTM technology but aren't seeing the
-              returns. The tools are there, but they're not integrated, not optimized, and
+              Too many companies have invested in GTM technology but aren&apos;t seeing the
+              returns. The tools are there, but they&apos;re not integrated, not optimized, and
               not delivering value. We change that.
             </p>
           </motion.div>
@@ -70,7 +70,7 @@ export default function AboutContent() {
                 </h3>
                 <p className="text-gray-400">
                   Struggling with attribution, campaign tracking, and marketing automation
-                  that doesn't work? We fix it.
+                  that doesn&apos;t work? We fix it.
                 </p>
               </div>
               <div>
@@ -87,7 +87,7 @@ export default function AboutContent() {
                   SDR & Sales Leaders
                 </h3>
                 <p className="text-gray-400">
-                  Tired of manual work, broken routing, and tools your team won't use? We
+                  Tired of manual work, broken routing, and tools your team won&apos;t use? We
                   automate it.
                 </p>
               </div>
@@ -133,20 +133,20 @@ export default function AboutContent() {
             className="bg-primary-950/50 border border-primary-500/20 rounded-xl p-8 lg:p-12"
           >
             <h2 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-6">
-              Why We're Different
+              Why We&apos;re Different
             </h2>
             <div className="space-y-4 text-lg text-gray-400">
               <p>
-                Most agencies talk strategy but can't execute. Most consultants design
-                solutions but don't build them. Most vendors sell tools but don't integrate
+                Most agencies talk strategy but can&apos;t execute. Most consultants design
+                solutions but don&apos;t build them. Most vendors sell tools but don&apos;t integrate
                 them.
               </p>
               <p>
                 We do all three. We audit, design, build, integrate, optimize, and support.
-                We're operators who've been in your shoes, and we know what actually works.
+                We&apos;re operators who&apos;ve been in your shoes, and we know what actually works.
               </p>
               <p className="font-semibold text-gray-100">
-                If you're ready to fix your GTM systems and scale revenue, let's talk.
+                If you&apos;re ready to fix your GTM systems and scale revenue, let&apos;s talk.
               </p>
             </div>
           </motion.div>

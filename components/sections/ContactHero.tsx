@@ -16,7 +16,7 @@ export default function ContactHero() {
             Book a GTM Audit
           </h1>
           <p className="text-xl sm:text-2xl text-gray-400 max-w-2xl mx-auto">
-            Let's identify what's broken in your Go-To-Market systems and how to fix it.
+            Let&apos;s identify what&apos;s broken in your Go-To-Market systems and how to fix it.
           </p>
         </motion.div>
       </div>

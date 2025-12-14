@@ -16,7 +16,7 @@ export default function CaseStudiesHero() {
             Real Results, Real Companies
           </h1>
           <p className="text-xl sm:text-2xl text-gray-400 max-w-2xl mx-auto">
-            See how we've helped B2B companies fix their GTM systems and scale revenue.
+            See how we&apos;ve helped B2B companies fix their GTM systems and scale revenue.
           </p>
         </motion.div>
       </div>

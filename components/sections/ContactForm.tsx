@@ -69,7 +69,7 @@ export default function ContactForm() {
                 Thank You!
               </h2>
               <p className="text-gray-400 mb-6">
-                We've received your request. Our team will reach out within 24 hours to
+                We&apos;ve received your request. Our team will reach out within 24 hours to
                 schedule your GTM audit.
               </p>
               <Button href="/" variant="primary">
@@ -104,7 +104,7 @@ export default function ContactForm() {
                     30-Minute Discovery Call
                   </h3>
                   <p className="text-gray-400 text-sm">
-                    We'll discuss your current GTM challenges and goals.
+                    We&apos;ll discuss your current GTM challenges and goals.
                   </p>
                 </div>
                 <div>
@@ -112,7 +112,7 @@ export default function ContactForm() {
                     Comprehensive Audit
                   </h3>
                   <p className="text-gray-400 text-sm">
-                    We'll analyze your tech stack, data flows, and processes.
+                    We&apos;ll analyze your tech stack, data flows, and processes.
                   </p>
                 </div>
                 <div>
@@ -120,7 +120,7 @@ export default function ContactForm() {
                     Actionable Recommendations
                   </h3>
                   <p className="text-gray-400 text-sm">
-                    You'll receive a detailed report with prioritized next steps.
+                    You&apos;ll receive a detailed report with prioritized next steps.
                   </p>
                 </div>
               </div>

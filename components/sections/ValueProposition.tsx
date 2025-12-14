@@ -36,7 +36,7 @@ export default function ValueProposition() {
             Why SiyaSphere?
           </h2>
           <p className="text-xl text-gray-400">
-            We don't just integrate tools—we architect revenue systems that scale.
+            We don&apos;t just integrate tools—we architect revenue systems that scale.
           </p>
         </motion.div>
 
