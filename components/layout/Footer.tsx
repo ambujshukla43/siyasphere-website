@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import Logo from "@/components/ui/Logo";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -29,16 +30,8 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <Link href="/" className="inline-flex flex-col items-center justify-center gap-1 mb-6 group hover:opacity-80 transition-all duration-300">
-              {/* Code Symbol */}
-              <span className="text-lg font-semibold text-[#7FC6C4] leading-none" style={{ letterSpacing: '0.08em' }}>
-                &lt; / &gt;
-              </span>
-              
-              {/* Text */}
-              <span className="font-semibold text-base text-white uppercase tracking-wide" style={{ letterSpacing: '0.08em' }}>
-                Siyasphere
-              </span>
+            <Link href="/" className="inline-block mb-6 group hover:opacity-80 transition-all duration-300">
+              <Logo className="gap-0" />
             </Link>
             <p className="text-gray-400 text-sm mb-4 text-center">
               Fixing broken Go-To-Market systems for B2B companies ready to scale.

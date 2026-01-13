@@ -21,8 +21,8 @@ export default function Header() {
       <nav className="container-custom">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group hover:opacity-80 transition-all duration-300">
-            <Logo />
+          <Link href="/" className="group hover:opacity-80 transition-all duration-300">
+            <Logo className="gap-0" />
           </Link>
 
           {/* Desktop Navigation */}
