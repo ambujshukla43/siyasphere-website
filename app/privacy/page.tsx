@@ -122,7 +122,7 @@ export default function PrivacyPolicy() {
       number: 11,
       title: "Policy Changes",
       icon: "📝",
-      content: "We may update this Privacy Policy from time to time. We will notify you of significant changes by posting the new policy on our website and updating the 'Last updated' date. Your continued use of the website constitutes acceptance of the updated policy.",
+      content: "We may update this Privacy Policy from time to time. We will notify you of significant changes by posting the new policy on our website and updating the &lsquo;Last updated&rsquo; date. Your continued use of the website constitutes acceptance of the updated policy.",
     },
   ];
 
