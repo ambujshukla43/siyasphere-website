@@ -6,202 +6,293 @@ export const metadata = {
 };
 
 export default function PrivacyPolicy() {
+  const sections = [
+    {
+      number: 1,
+      title: "Introduction",
+      icon: "📋",
+      content: "SiyaSphere is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services.",
+    },
+    {
+      number: 2,
+      title: "Information We Collect",
+      icon: "📊",
+      subsections: [
+        {
+          title: "Information You Provide Directly",
+          items: [
+            "Email address when you request a GTM audit",
+            "Name, company, phone number, and message when you contact us through forms",
+            "Payment information if you purchase our services",
+            "Any other information you choose to provide",
+          ],
+        },
+        {
+          title: "Information Collected Automatically",
+          items: [
+            "Browser type and version",
+            "IP address and location data",
+            "Pages visited and time spent on pages",
+            "Referring website information",
+            "Device type and operating system",
+            "Cookies and similar tracking technologies",
+          ],
+        },
+        {
+          title: "Information from Third Parties",
+          content: "We may receive information about you from third-party sources to verify information or enhance our records.",
+        },
+      ],
+    },
+    {
+      number: 3,
+      title: "How We Use Your Information",
+      icon: "🎯",
+      items: [
+        "To provide and maintain our services",
+        "To respond to your inquiries and requests",
+        "To send marketing and promotional communications (with your consent)",
+        "To improve our website and user experience",
+        "To detect and prevent fraudulent transactions and other illegal activities",
+        "To personalize and improve your experience",
+        "To comply with legal obligations",
+        "To analyze usage patterns and trends",
+      ],
+    },
+    {
+      number: 4,
+      title: "How We Share Your Information",
+      icon: "🔗",
+      items: [
+        { label: "Service Providers", desc: "Third parties who assist in operating our website and conducting business" },
+        { label: "Business Transfers", desc: "In connection with a merger, acquisition, or sale of assets" },
+        { label: "Legal Requirements", desc: "When required by law or to protect our rights" },
+        { label: "With Your Consent", desc: "When you explicitly agree to information sharing" },
+        { label: "Aggregated Data", desc: "We may share aggregated, non-identifiable information" },
+      ],
+    },
+    {
+      number: 5,
+      title: "Data Security",
+      icon: "🔒",
+      content: "We implement appropriate technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the Internet is 100% secure.",
+    },
+    {
+      number: 6,
+      title: "Cookies and Tracking",
+      icon: "🍪",
+      items: [
+        "Authentication and session management",
+        "Preferences and settings storage",
+        "Analytics and performance monitoring",
+        "Marketing and advertising purposes",
+      ],
+    },
+    {
+      number: 7,
+      title: "Your Privacy Rights",
+      icon: "✋",
+      items: [
+        { label: "Right to Access", desc: "Request a copy of your personal data" },
+        { label: "Right to Correction", desc: "Update or correct inaccurate information" },
+        { label: "Right to Deletion", desc: "Request deletion of your data" },
+        { label: "Right to Opt-Out", desc: "Unsubscribe from marketing communications" },
+        { label: "Right to Data Portability", desc: "Receive your data in a portable format" },
+      ],
+    },
+    {
+      number: 8,
+      title: "Third-Party Links",
+      icon: "🔗",
+      content: "Our website may contain links to third-party websites. We are not responsible for the privacy practices of external sites. Please review their privacy policies before providing personal information.",
+    },
+    {
+      number: 9,
+      title: "Children's Privacy",
+      icon: "👨‍👩‍👧",
+      content: "Our services are not intended for children under the age of 13. We do not knowingly collect personal information from children. If we become aware that we have collected information from a child under 13, we will take steps to delete such information.",
+    },
+    {
+      number: 10,
+      title: "International Data Transfers",
+      icon: "🌍",
+      content: "Your information may be transferred to, stored in, and processed in countries other than your country of residence. These countries may have data protection laws that differ from your home country.",
+    },
+    {
+      number: 11,
+      title: "Policy Changes",
+      icon: "📝",
+      content: "We may update this Privacy Policy from time to time. We will notify you of significant changes by posting the new policy on our website and updating the 'Last updated' date. Your continued use of the website constitutes acceptance of the updated policy.",
+    },
+  ];
+
   return (
     <div className="min-h-screen bg-gray-950">
       {/* Hero */}
-      <section className="container-custom section-padding bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950">
+      <section className="container-custom section-padding bg-gradient-to-b from-gray-950 via-gray-900 to-gray-950 border-b border-[#7FC6C4]/20">
         <div className="max-w-4xl mx-auto">
+          <div className="mb-4 inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#7FC6C4]/10 border border-[#7FC6C4]/20">
+            <span className="text-[#7FC6C4] text-sm font-semibold">Legal</span>
+          </div>
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
             Privacy Policy
           </h1>
-          <p className="text-gray-400 text-lg">
+          <p className="text-gray-400 text-lg mb-2">
             Last updated: January 13, 2026
           </p>
+          <p className="text-gray-500 text-base">
+            We're committed to protecting your data and being transparent about how we use it.
+          </p>
+        </div>
+      </section>
+
+      {/* Table of Contents */}
+      <section className="container-custom section-padding">
+        <div className="max-w-4xl mx-auto">
+          <div className="bg-gradient-to-r from-gray-900 to-gray-900/50 border border-[#7FC6C4]/20 rounded-lg p-6 mb-12">
+            <h2 className="text-white font-semibold mb-4 flex items-center gap-2">
+              <span className="text-[#7FC6C4]">📑</span> Quick Navigation
+            </h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+              {sections.map((section) => (
+                <Link
+                  key={section.number}
+                  href={`#section-${section.number}`}
+                  className="text-gray-400 hover:text-[#7FC6C4] transition-colors text-sm"
+                >
+                  {section.number}. {section.title}
+                </Link>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
       {/* Content */}
       <section className="container-custom section-padding">
-        <div className="max-w-4xl mx-auto">
-          <div className="prose prose-invert max-w-none space-y-8 text-gray-300">
-            {/* Section 1 */}
-            <div>
-              <h2 className="text-2xl font-bold text-white mb-4">1. Introduction</h2>
-              <p>
-                SiyaSphere ("we," "us," "our," or "Company") is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services.
-              </p>
-              <p>
-                Please read this Privacy Policy carefully. If you do not agree with our policies and practices, please do not use our website.
-              </p>
-            </div>
+        <div className="max-w-4xl mx-auto space-y-12">
+          {sections.map((section) => (
+            <div key={section.number} id={`section-${section.number}`} className="scroll-mt-20">
+              <div className="flex items-start gap-4">
+                {/* Icon */}
+                <div className="flex-shrink-0 text-3xl mt-1">
+                  {section.icon}
+                </div>
 
-            {/* Section 2 */}
-            <div>
-              <h2 className="text-2xl font-bold text-white mb-4">2. Information We Collect</h2>
-              <h3 className="text-xl font-semibold text-white mb-3">2.1 Information You Provide Directly</h3>
-              <ul className="list-disc list-inside space-y-2 ml-4">
-                <li>Email address when you request a GTM audit</li>
-                <li>Name, company, phone number, and message when you contact us through forms</li>
-                <li>Payment information if you purchase our services</li>
-                <li>Any other information you choose to provide</li>
-              </ul>
+                {/* Content */}
+                <div className="flex-grow">
+                  <div className="flex items-baseline gap-3 mb-4">
+                    <span className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-[#7FC6C4]/20 border border-[#7FC6C4]/40 text-[#7FC6C4] text-sm font-semibold">
+                      {section.number}
+                    </span>
+                    <h2 className="text-2xl font-bold text-white">
+                      {section.title}
+                    </h2>
+                  </div>
 
-              <h3 className="text-xl font-semibold text-white mb-3 mt-4">2.2 Information Collected Automatically</h3>
-              <ul className="list-disc list-inside space-y-2 ml-4">
-                <li>Browser type and version</li>
-                <li>IP address and location data</li>
-                <li>Pages visited and time spent on pages</li>
-                <li>Referring website information</li>
-                <li>Device type and operating system</li>
-                <li>Cookies and similar tracking technologies</li>
-              </ul>
+                  {/* Simple content */}
+                  {section.content && (
+                    <p className="text-gray-400 mb-4">
+                      {section.content}
+                    </p>
+                  )}
 
-              <h3 className="text-xl font-semibold text-white mb-3 mt-4">2.3 Information from Third Parties</h3>
-              <p>
-                We may receive information about you from third-party sources to verify information or enhance our records.
-              </p>
-            </div>
+                  {/* Items list */}
+                  {section.items && (
+                    <div className="space-y-3 mb-4">
+                      {section.items.map((item, idx) => (
+                        <div key={idx} className="flex gap-3">
+                          <span className="text-[#7FC6C4] mt-1.5">•</span>
+                          {typeof item === "string" ? (
+                            <p className="text-gray-400">{item}</p>
+                          ) : (
+                            <div>
+                              <p className="text-white font-semibold">{item.label}</p>
+                              <p className="text-gray-400 text-sm">{item.desc}</p>
+                            </div>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  )}
 
-            {/* Section 3 */}
-            <div>
-              <h2 className="text-2xl font-bold text-white mb-4">3. How We Use Your Information</h2>
-              <p>We use the information we collect for various purposes:</p>
-              <ul className="list-disc list-inside space-y-2 ml-4">
-                <li>To provide and maintain our services</li>
-                <li>To respond to your inquiries and requests</li>
-                <li>To send marketing and promotional communications (with your consent)</li>
-                <li>To improve our website and user experience</li>
-                <li>To detect and prevent fraudulent transactions and other illegal activities</li>
-                <li>To personalize and improve your experience</li>
-                <li>To comply with legal obligations</li>
-                <li>To analyze usage patterns and trends</li>
-              </ul>
-            </div>
-
-            {/* Section 4 */}
-            <div>
-              <h2 className="text-2xl font-bold text-white mb-4">4. How We Share Your Information</h2>
-              <p>We may share your information in the following circumstances:</p>
-              <ul className="list-disc list-inside space-y-2 ml-4">
-                <li><strong>Service Providers:</strong> Third parties who assist in operating our website and conducting business</li>
-                <li><strong>Business Transfers:</strong> In connection with a merger, acquisition, or sale of assets</li>
-                <li><strong>Legal Requirements:</strong> When required by law or to protect our rights</li>
-                <li><strong>With Your Consent:</strong> When you explicitly agree to information sharing</li>
-                <li><strong>Aggregated Data:</strong> We may share aggregated, non-identifiable information</li>
-              </ul>
-            </div>
-
-            {/* Section 5 */}
-            <div>
-              <h2 className="text-2xl font-bold text-white mb-4">5. Data Security</h2>
-              <p>
-                We implement appropriate technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the Internet is 100% secure.
-              </p>
-            </div>
-
-            {/* Section 6 */}
-            <div>
-              <h2 className="text-2xl font-bold text-white mb-4">6. Cookies and Tracking Technologies</h2>
-              <p>
-                We use cookies and similar tracking technologies to enhance your experience. You can control cookie settings through your browser, but disabling cookies may affect website functionality.
-              </p>
-              <p className="mt-3">
-                We use cookies for:
-              </p>
-              <ul className="list-disc list-inside space-y-2 ml-4">
-                <li>Authentication and session management</li>
-                <li>Preferences and settings storage</li>
-                <li>Analytics and performance monitoring</li>
-                <li>Marketing and advertising purposes</li>
-              </ul>
-            </div>
-
-            {/* Section 7 */}
-            <div>
-              <h2 className="text-2xl font-bold text-white mb-4">7. Your Privacy Rights</h2>
-              <p>
-                Depending on your location, you may have certain rights regarding your personal information:
-              </p>
-              <ul className="list-disc list-inside space-y-2 ml-4">
-                <li><strong>Right to Access:</strong> Request a copy of your personal data</li>
-                <li><strong>Right to Correction:</strong> Update or correct inaccurate information</li>
-                <li><strong>Right to Deletion:</strong> Request deletion of your data</li>
-                <li><strong>Right to Opt-Out:</strong> Unsubscribe from marketing communications</li>
-                <li><strong>Right to Data Portability:</strong> Receive your data in a portable format</li>
-              </ul>
-              <p className="mt-3">
-                To exercise these rights, please contact us at siyasphere15@gmail.com.
-              </p>
-            </div>
-
-            {/* Section 8 */}
-            <div>
-              <h2 className="text-2xl font-bold text-white mb-4">8. Third-Party Links</h2>
-              <p>
-                Our website may contain links to third-party websites. We are not responsible for the privacy practices of external sites. Please review their privacy policies before providing personal information.
-              </p>
-            </div>
-
-            {/* Section 9 */}
-            <div>
-              <h2 className="text-2xl font-bold text-white mb-4">9. Children's Privacy</h2>
-              <p>
-                Our services are not intended for children under the age of 13. We do not knowingly collect personal information from children. If we become aware that we have collected information from a child under 13, we will take steps to delete such information.
-              </p>
-            </div>
-
-            {/* Section 10 */}
-            <div>
-              <h2 className="text-2xl font-bold text-white mb-4">10. International Data Transfers</h2>
-              <p>
-                Your information may be transferred to, stored in, and processed in countries other than your country of residence. These countries may have data protection laws that differ from your home country.
-              </p>
-            </div>
-
-            {/* Section 11 */}
-            <div>
-              <h2 className="text-2xl font-bold text-white mb-4">11. Policy Changes</h2>
-              <p>
-                We may update this Privacy Policy from time to time. We will notify you of significant changes by posting the new policy on our website and updating the "Last updated" date. Your continued use of the website constitutes acceptance of the updated policy.
-              </p>
-            </div>
-
-            {/* Section 12 */}
-            <div>
-              <h2 className="text-2xl font-bold text-white mb-4">12. Contact Us</h2>
-              <p>
-                If you have questions about this Privacy Policy or our privacy practices, please contact us at:
-              </p>
-              <div className="mt-4 p-4 bg-gray-900 rounded-lg border border-gray-800">
-                <p><strong>Email:</strong> siyasphere15@gmail.com</p>
-                <p className="mt-2">
-                  We will respond to your request within 30 days of receipt.
-                </p>
+                  {/* Subsections */}
+                  {section.subsections && (
+                    <div className="space-y-6">
+                      {section.subsections.map((subsection, idx) => (
+                        <div key={idx} className="bg-gray-900/50 border border-gray-800 rounded-lg p-4">
+                          <h3 className="text-lg font-semibold text-white mb-3">
+                            {subsection.title}
+                          </h3>
+                          {subsection.items && (
+                            <ul className="space-y-2">
+                              {subsection.items.map((item, itemIdx) => (
+                                <li key={itemIdx} className="flex gap-3">
+                                  <span className="text-[#7FC6C4] text-sm">✓</span>
+                                  <span className="text-gray-400 text-sm">{item}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          )}
+                          {subsection.content && (
+                            <p className="text-gray-400 text-sm">{subsection.content}</p>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </div>
               </div>
             </div>
+          ))}
 
-            {/* Back to Home */}
-            <div className="mt-12 pt-8 border-t border-gray-800">
-              <Link
-                href="/"
-                className="inline-flex items-center text-primary-400 hover:text-primary-300 transition-colors"
-              >
-                <svg
-                  className="w-4 h-4 mr-2"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M19 12H5m7 7l-7-7 7-7"
-                  />
-                </svg>
-                Back to Home
-              </Link>
+          {/* Contact Section */}
+          <div className="mt-16 pt-12 border-t border-gray-800">
+            <div className="bg-gradient-to-r from-[#7FC6C4]/10 to-cyan-400/10 border border-[#7FC6C4]/20 rounded-lg p-8">
+              <div className="flex items-start gap-4 mb-4">
+                <span className="text-3xl">📧</span>
+                <div>
+                  <h3 className="text-2xl font-bold text-white mb-2">
+                    Questions About Your Privacy?
+                  </h3>
+                  <p className="text-gray-400 mb-4">
+                    We're here to help. Contact us with any questions or concerns about our privacy practices.
+                  </p>
+                  <a
+                    href="mailto:siyasphere15@gmail.com"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-[#7FC6C4] hover:bg-[#7FC6C4]/90 text-gray-950 font-semibold rounded-lg transition-colors"
+                  >
+                    <span>Email Us</span>
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
             </div>
+          </div>
+
+          {/* Back to Home */}
+          <div className="mt-12 pt-8 border-t border-gray-800">
+            <Link
+              href="/"
+              className="inline-flex items-center text-[#7FC6C4] hover:text-cyan-400 transition-colors font-semibold"
+            >
+              <svg
+                className="w-4 h-4 mr-2"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M19 12H5m7 7l-7-7 7-7"
+                />
+              </svg>
+              Back to Home
+            </Link>
           </div>
         </div>
       </section>
