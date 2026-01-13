@@ -109,7 +109,7 @@ export default function PrivacyPolicy() {
     {
       number: 9,
       title: "Children's Privacy",
-      icon: "👨‍👩‍👧",
+      icon: "👨",
       content: "Our services are not intended for children under the age of 13. We do not knowingly collect personal information from children. If we become aware that we have collected information from a child under 13, we will take steps to delete such information.",
     },
     {
