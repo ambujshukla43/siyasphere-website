@@ -35,7 +35,7 @@ export default function Footer() {
             </Link>
 
             {/* Contact & Social */}
-            <div className="flex flex-col items-center gap-2">
+            <div className="flex flex-col items-start gap-2">
               {/* Email Card */}
               <a
                 href="mailto:siyasphere15@gmail.com"
