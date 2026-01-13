@@ -7,18 +7,17 @@ import Button from "@/components/ui/Button";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
-    name: "",
     email: "",
+    name: "",
     company: "",
-    title: "",
     phone: "",
-    message: "",
   });
 
   const [submitted, setSubmitted] = useState(false);
+  const [error, setError] = useState("");
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement>
   ) => {
     setFormData({
       ...formData,
@@ -28,15 +27,20 @@ export default function ContactForm() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    setError("");
+    
+    if (!formData.email) {
+      setError("Email is required");
+      return;
+    }
+
     // Create mailto link with form data
-    const subject = encodeURIComponent(`GTM Audit Request from ${formData.name}`);
+    const subject = encodeURIComponent("Book a GTM Audit Request");
     const body = encodeURIComponent(
-      `Name: ${formData.name}\n` +
       `Email: ${formData.email}\n` +
-      `Company: ${formData.company}\n` +
-      `Title: ${formData.title}\n` +
-      `Phone: ${formData.phone || 'N/A'}\n\n` +
-      `Message:\n${formData.message}`
+      `${formData.name ? `Name: ${formData.name}\n` : ''}` +
+      `${formData.company ? `Company: ${formData.company}\n` : ''}` +
+      `${formData.phone ? `Phone: ${formData.phone}\n` : ''}`
     );
     window.location.href = `mailto:siyasphere15@gmail.com?subject=${subject}&body=${body}`;
     setSubmitted(true);
@@ -135,79 +139,66 @@ export default function ContactForm() {
               className="lg:col-span-2"
             >
               <Card>
-                <form onSubmit={handleSubmit} className="space-y-6">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div>
-                      <label
-                        htmlFor="name"
-                        className="block text-sm font-medium text-gray-300 mb-2"
-                      >
-                        Full Name *
-                      </label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        required
-                        value={formData.name}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-gray-100 placeholder-gray-500 focus:ring-2 focus:ring-primary-400 focus:border-primary-400"
-                      />
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  {error && (
+                    <div className="p-3 bg-red-500/10 border border-red-500/30 rounded-lg text-red-400 text-sm">
+                      {error}
                     </div>
-                    <div>
-                      <label
-                        htmlFor="email"
-                        className="block text-sm font-medium text-gray-300 mb-2"
-                      >
-                        Email *
-                      </label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        required
-                        value={formData.email}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-gray-100 placeholder-gray-500 focus:ring-2 focus:ring-primary-400 focus:border-primary-400"
-                      />
-                    </div>
+                  )}
+                  
+                  <div>
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium text-gray-300 mb-2"
+                    >
+                      Email Address *
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      required
+                      value={formData.email}
+                      onChange={handleChange}
+                      placeholder="your@email.com"
+                      className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-gray-100 placeholder-gray-500 focus:ring-2 focus:ring-primary-400 focus:border-primary-400"
+                    />
                   </div>
 
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    <div>
-                      <label
-                        htmlFor="company"
-                        className="block text-sm font-medium text-gray-300 mb-2"
-                      >
-                        Company *
-                      </label>
-                      <input
-                        type="text"
-                        id="company"
-                        name="company"
-                        required
-                        value={formData.company}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-gray-100 placeholder-gray-500 focus:ring-2 focus:ring-primary-400 focus:border-primary-400"
-                      />
-                    </div>
-                    <div>
-                      <label
-                        htmlFor="title"
-                        className="block text-sm font-medium text-gray-300 mb-2"
-                      >
-                        Job Title *
-                      </label>
-                      <input
-                        type="text"
-                        id="title"
-                        name="title"
-                        required
-                        value={formData.title}
-                        onChange={handleChange}
-                        className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-gray-100 placeholder-gray-500 focus:ring-2 focus:ring-primary-400 focus:border-primary-400"
-                      />
-                    </div>
+                  <div>
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-medium text-gray-300 mb-2"
+                    >
+                      Full Name
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      placeholder="John Doe"
+                      className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-gray-100 placeholder-gray-500 focus:ring-2 focus:ring-primary-400 focus:border-primary-400"
+                    />
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="company"
+                      className="block text-sm font-medium text-gray-300 mb-2"
+                    >
+                      Company
+                    </label>
+                    <input
+                      type="text"
+                      id="company"
+                      name="company"
+                      value={formData.company}
+                      onChange={handleChange}
+                      placeholder="Your Company"
+                      className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-gray-100 placeholder-gray-500 focus:ring-2 focus:ring-primary-400 focus:border-primary-400"
+                    />
                   </div>
 
                   <div>
@@ -223,31 +214,13 @@ export default function ContactForm() {
                       name="phone"
                       value={formData.phone}
                       onChange={handleChange}
+                      placeholder="+1 (555) 000-0000"
                       className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-gray-100 placeholder-gray-500 focus:ring-2 focus:ring-primary-400 focus:border-primary-400"
                     />
                   </div>
 
-                  <div>
-                    <label
-                      htmlFor="message"
-                      className="block text-sm font-medium text-gray-300 mb-2"
-                    >
-                      Tell us about your GTM challenges *
-                    </label>
-                    <textarea
-                      id="message"
-                      name="message"
-                      required
-                      rows={5}
-                      value={formData.message}
-                      onChange={handleChange}
-                      className="w-full px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg text-gray-100 placeholder-gray-500 focus:ring-2 focus:ring-primary-400 focus:border-primary-400"
-                      placeholder="What's broken in your Go-To-Market systems? What would you like to achieve?"
-                    />
-                  </div>
-
-                  <Button type="submit" variant="primary" className="w-full">
-                    Request GTM Audit
+                  <Button type="submit" variant="primary" className="w-full mt-6">
+                    Book a GTM Audit
                   </Button>
                 </form>
               </Card>

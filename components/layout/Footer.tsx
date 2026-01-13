@@ -29,19 +29,18 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
           {/* Brand */}
           <div className="lg:col-span-1">
-            <Link href="/" className="inline-flex items-center space-x-3 mb-4 group">
-              <Image
-                src="/logo.png"
-                alt="SiyaSphere"
-                width={150}
-                height={40}
-                className="h-8 w-auto transition-transform group-hover:scale-105"
-              />
-              <span className="text-xl font-bold bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">
-                SiyaSphere
+            <Link href="/" className="inline-flex flex-col items-center justify-center gap-1 mb-6 group hover:opacity-80 transition-all duration-300">
+              {/* Code Symbol */}
+              <span className="text-lg font-semibold text-[#7FC6C4] leading-none" style={{ letterSpacing: '0.08em' }}>
+                &lt; / &gt;
+              </span>
+              
+              {/* Text */}
+              <span className="font-semibold text-base text-white uppercase tracking-wide" style={{ letterSpacing: '0.08em' }}>
+                Siyasphere
               </span>
             </Link>
-            <p className="text-gray-400 text-sm mb-4">
+            <p className="text-gray-400 text-sm mb-4 text-center">
               Fixing broken Go-To-Market systems for B2B companies ready to scale.
             </p>
             <div className="space-y-2">

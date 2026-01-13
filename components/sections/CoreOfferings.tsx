@@ -6,41 +6,42 @@ import Link from "next/link";
 
 const offerings = [
   {
-    title: "GTM Tech Integration",
+    title: "GTM Tech Stack Integration",
     description:
-      "Seamlessly connect Salesforce, HubSpot, Marketo, Outreach, and more. We design data flow architecture and optimize APIs for performance.",
-    tools: ["Salesforce", "HubSpot", "Marketo/Pardot", "Outreach", "LeanData", "RingLead", "Clay", "Demandbase"],
+      "Connect your entire go-to-market ecosystem. We integrate Salesforce, marketing automation, ABM, and enrichment tools into one unified system.",
+    tools: ["Salesforce", "Salesforce Account Engagement", "Marketo", "Outreach", "Demandbase", "ZoomInfo", "Lusha", "Apollo"],
     icon: "🔌",
   },
   {
-    title: "Lead Lifecycle & Routing",
+    title: "Intelligent Lead Routing & Qualification",
     description:
-      "End-to-end tracking from MQL → SQL → Opportunity. Intelligent routing, deduplication, enrichment, and suppression logic that actually works.",
-    tools: ["Lead Routing", "Deduplication", "Enrichment", "Suppression Logic"],
-    icon: "🔄",
+      "Smart routing based on territory, account fit, SDR capacity, and deal probability. Real-time deduplication, enrichment, and lead scoring.",
+    tools: ["Lead Routing", "Deduplication", "Enrichment", "Lead Scoring"],
+    icon: "🎯",
   },
   {
-    title: "Marketing & Sales Automation",
+    title: "Revenue Operations & Analytics",
     description:
-      "Salesforce Flow-first automation that scales. Optimize campaigns, campaign members, and SDR productivity workflows.",
-    tools: ["Salesforce Flow", "Campaign Optimization", "SDR Automation"],
-    icon: "⚡",
-  },
-  {
-    title: "RevOps & Analytics",
-    description:
-      "Complete funnel visibility and attribution. Build dashboards in Salesforce and Power BI that your leadership actually uses.",
-    tools: ["Funnel Visibility", "Attribution", "Salesforce Dashboards", "Power BI"],
+      "Complete funnel visibility from demand generation to closed-won deals. Accurate attribution, forecasting, and revenue insights.",
+    tools: ["Funnel Analytics", "Attribution", "Revenue Dashboards", "Forecasting"],
     icon: "📊",
   },
   {
-    title: "AI & Agentic Workflows",
+    title: "Sales & Marketing Automation",
     description:
-      "Intelligent automation that learns and adapts. AI-assisted enrichment, routing, and prioritization across your GTM stack.",
-    tools: ["AI Enrichment", "Smart Routing", "Intelligent Prioritization"],
+      "Salesforce Flow and API-based automation that scales. Automate lead processing, campaign optimization, and SDR workflows.",
+    tools: ["Salesforce Flows", "Campaign Automation", "Workflow Optimization"],
+    icon: "⚡",
+  },
+  {
+    title: "AI-Driven Intelligence & Enrichment",
+    description:
+      "Leverage AI for lead scoring, predictive routing, and automated enrichment. Machine learning models that improve with every interaction.",
+    tools: ["AI Enrichment", "Predictive Analytics", "Smart Routing"],
     icon: "🤖",
   },
 ];
+
 
 export default function CoreOfferings() {
   return (

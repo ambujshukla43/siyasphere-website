@@ -6,89 +6,90 @@ import Card from "@/components/ui/Card";
 const solutions = [
   {
     id: "lead-routing",
-    problem: "Leads not routing correctly?",
+    problem: "Leads routing to wrong reps or getting stuck?",
     description:
-      "Leads are falling through the cracks, going to the wrong reps, or getting stuck in queues. Your SDRs waste time on unqualified leads while hot opportunities sit untouched.",
+      "Leads are falling through the cracks, going to the wrong SDRs, or sitting in queues. You're wasting effort on unqualified leads while hot opportunities get ignored.",
     solution:
-      "We build intelligent routing logic that considers territory, capacity, expertise, and lead score. Every lead gets to the right person at the right time, with full audit trails.",
-    tools: ["Salesforce", "LeanData", "RingLead", "Outreach", "HubSpot"],
+      "We build intelligent routing logic powered by Salesforce, ZoomInfo, Apollo, and Lusha. Territory rules, capacity checks, expertise matching, and account fit scoring ensure every lead reaches the right person at the right time.",
+    tools: ["Salesforce", "ZoomInfo", "Apollo", "Lusha", "Outreach"],
     outcomes: [
       "95%+ routing accuracy",
-      "50% reduction in routing time",
-      "30% increase in SDR productivity",
+      "50% faster lead assignment",
+      "35% boost in SDR productivity",
     ],
   },
   {
     id: "salesforce-optimization",
-    problem: "Salesforce cluttered and slow?",
+    problem: "Salesforce is slow, messy, and nobody uses it?",
     description:
-      "Your Salesforce org is a mess. Custom fields everywhere, duplicate records, slow page loads, and no one trusts the data. Your team avoids using it, which makes everything worse.",
+      "Your Salesforce org has duplicate records, unused fields, slow page loads, and data nobody trusts. Your team actively avoids it, killing adoption and data quality.",
     solution:
-      "We audit, clean, and optimize your Salesforce org. Remove unused fields, fix data quality, optimize automation, and rebuild critical objects for performance. Your team will actually want to use it.",
-    tools: ["Salesforce", "Data Quality Tools", "Flow Builder", "Validation Rules"],
+      "We audit and optimize your Salesforce org from the ground up. Clean data, rebuild slow objects, consolidate fields, and create Flows that actually automate your GTM. Your team will want to use it again.",
+    tools: ["Salesforce", "Flow Builder", "Validation Rules", "Data Quality Tools"],
     outcomes: [
-      "60% faster page load times",
-      "90% data quality improvement",
-      "100% user adoption increase",
+      "70% faster page loads",
+      "95% data quality",
+      "100%+ user adoption lift",
     ],
   },
   {
     id: "revops",
-    problem: "No visibility from MQL to Revenue?",
+    problem: "Can't see revenue funnel clearly? Flying blind on ROI?",
     description:
-      "You can't answer basic questions: Which campaigns drive revenue? What's the true cost per opportunity? Why did we miss forecast? Your leadership is flying blind.",
+      "You can't answer basic questions: Which campaigns drive revenue? What's the true CAC? Why did forecast miss? Leadership makes decisions without real visibility into pipeline health.",
     solution:
-      "We build complete funnel visibility with proper attribution, custom dashboards, and automated reporting. Track MQL → SQL → Opportunity → Revenue with confidence.",
-    tools: ["Salesforce", "Power BI", "Attribution Models", "Custom Dashboards"],
+      "We build end-to-end funnel visibility with proper attribution, automated dashboards, and revenue intelligence. Track MQL → SQL → Opportunity → Revenue with confidence. Understand what actually drives revenue.",
+    tools: ["Salesforce", "Demandbase", "Analytics Dashboards", "Attribution"],
     outcomes: [
-      "Complete funnel visibility",
-      "Accurate revenue attribution",
-      "Data-driven forecasting",
+      "Complete revenue funnel visibility",
+      "Accurate campaign attribution",
+      "Monthly automated reporting",
     ],
   },
   {
     id: "automation",
-    problem: "Manual work killing productivity?",
+    problem: "Manual work killing productivity and scaling?",
     description:
-      "Your team spends hours on repetitive tasks: data entry, lead enrichment, follow-up emails, status updates. There's no time for actual selling or strategy.",
+      "Your team wastes hours on repetitive tasks: data entry, lead enrichment, follow-ups, status updates. There's no time for real selling or strategy, and you can't scale without hiring more bodies.",
     solution:
-      "We automate everything that can be automated using Salesforce Flow, API integrations, and AI workflows. Your team focuses on high-value work while the system handles the rest.",
-    tools: ["Salesforce Flow", "API Integrations", "AI Workflows", "Marketing Automation"],
+      "We automate everything automatable using Salesforce Flows, API integrations, and AI enrichment. Leads get enriched automatically via Apollo/Lusha, routed intelligently, and tracked with zero manual work.",
+    tools: ["Salesforce Flows", "Apollo", "Lusha", "API Integrations", "AI Workflows"],
     outcomes: [
-      "80% reduction in manual work",
+      "85% less manual work",
       "3x faster lead processing",
-      "Automated enrichment and routing",
+      "Automated enrichment at scale",
     ],
   },
   {
     id: "integration",
-    problem: "Tools not talking to each other?",
+    problem: "Your GTM stack is a disconnected mess?",
     description:
-      "Your marketing automation, CRM, SDR platform, and analytics tools are siloed. Data doesn't sync, workflows break, and you're constantly doing manual exports and imports.",
+      "Salesforce, Salesforce Account Engagement, Marketo, Outreach, Demandbase, and ZoomInfo don't talk to each other. Data is inconsistent, workflows break, and you're constantly doing manual exports.",
     solution:
-      "We architect and implement seamless integrations between all your GTM tools. Real-time data sync, unified workflows, and a single source of truth across your stack.",
-    tools: ["Salesforce", "HubSpot", "Marketo", "Outreach", "LeanData", "RingLead"],
+      "We architect a unified GTM stack where Salesforce is the source of truth. Real-time sync between Salesforce, SAE, Marketo, Outreach, Demandbase, and your enrichment tools (Apollo, ZoomInfo, Lusha).",
+    tools: ["Salesforce", "Salesforce Account Engagement", "Marketo", "Outreach", "Demandbase", "ZoomInfo"],
     outcomes: [
       "Real-time data synchronization",
-      "Unified workflows across tools",
+      "Unified workflows across all tools",
       "Single source of truth",
     ],
   },
   {
     id: "ai-workflows",
-    problem: "Missing AI opportunities?",
+    problem: "Competitors using AI while you're stuck in manual work?",
     description:
-      "You know AI could help, but you don't know where to start. Your competitors are using AI for enrichment, routing, and prioritization, while you're still doing it manually.",
+      "You know AI could transform your GTM, but you don't know where to start. Your competitors are using AI for lead scoring, routing, and enrichment while you're doing it by hand.",
     solution:
-      "We implement AI-driven workflows that learn and adapt. Intelligent lead enrichment, smart routing based on historical data, and automated prioritization that gets better over time.",
-    tools: ["AI Enrichment APIs", "Machine Learning Models", "Automated Workflows"],
+      "We implement AI-powered workflows that learn and improve. Intelligent lead scoring using historical conversion data, predictive routing based on rep performance, and automated enrichment via Apollo and Lusha at scale.",
+    tools: ["AI Lead Scoring", "Predictive Routing", "Apollo", "Lusha", "Machine Learning"],
     outcomes: [
       "AI-powered lead scoring",
-      "Intelligent routing and prioritization",
-      "Automated enrichment at scale",
+      "30% higher conversion rates",
+      "Automated enrichment for 10k+ leads/month",
     ],
   },
 ];
+
 
 export default function ProblemSolutions() {
   return (

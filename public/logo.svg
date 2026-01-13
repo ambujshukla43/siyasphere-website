@@ -1,0 +1,25 @@
+<svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gradient1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#a78bfa;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#fbbf24;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Outer circle -->
+  <circle cx="100" cy="100" r="95" fill="none" stroke="url(#gradient1)" stroke-width="2" opacity="0.3"/>
+  
+  <!-- Main sphere/globe shape -->
+  <circle cx="100" cy="100" r="70" fill="none" stroke="url(#gradient1)" stroke-width="2.5"/>
+  
+  <!-- Latitude lines -->
+  <ellipse cx="100" cy="100" rx="70" ry="35" fill="none" stroke="url(#gradient1)" stroke-width="1.5" opacity="0.6"/>
+  <ellipse cx="100" cy="100" rx="70" ry="52.5" fill="none" stroke="url(#gradient1)" stroke-width="1.5" opacity="0.5"/>
+  
+  <!-- Longitude lines -->
+  <path d="M 100 30 Q 135 65 135 100 Q 135 135 100 170" fill="none" stroke="url(#gradient1)" stroke-width="1.5" opacity="0.6"/>
+  <path d="M 100 30 Q 65 65 65 100 Q 65 135 100 170" fill="none" stroke="url(#gradient1)" stroke-width="1.5" opacity="0.6"/>
+  
+  <!-- Center dot -->
+  <circle cx="100" cy="100" r="4" fill="url(#gradient1)"/>
+</svg>

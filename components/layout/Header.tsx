@@ -1,10 +1,10 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Button from "@/components/ui/Button";
+import Logo from "@/components/ui/Logo";
 
 export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -17,24 +17,12 @@ export default function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 bg-gray-950/95 backdrop-blur-sm border-b border-gray-800">
+    <header className="sticky top-0 z-50 bg-gradient-to-r from-gray-950 to-gray-900 backdrop-blur-sm border-b border-primary-500/20 shadow-lg shadow-primary-500/5">
       <nav className="container-custom">
         <div className="flex items-center justify-between h-16 lg:h-20">
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2.5 group transition-opacity hover:opacity-90">
-            <div className="relative flex items-center justify-center">
-              <Image
-                src="/logo.png"
-                alt="SiyaSphere"
-                width={150}
-                height={40}
-                className="h-8 w-auto lg:h-10"
-                priority
-              />
-            </div>
-            <span className="hidden sm:block text-xl lg:text-2xl font-bold text-white tracking-tight leading-none">
-              SiyaSphere
-            </span>
+          <Link href="/" className="flex items-center gap-2 group hover:opacity-80 transition-all duration-300">
+            <Logo />
           </Link>
 
           {/* Desktop Navigation */}
@@ -108,4 +96,3 @@ export default function Header() {
     </header>
   );
 }
-
