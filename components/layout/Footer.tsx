@@ -33,9 +33,6 @@ export default function Footer() {
             <Link href="/" className="inline-block mb-6 group hover:opacity-80 transition-all duration-300">
               <Logo className="gap-0" />
             </Link>
-            <p className="text-gray-400 text-sm mb-8 text-center">
-              Fixing broken Go-To-Market systems for B2B companies ready to scale.
-            </p>
 
             {/* Contact & Social Sections */}
             <div className="grid grid-cols-2 gap-6">
