@@ -1,4 +1,3 @@
-/* eslint-disable react/no-unescaped-entities */
 import Link from "next/link";
 
 export const metadata = {
@@ -23,36 +22,36 @@ export default function TermsOfService() {
         "Use the materials for any commercial purpose or for any public display",
         "Attempt to decompile or reverse engineer any software contained on the website",
         "Remove any copyright or other proprietary notations from the materials",
-        "Transfer the materials to another person or 'mirror' the materials on any other server",
+        "Transfer the materials to another person or &lsquo;mirror&rsquo; the materials on any other server",
         "Violate any applicable laws or regulations",
         "Conduct any systematic or automated data collection",
         "Engage in any form of harassment or abuse",
       ],
-      prefix: "Permission is granted to temporarily download one copy of the materials (information or software) on SiyaSphere's website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:"
+      prefix: "Permission is granted to temporarily download one copy of the materials (information or software) on SiyaSphere&rsquo;s website for personal, non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this license you may not:"
     },
     {
       number: 3,
       title: "Disclaimer",
       icon: "⚠️",
-      content: "The materials on SiyaSphere's website are provided on an 'as is' basis. SiyaSphere makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.",
+      content: "The materials on SiyaSphere&rsquo;s website are provided on an &lsquo;as is&rsquo; basis. SiyaSphere makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.",
     },
     {
       number: 4,
       title: "Limitations of Liability",
       icon: "⚖️",
-      content: "In no event shall SiyaSphere or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on SiyaSphere's website, even if SiyaSphere or an authorized representative has been notified orally or in writing of the possibility of such damage.",
+      content: "In no event shall SiyaSphere or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on SiyaSphere&rsquo;s website, even if SiyaSphere or an authorized representative has been notified orally or in writing of the possibility of such damage.",
     },
     {
       number: 5,
       title: "Accuracy of Materials",
       icon: "📋",
-      content: "The materials appearing on SiyaSphere's website could include technical, typographical, or photographic errors. SiyaSphere does not warrant that any of the materials on its website are accurate, complete, or current. SiyaSphere may make changes to the materials contained on its website at any time without notice.",
+      content: "The materials appearing on SiyaSphere&rsquo;s website could include technical, typographical, or photographic errors. SiyaSphere does not warrant that any of the materials on its website are accurate, complete, or current. SiyaSphere may make changes to the materials contained on its website at any time without notice.",
     },
     {
       number: 6,
       title: "Links",
       icon: "🔗",
-      content: "SiyaSphere has not reviewed all of the sites linked to its website and is not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by SiyaSphere of the site. Use of any such linked website is at the user's own risk.",
+      content: "SiyaSphere has not reviewed all of the sites linked to its website and is not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by SiyaSphere of the site. Use of any such linked website is at the user&rsquo;s own risk.",
     },
     {
       number: 7,

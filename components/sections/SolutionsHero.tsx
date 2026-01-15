@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function SolutionsHero() {
   return (
-    <section className="section-padding bg-gradient-to-br from-gray-950 via-gray-900 to-primary-950">
+    <section className="section-padding bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 border-b border-[#7FC6C4]/20">
       <div className="container-custom">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -12,14 +12,17 @@ export default function SolutionsHero() {
           transition={{ duration: 0.6 }}
           className="max-w-4xl mx-auto text-center"
         >
-          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-100 mb-6">
-            Solutions That Solve{" "}
-            <span className="bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">
-              Real Problems
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
+            AI-Powered{" "}
+            <span className="bg-gradient-to-r from-[#7FC6C4] to-cyan-400 bg-clip-text text-transparent">
+              GTM Execution at Scale
             </span>
           </h1>
-          <p className="text-xl sm:text-2xl text-gray-400 max-w-2xl mx-auto">
-            We organize solutions by the problems you face, not the tools you use.
+          <p className="text-xl text-gray-400 mb-8 max-w-3xl mx-auto leading-relaxed">
+            Where artificial intelligence meets human judgment to build predictable, scalable revenue engines.
+          </p>
+          <p className="text-lg text-gray-500 max-w-3xl mx-auto">
+            SiyaSphere transforms how modern revenue teams operate—combining AI automation, data intelligence, and process optimization to align your entire GTM motion. We don't replace humans with machines. We empower them with speed, clarity, and control.
           </p>
         </motion.div>
       </div>
