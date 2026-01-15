@@ -23,11 +23,11 @@ export default function Button({
 
   const variants = {
     primary:
-      "bg-primary-500 text-white hover:bg-primary-400 focus:ring-primary-400 shadow-lg hover:shadow-xl shadow-primary-500/20",
+      "bg-[#7FC6C4] text-gray-950 hover:bg-cyan-400 focus:ring-[#7FC6C4] shadow-lg hover:shadow-xl shadow-[#7FC6C4]/20",
     secondary:
-      "bg-accent-500 text-white hover:bg-accent-400 focus:ring-accent-400 shadow-lg hover:shadow-xl shadow-accent-500/20",
+      "border-2 border-[#7FC6C4] text-[#7FC6C4] hover:bg-[#7FC6C4]/10 focus:ring-[#7FC6C4]",
     outline:
-      "border-2 border-primary-400 text-primary-400 hover:bg-primary-950/50 focus:ring-primary-400",
+      "border-2 border-[#7FC6C4] text-[#7FC6C4] hover:bg-[#7FC6C4]/20 focus:ring-[#7FC6C4]",
   };
 
   const combinedClassName = `${baseStyles} ${variants[variant]} ${className}`;
