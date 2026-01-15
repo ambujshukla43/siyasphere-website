@@ -220,7 +220,7 @@ export default function ContactForm() {
                   </div>
 
                   <Button type="submit" variant="primary" className="w-full mt-6">
-                    Book a GTM Audit
+                    Request Audit
                   </Button>
                 </form>
               </Card>

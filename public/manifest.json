@@ -1,0 +1,59 @@
+{
+  "name": "SiyaSphere | AI-Powered GTM Systems",
+  "short_name": "SiyaSphere",
+  "description": "Fix your broken Go-To-Market systems with AI-powered RevOps, marketing automation, and tech integration.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "theme_color": "#7FC6C4",
+  "background_color": "#0F172A",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "32x32",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png",
+      "purpose": "any"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/og-image.png",
+      "sizes": "1200x630",
+      "type": "image/png",
+      "form_factor": "wide"
+    }
+  ],
+  "categories": ["business", "productivity"],
+  "shortcuts": [
+    {
+      "name": "Book GTM Audit",
+      "short_name": "GTM Audit",
+      "description": "Schedule your free GTM audit",
+      "url": "/contact",
+      "icons": [
+        {
+          "src": "/favicon.ico",
+          "sizes": "32x32"
+        }
+      ]
+    },
+    {
+      "name": "View Case Studies",
+      "short_name": "Case Studies",
+      "description": "See our successful GTM transformations",
+      "url": "/case-studies",
+      "icons": [
+        {
+          "src": "/favicon.ico",
+          "sizes": "32x32"
+        }
+      ]
+    }
+  ]
+}

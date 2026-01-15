@@ -31,7 +31,7 @@ export default function CTASection() {
               href="/contact"
               className="bg-[#7FC6C4] hover:bg-[#7FC6C4]/90 text-gray-950 font-bold text-lg px-8 py-4"
             >
-              Book a GTM Audit
+              Get Your Free Audit
             </Button>
             <Button
               href="/case-studies"

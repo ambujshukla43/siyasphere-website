@@ -22,7 +22,7 @@ export default function SolutionsCTA() {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button variant="primary" size="lg" href="/contact">
-              Design Your GTM Engine
+              Schedule Strategy Call
             </Button>
             <Button variant="secondary" size="lg" href="/how-it-works">
               Learn How We Work

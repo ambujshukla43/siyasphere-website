@@ -43,7 +43,7 @@ export default function Hero() {
             className="flex flex-col sm:flex-row gap-4 justify-center items-center"
           >
             <Button href="/contact" variant="primary" className="text-lg px-8 py-4">
-              Book a GTM Audit
+              Start Your GTM Audit
             </Button>
             <Button href="/case-studies" variant="outline" className="text-lg px-8 py-4">
               View Use Cases

@@ -20,57 +20,64 @@ export default function Footer() {
     ],
     Resources: [
       { href: "/case-studies", label: "Use Cases" },
-      { href: "/contact", label: "Book a GTM Audit" },
+      { href: "/contact", label: "Schedule Audit" },
     ],
   };
 
   return (
     <footer className="bg-gray-900 border-t border-gray-800">
-      <div className="container-custom section-padding">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-12">
-          {/* Brand */}
+      <div className="container-custom py-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 lg:gap-12">
+          {/* Brand & Contact Actions */}
           <div className="lg:col-span-1">
             <Link href="/" className="inline-block mb-6 group hover:opacity-80 transition-all duration-300">
               <Logo className="gap-0" />
             </Link>
 
-            {/* Contact & Social */}
-            <div className="flex flex-col items-start gap-2">
-              {/* Email Card */}
+            {/* Contact & Follow Section */}
+            <div className="space-y-3">
+              {/* Contact Us - Primary Action */}
               <a
                 href="mailto:siyasphere15@gmail.com"
-                className="inline-flex items-center gap-2 bg-gray-800/50 border border-[#7FC6C4]/30 rounded-md px-3 py-2 hover:border-[#7FC6C4] transition-all duration-300"
+                className="group flex items-center gap-2 bg-gradient-to-br from-[#7FC6C4]/10 to-[#7FC6C4]/5 border border-[#7FC6C4]/30 rounded-lg px-4 py-3 hover:border-[#7FC6C4]/60 hover:bg-gradient-to-br hover:from-[#7FC6C4]/15 hover:to-[#7FC6C4]/10 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#7FC6C4] focus:ring-offset-2 focus:ring-offset-gray-900"
+                aria-label="Contact SiyaSphere via email"
               >
                 <svg
-                  className="w-3 h-3 text-[#7FC6C4]"
+                  className="w-4 h-4 text-[#7FC6C4] group-hover:text-cyan-300 transition-colors"
                   fill="none"
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth="2"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
+                  aria-hidden="true"
                 >
                   <path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                 </svg>
-                <span className="text-xs font-semibold text-[#7FC6C4] hover:text-cyan-400">siyasphere15@gmail.com</span>
+                <span className="text-sm font-semibold text-[#7FC6C4] group-hover:text-cyan-300 transition-colors">
+                  Contact Us
+                </span>
               </a>
 
-              {/* LinkedIn Card */}
+              {/* Follow on LinkedIn - Secondary Action */}
               <a
                 href="https://www.linkedin.com/company/siyasphere/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-gray-800/50 border border-[#0A66C2]/30 rounded-md px-3 py-2 hover:border-[#0A66C2] transition-all duration-300"
+                className="group flex items-center gap-2 border border-gray-700 rounded-lg px-4 py-3 hover:border-[#0A66C2] hover:bg-[#0A66C2]/5 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-[#0A66C2] focus:ring-offset-2 focus:ring-offset-gray-900"
+                aria-label="Follow SiyaSphere on LinkedIn, opens in new window"
               >
                 <svg
-                  className="w-3 h-3 text-[#0A66C2]"
+                  className="w-4 h-4 text-gray-500 group-hover:text-[#0A66C2] transition-colors"
                   fill="currentColor"
                   viewBox="0 0 24 24"
                   aria-hidden="true"
                 >
                   <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
                 </svg>
-                <span className="text-xs font-semibold text-[#0A66C2] hover:text-blue-400">Follow us</span>
+                <span className="text-sm text-gray-400 group-hover:text-[#0A66C2] transition-colors font-medium">
+                  Follow Us
+                </span>
               </a>
             </div>
           </div>
@@ -96,7 +103,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-12 pt-8 border-t border-gray-800">
+        <div className="mt-6 pt-6 border-t border-gray-800">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-gray-400 text-sm">
               © {currentYear} SiyaSphere. All rights reserved.

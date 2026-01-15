@@ -4,8 +4,15 @@ import AboutContent from "@/components/sections/AboutContent";
 import CTASection from "@/components/sections/CTASection";
 
 export const metadata: Metadata = {
-  title: "About SiyaSphere | Fixing Broken GTM Systems",
-  description: "Built by operators, for operators. We understand both the tech and the business outcomes.",
+  title: "About SiyaSphere | GTM & RevOps Experts",
+  description: "Built by operators, for operators. SiyaSphere specializes in fixing broken GTM systems through proven RevOps frameworks, tech integration, and AI-powered workflows.",
+  keywords: "about SiyaSphere, GTM experts, RevOps consultants, go-to-market specialists, B2B SaaS consulting",
+  openGraph: {
+    title: "About SiyaSphere",
+    description: "Learn about SiyaSphere's mission to fix broken GTM systems.",
+    url: "https://siyasphere.com/about",
+    type: "website",
+  },
 };
 
 export default function AboutPage() {

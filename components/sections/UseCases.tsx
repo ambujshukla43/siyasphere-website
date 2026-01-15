@@ -5,94 +5,166 @@ import Card from "@/components/ui/Card";
 
 const useCases = [
   {
-    company: "B2B SaaS Company",
+    company: "Mid-Market SaaS Company",
     industry: "Enterprise Software",
     challenge:
-      "Leads were routing to the wrong SDRs, causing 40% of qualified leads to go uncontacted. Manual routing was taking 2+ hours per day.",
+      "Marketing and Sales were misaligned with poor lead handoffs. Unclear ownership between teams caused 35% of qualified leads to be ignored. No clear funnel definitions.",
     solution:
-      "Implemented intelligent lead routing using LeanData and Salesforce Flow. Built territory rules, capacity management, and round-robin logic.",
+      "Implemented RevOps-led GTM redesign with unified funnel definitions, SLA alignment, and clear lifecycle ownership. Used AI to analyze process gaps, with human validation of all workflows.",
     results: [
-      "95% routing accuracy",
-      "Zero manual routing time",
-      "40% increase in lead contact rate",
-      "25% improvement in SDR productivity",
+      "Unified lead-to-revenue funnel",
+      "35% reduction in lead leakage",
+      "Sales trust in marketing data increased 85%",
+      "Predictable revenue reporting",
+      "Clear ownership across teams",
     ],
-    tools: ["Salesforce", "LeanData", "Outreach"],
-  },
-  {
-    company: "Marketing Tech Company",
-    industry: "MarTech",
-    challenge:
-      "Salesforce org was cluttered with 500+ unused custom fields, causing slow page loads (8+ seconds) and poor data quality. Team avoided using it.",
-    solution:
-      "Conducted comprehensive org audit, removed unused fields, optimized automation, rebuilt critical objects, and implemented data quality rules.",
-    results: [
-      "60% faster page load times",
-      "90% improvement in data quality",
-      "100% user adoption",
-      "50% reduction in support tickets",
-    ],
-    tools: ["Salesforce", "Data Quality Tools"],
-  },
-  {
-    company: "B2B Services Company",
-    industry: "Professional Services",
-    challenge:
-      "No visibility into which marketing campaigns drove revenue. Leadership couldn't answer basic questions about ROI or attribution.",
-    solution:
-      "Built complete funnel visibility with custom Salesforce dashboards, implemented multi-touch attribution, and automated revenue reporting.",
-    results: [
-      "Complete MQL → Revenue visibility",
-      "Accurate campaign ROI tracking",
-      "Data-driven budget allocation",
-      "30% improvement in marketing efficiency",
-    ],
-    tools: ["Salesforce", "Power BI", "Attribution Models"],
+    tools: ["Salesforce", "RevOps Framework", "AI Process Analysis"],
   },
   {
     company: "Growth-Stage Startup",
     industry: "B2B SaaS",
     challenge:
-      "Manual lead enrichment and data entry was consuming 15+ hours per week. SDRs couldn't scale with company growth.",
+      "Running on legacy CRM and disconnected marketing systems. Critical data migration needed but zero tolerance for downtime or data loss. Historical data integrity concerns.",
     solution:
-      "Automated lead enrichment using AI APIs, built Salesforce Flow workflows for data updates, and integrated with enrichment services.",
+      "Designed migration-first RevOps strategy with data normalization and AI-assisted validation. Built clean data model, modernized stack without disruption. Human QA reviewed all migrations.",
     results: [
-      "80% reduction in manual work",
-      "3x faster lead processing",
-      "Automated enrichment for 100% of leads",
-      "SDR capacity increased by 2x",
+      "Zero-downtime data migration",
+      "100% historical data integrity",
+      "50% faster GTM execution post-migration",
+      "Modern, scalable tech stack",
+      "Improved data reliability",
     ],
-    tools: ["Salesforce Flow", "AI Enrichment APIs", "Clay"],
+    tools: ["Legacy CRM", "Salesforce", "Data Migration Tools", "AI Validation"],
+  },
+  {
+    company: "B2B SaaS Company",
+    industry: "Enterprise Software",
+    challenge:
+      "Leads routing to wrong SDRs caused 40% of qualified leads to go uncontacted. Manual routing consumed 2+ hours daily. Territory management was chaotic.",
+    solution:
+      "Implemented intelligent lead routing with LeanData and Salesforce Flow. Built territory rules, capacity management, and round-robin logic based on AI pattern analysis.",
+    results: [
+      "95% routing accuracy",
+      "Zero manual routing time",
+      "40% increase in lead contact rate",
+      "25% improvement in SDR productivity",
+      "Automated territory management",
+    ],
+    tools: ["Salesforce", "LeanData", "Outreach"],
+  },
+  {
+    company: "Demand-Gen Focused Company",
+    industry: "B2B Technology",
+    challenge:
+      "High marketing spend with unclear ROI impact. No attribution clarity between campaigns and revenue. Leadership didn't trust marketing data. Budget decisions made blind.",
+    solution:
+      "Built comprehensive marketing analytics framework with multi-touch attribution. Created revenue-linked dashboards showing campaign-to-opportunity visibility. AI generated insights, humans validated strategy.",
+    results: [
+      "Complete campaign-to-revenue visibility",
+      "Accurate attribution modeling",
+      "Better budget allocation decisions",
+      "Sales alignment on marketing quality",
+      "30% improvement in marketing efficiency",
+    ],
+    tools: ["Salesforce", "Marketo", "Power BI", "Attribution Models"],
   },
   {
     company: "Enterprise B2B Company",
     industry: "Enterprise Software",
     challenge:
-      "Marketing automation (Marketo), CRM (Salesforce), and SDR platform (Outreach) weren't syncing. Data was always out of date.",
+      "Growing sales team but inaccurate forecasts. Limited pipeline visibility. Rep activity disconnected from outcomes. Leadership had no confidence in pipeline predictions.",
     solution:
-      "Architected and implemented real-time integrations between all three platforms. Built unified workflows and single source of truth.",
+      "Designed comprehensive sales analytics framework with pipeline health metrics and AI-detected patterns. Built rep performance analytics and reliable forecasting models with human leadership review.",
     results: [
-      "Real-time data synchronization",
-      "Unified workflows across platforms",
-      "Zero manual data entry",
-      "100% data accuracy",
+      "Improved forecast accuracy by 35%",
+      "Deal velocity visibility",
+      "Better coaching conversations",
+      "Reduced revenue surprises",
+      "Pipeline health monitoring",
     ],
-    tools: ["Salesforce", "Marketo", "Outreach", "API Integrations"],
+    tools: ["Salesforce", "Sales Analytics", "AI Models", "Forecast Tools"],
   },
   {
-    company: "B2B Services Company",
-    industry: "Professional Services",
+    company: "High-Growth GTM Team",
+    industry: "B2B SaaS",
     challenge:
-      "Lead scoring was manual and inconsistent. Hot leads were being deprioritized while cold leads consumed SDR time.",
+      "Manual data entry and lead enrichment consuming 15+ hours weekly. Data quality risks from human error. Team resistant to full automation. SDRs couldn't scale.",
     solution:
-      "Implemented AI-powered lead scoring using historical conversion data. Built intelligent routing and prioritization workflows.",
+      "Designed human-in-the-loop AI workflows with checkpoints and validation gates. Automated routine tasks while keeping humans in control of critical decisions. Built trust-first automation.",
     results: [
-      "AI-powered lead scoring",
-      "40% improvement in conversion rate",
-      "Intelligent prioritization",
-      "30% increase in pipeline velocity",
+      "80% reduction in manual work",
+      "3x faster lead processing",
+      "Higher data accuracy (98%+)",
+      "Strong team adoption",
+      "SDR capacity increased 2x without headcount",
     ],
-    tools: ["Salesforce", "AI Models", "Machine Learning"],
+    tools: ["Salesforce Flow", "AI Enrichment APIs", "Clay", "Automation"],
+  },
+  {
+    company: "Enterprise B2B Company",
+    industry: "Enterprise Software",
+    challenge:
+      "Leadership couldn't get consistent GTM reporting. Numbers conflicted across different tools and dashboards. Decisions were delayed waiting for data clarity.",
+    solution:
+      "Built unified data model across entire GTM stack (Salesforce, HubSpot, Marketo, Outreach). Created role-based executive dashboards with real-time and snapshot views. AI generated insights with human storytelling.",
+    results: [
+      "Single source of truth",
+      "Real-time executive visibility",
+      "Faster decision-making",
+      "Leadership alignment on numbers",
+      "Clear revenue storytelling",
+    ],
+    tools: ["Salesforce", "HubSpot", "Snowflake", "Tableau", "Data Integration"],
+  },
+  {
+    company: "Enterprise SaaS Provider",
+    industry: "Enterprise Software",
+    challenge:
+      "Salesforce org cluttered with 500+ unused fields. Page loads slow (8+ seconds). Data quality poor. Team avoiding the system. Marketing automation (Marketo), CRM (Salesforce), SDR platform (Outreach) not syncing.",
+    solution:
+      "Conducted org audit and removed technical debt. Implemented real-time integrations between platforms. Built unified workflows and single source of truth. Redesigned critical objects.",
+    results: [
+      "60% faster page load times",
+      "90% data quality improvement",
+      "Real-time synchronization across stack",
+      "100% user adoption",
+      "50% reduction in support tickets",
+    ],
+    tools: ["Salesforce", "Marketo", "Outreach", "API Integrations"],
+  },  {
+    company: "B2B Software Company",
+    industry: "Enterprise Software",
+    challenge:
+      "No marketing automation infrastructure. Manual nurture campaigns. Lead scoring nonexistent. Zero visibility into engagement. Salesforce disconnected from marketing efforts.",
+    solution:
+      "Implemented Pardot from scratch with complete Salesforce integration. Built automated nurture campaigns, lead scoring models, and engagement tracking. Aligned marketing and sales with unified prospect view.",
+    results: [
+      "Automated nurture campaigns",
+      "AI-powered lead scoring",
+      "Real-time engagement tracking",
+      "Marketing-Sales alignment",
+      "45% improvement in nurture effectiveness",
+      "Unified prospect intelligence",
+    ],
+    tools: ["Salesforce", "Pardot", "Marketing Automation", "Lead Scoring"],
+  },
+  {
+    company: "Mid-Market B2B Company",
+    industry: "Enterprise Software",
+    challenge:
+      "Poor lead data quality from multiple sources. LeanData and Ringlead not implemented. Manual lead routing consuming 4+ hours daily. Territory imbalance causing frustration. No visibility into lead enrichment status.",
+    solution:
+      "Implemented LeanData and Ringlead from scratch with integrated data enrichment and lead routing. Built Salesforce Flow automations for territory assignment, capacity management, and SLA enforcement. Created data quality gates and continuous validation.",
+    results: [
+      "92% lead data quality improvement",
+      "85% reduction in manual routing time",
+      "40% territory balance improvement",
+      "Real-time lead enrichment",
+      "100% lead coverage with LeanData rules",
+      "Multiple automated routing workflows",
+      "SLA compliance increased 75%",
+    ],
+    tools: ["Salesforce", "LeanData", "Ringlead", "Data Enrichment", "Lead Routing Automation"],
   },
 ];
 
