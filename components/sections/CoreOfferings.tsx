@@ -81,7 +81,7 @@ export default function CoreOfferings() {
                   {offering.tools.slice(0, 3).map((tool) => (
                     <span
                       key={tool}
-                      className="px-3 py-1 bg-primary-500/20 text-primary-300 text-xs font-medium rounded-full border border-primary-500/30"
+                      className="px-3 py-1 bg-[#7FC6C4]/20 text-[#7FC6C4] text-xs font-medium rounded-full border border-[#7FC6C4]/30"
                     >
                       {tool}
                     </span>
@@ -106,7 +106,7 @@ export default function CoreOfferings() {
         >
           <Link
             href="/solutions"
-            className="text-primary-400 hover:text-primary-300 font-semibold text-lg"
+            className="text-[#7FC6C4] hover:text-cyan-400 font-semibold text-lg"
           >
             Explore all solutions →
           </Link>
