@@ -195,21 +195,21 @@ export default function UseCases() {
 
                 <div className="space-y-6 flex-grow">
                   <div>
-                    <h4 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">
+                    <h4 className="text-sm font-semibold text-[#7FC6C4] uppercase tracking-wider mb-2">
                       Challenge
                     </h4>
                     <p className="text-gray-400">{useCase.challenge}</p>
                   </div>
 
                   <div>
-                    <h4 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-2">
+                    <h4 className="text-sm font-semibold text-[#7FC6C4] uppercase tracking-wider mb-2">
                       Solution
                     </h4>
                     <p className="text-gray-400">{useCase.solution}</p>
                   </div>
 
                   <div>
-                    <h4 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
+                    <h4 className="text-sm font-semibold text-[#7FC6C4] uppercase tracking-wider mb-3">
                       Results
                     </h4>
                     <ul className="space-y-2">
