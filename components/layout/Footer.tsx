@@ -102,29 +102,31 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* Bottom bar - Compact */}
-        <div className="pt-6 border-t border-gray-800">
+        {/* Bottom bar */}
+        <div className="mt-8 pt-8 border-t border-gray-800">
           {/* Legal Information - Compact */}
-          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
-            {/* Company Info */}
-            <div className="text-xs md:text-sm">
-              <p className="text-gray-100 font-semibold mb-1">SiyaSphere Consulting</p>
-              <p className="text-gray-400">BM99 Sukhliya, Indore, MP 452010 • UDYAM-MP-23-0206346</p>
-            </div>
-            
-            {/* Copyright & Links */}
-            <div className="flex flex-col md:flex-row md:items-center md:gap-4 gap-2 text-xs md:text-sm">
-              <p className="text-gray-500">
-                © {currentYear} SiyaSphere Consulting
-              </p>
-              <div className="flex gap-4 text-gray-400">
-                <Link href="/privacy" className="hover:text-primary-400 transition-colors">
-                  Privacy Policy
-                </Link>
-                <Link href="/terms" className="hover:text-primary-400 transition-colors">
-                  Terms of Service
-                </Link>
+          <div className="mb-3 pb-3 border-b border-gray-800">
+            <div className="text-sm">
+              <p className="text-gray-100 font-semibold mb-2">SiyaSphere Consulting</p>
+              <div className="text-gray-400 leading-relaxed text-xs md:text-sm space-y-0.5">
+                <p>BM99 Sukhliya, Indore, MP 452010, India</p>
+                <p className="text-gray-500">UDYAM-MP-23-0206346</p>
               </div>
+            </div>
+          </div>
+
+          {/* Copyright & Links */}
+          <div className="flex flex-col md:flex-row justify-between items-center gap-3 md:gap-0 py-2">
+            <p className="text-gray-400 text-xs md:text-sm">
+              © {currentYear} SiyaSphere Consulting. All rights reserved.
+            </p>
+            <div className="flex space-x-4 md:space-x-6 text-xs md:text-sm text-gray-400">
+              <Link href="/privacy" className="hover:text-primary-400 transition-colors">
+                Privacy Policy
+              </Link>
+              <Link href="/terms" className="hover:text-primary-400 transition-colors">
+                Terms of Service
+              </Link>
             </div>
           </div>
         </div>
