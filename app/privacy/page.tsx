@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export const metadata = {
   title: "Privacy Policy | SiyaSphere",
-  description: "Privacy Policy for SiyaSphere - Learn how we protect your data.",
+  description: "Privacy Policy for SiyaSphere Consulting - Learn how we protect your data.",
 };
 
 export default function PrivacyPolicy() {
@@ -11,7 +11,7 @@ export default function PrivacyPolicy() {
       number: 1,
       title: "Introduction",
       icon: "📋",
-      content: "SiyaSphere is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services.",
+      content: "SiyaSphere Consulting is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services.",
     },
     {
       number: 2,

@@ -73,10 +73,19 @@ export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
   name: "SiyaSphere",
+  legalName: "SiyaSphere Consulting",
   url: "https://siyasphere.com",
   logo: "https://siyasphere.com/logo.png",
   description:
     "AI-powered GTM systems platform specializing in RevOps, Marketing Automation, and Tech Integration.",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "BM99 Sukhliya",
+    addressLocality: "Indore",
+    addressRegion: "MP",
+    postalCode: "452010",
+    addressCountry: "IN",
+  },
   foundingDate: "2023",
   founders: [
     {
@@ -100,8 +109,16 @@ export const organizationSchema = {
 export const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  name: "SiyaSphere",
+  name: "SiyaSphere Consulting",
   url: "https://siyasphere.com",
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "BM99 Sukhliya",
+    addressLocality: "Indore",
+    addressRegion: "MP",
+    postalCode: "452010",
+    addressCountry: "IN",
+  },
   email: "siyasphere15@gmail.com",
   priceRange: "$$",
   serviceType: [

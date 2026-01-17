@@ -103,10 +103,28 @@ export default function Footer() {
         </div>
 
         {/* Bottom bar */}
-        <div className="mt-6 pt-6 border-t border-gray-800">
+        <div className="mt-8 pt-8 border-t border-gray-800">
+          {/* Legal Information */}
+          <div className="mb-6 pb-6 border-b border-gray-800">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-gray-400">
+              <div>
+                <p className="font-semibold text-gray-300 mb-1">Legal Entity</p>
+                <p>SiyaSphere Consulting</p>
+                <p className="mt-2 font-semibold text-gray-300">Address</p>
+                <p>BM99 Sukhliya<br />Indore, MP 452010<br />India</p>
+              </div>
+              <div>
+                <p className="font-semibold text-gray-300 mb-1">Registration</p>
+                <p>UDYAM-MP-23-0206346</p>
+                <p className="mt-3 text-xs text-gray-500">Registered under UDYAM<br />Ministry of MSME, India</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Copyright & Links */}
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
             <p className="text-gray-400 text-sm">
-              © {currentYear} SiyaSphere. All rights reserved.
+              © {currentYear} SiyaSphere Consulting. All rights reserved.
             </p>
             <div className="flex space-x-6 text-sm text-gray-400">
               <Link href="/privacy" className="hover:text-primary-400 transition-colors">

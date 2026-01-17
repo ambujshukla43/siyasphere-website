@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export const metadata = {
   title: "Terms of Service | SiyaSphere",
-  description: "Terms of Service for SiyaSphere - Review our terms and conditions.",
+  description: "Terms of Service for SiyaSphere Consulting - Review our terms and conditions.",
 };
 
 export default function TermsOfService() {
@@ -11,7 +11,7 @@ export default function TermsOfService() {
       number: 1,
       title: "Acceptance of Terms",
       icon: "✅",
-      content: "By accessing and using the SiyaSphere website and services, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.",
+      content: "By accessing and using the SiyaSphere Consulting website and services, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.",
     },
     {
       number: 2,
