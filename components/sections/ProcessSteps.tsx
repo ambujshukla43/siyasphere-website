@@ -104,11 +104,11 @@ export default function ProcessSteps() {
                   {/* Left side - Number and title */}
                   <div className="lg:col-span-4">
                     <div className="flex items-center space-x-4 mb-4">
-                      <div className="text-5xl font-bold text-primary-400/50">
+                      <div className="text-5xl font-bold text-[#7FC6C4]/50">
                         {step.number}
                       </div>
                       <div>
-                        <div className="text-sm font-semibold text-primary-400 uppercase tracking-wider">
+                        <div className="text-sm font-semibold text-[#7FC6C4] uppercase tracking-wider">
                           {step.duration}
                         </div>
                         <h3 className="text-2xl sm:text-3xl font-bold text-gray-100">
@@ -124,7 +124,7 @@ export default function ProcessSteps() {
                       {step.description}
                     </p>
                     <div>
-                      <h4 className="text-sm font-semibold text-gray-500 uppercase tracking-wider mb-3">
+                      <h4 className="text-sm font-semibold text-[#7FC6C4] uppercase tracking-wider mb-3">
                         Deliverables
                       </h4>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -134,7 +134,7 @@ export default function ProcessSteps() {
                             className="flex items-center space-x-2 text-gray-400"
                           >
                             <svg
-                              className="w-5 h-5 text-primary-400 flex-shrink-0"
+                              className="w-5 h-5 text-[#7FC6C4] flex-shrink-0"
                               fill="currentColor"
                               viewBox="0 0 20 20"
                             >
