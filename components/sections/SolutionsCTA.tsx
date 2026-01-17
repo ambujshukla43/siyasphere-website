@@ -18,7 +18,7 @@ export default function SolutionsCTA() {
             Ready to Design Your GTM Engine?
           </h2>
           <p className="text-lg text-gray-400 mb-8">
-            Explore how AI-powered RevOps can transform your go-to-market motion. Book a 30-minute strategy call to see what's possible for your team.
+            Explore how AI-powered RevOps can transform your go-to-market motion. Book a 30-minute strategy call to see what&apos;s possible for your team.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <Button variant="primary" size="lg" href="/contact">

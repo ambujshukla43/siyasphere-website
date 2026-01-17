@@ -22,7 +22,7 @@ export default function SolutionsHero() {
             Where artificial intelligence meets human judgment to build predictable, scalable revenue engines.
           </p>
           <p className="text-lg text-gray-500 max-w-3xl mx-auto">
-            SiyaSphere transforms how modern revenue teams operate—combining AI automation, data intelligence, and process optimization to align your entire GTM motion. We don't replace humans with machines. We empower them with speed, clarity, and control.
+            SiyaSphere transforms how modern revenue teams operate—combining AI automation, data intelligence, and process optimization to align your entire GTM motion. We don&apos;t replace humans with machines. We empower them with speed, clarity, and control.
           </p>
         </motion.div>
       </div>

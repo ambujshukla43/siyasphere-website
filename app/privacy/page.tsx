@@ -141,7 +141,7 @@ export default function PrivacyPolicy() {
             Last updated: January 13, 2026
           </p>
           <p className="text-gray-500 text-base">
-            We're committed to protecting your data and being transparent about how we use it.
+            We&apos;re committed to protecting your data and being transparent about how we use it.
           </p>
         </div>
       </section>
@@ -256,7 +256,7 @@ export default function PrivacyPolicy() {
                     Questions About Your Privacy?
                   </h3>
                   <p className="text-gray-400 mb-4">
-                    We're here to help. Contact us with any questions or concerns about our privacy practices.
+                    We&apos;re here to help. Contact us with any questions or concerns about our privacy practices.
                   </p>
                   <a
                     href="mailto:siyasphere15@gmail.com"
