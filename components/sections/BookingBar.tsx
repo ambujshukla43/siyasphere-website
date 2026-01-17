@@ -6,9 +6,10 @@ import Button from "@/components/ui/Button";
 
 export default function BookingBar() {
   const pathname = usePathname();
+  const [isVisible, setIsVisible] = useState(true);
   
   // Hide on privacy and terms pages
-  if (pathname === "/privacy" || pathname === "/terms") {
+  if (pathname === "/privacy" || pathname === "/terms" || !isVisible) {
     return null;
   }
 
@@ -119,6 +120,18 @@ export default function BookingBar() {
               {submitted ? "✓ Sent!" : loading ? "Sending..." : "Book Now"}
             </Button>
           </form>
+
+          {/* Close Button */}
+          <button
+            onClick={() => setIsVisible(false)}
+            className="flex-shrink-0 p-2 hover:bg-white/10 rounded-lg transition-colors"
+            aria-label="Close booking bar"
+            title="Close"
+          >
+            <svg className="w-5 h-5 text-gray-400 hover:text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+            </svg>
+          </button>
         </div>
       </div>
     </div>

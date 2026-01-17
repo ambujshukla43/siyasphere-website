@@ -102,48 +102,29 @@ export default function Footer() {
           ))}
         </div>
 
-        {/* Bottom bar */}
-        <div className="mt-8 pt-8 border-t border-gray-800">
-          {/* Legal Information - Optimized Single Section */}
-          <div className="mb-6 pb-6 border-b border-gray-800">
-            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
-              {/* Company Info */}
-              <div className="text-sm">
-                <p className="text-gray-100 font-semibold mb-3">SiyaSphere Consulting</p>
-                <div className="text-gray-400 leading-relaxed text-xs md:text-sm space-y-1">
-                  <p>BM99 Sukhliya, Indore</p>
-                  <p>MP 452010, India</p>
-                  <p className="pt-2 text-gray-500">UDYAM-MP-23-0206346</p>
-                </div>
-              </div>
-              
-              {/* Divider - Hidden on mobile */}
-              <div className="hidden md:block w-px h-12 bg-gray-700"></div>
-              
-              {/* Compliance Badge */}
-              <div className="md:text-right">
-                <div className="inline-block md:block">
-                  <p className="text-xs font-semibold text-[#7FC6C4] mb-2">Registered Business</p>
-                  <p className="text-xs text-gray-400 leading-relaxed">
-                    Ministry of MSME<br className="hidden md:block" />Government of India
-                  </p>
-                </div>
-              </div>
+        {/* Bottom bar - Compact */}
+        <div className="pt-6 border-t border-gray-800">
+          {/* Legal Information - Compact */}
+          <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
+            {/* Company Info */}
+            <div className="text-xs md:text-sm">
+              <p className="text-gray-100 font-semibold mb-1">SiyaSphere Consulting</p>
+              <p className="text-gray-400">BM99 Sukhliya, Indore, MP 452010 • UDYAM-MP-23-0206346</p>
             </div>
-          </div>
-
-          {/* Copyright & Links */}
-          <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-gray-400 text-sm">
-              © {currentYear} SiyaSphere Consulting. All rights reserved.
-            </p>
-            <div className="flex space-x-6 text-sm text-gray-400">
-              <Link href="/privacy" className="hover:text-primary-400 transition-colors">
-                Privacy Policy
-              </Link>
-              <Link href="/terms" className="hover:text-primary-400 transition-colors">
-                Terms of Service
-              </Link>
+            
+            {/* Copyright & Links */}
+            <div className="flex flex-col md:flex-row md:items-center md:gap-4 gap-2 text-xs md:text-sm">
+              <p className="text-gray-500">
+                © {currentYear} SiyaSphere Consulting
+              </p>
+              <div className="flex gap-4 text-gray-400">
+                <Link href="/privacy" className="hover:text-primary-400 transition-colors">
+                  Privacy Policy
+                </Link>
+                <Link href="/terms" className="hover:text-primary-400 transition-colors">
+                  Terms of Service
+                </Link>
+              </div>
             </div>
           </div>
         </div>
