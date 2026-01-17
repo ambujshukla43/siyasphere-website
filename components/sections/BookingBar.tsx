@@ -16,6 +16,7 @@ export default function BookingBar() {
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
+  const [isClosed, setIsClosed] = useState(false);
 
   // Client-side validation
   const validateEmail = (emailToValidate: string): string | null => {
@@ -82,10 +83,25 @@ export default function BookingBar() {
     }
   };
 
+  if (isClosed) {
+    return null;
+  }
+
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-gradient-to-r from-gray-950/70 via-gray-900/70 to-gray-950/70 backdrop-blur-md shadow-2xl z-40 border-t border-primary-500/20">
       <div className="container-custom py-2 md:py-2.5">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-3">
+        <div className="flex flex-col md:flex-row items-center justify-between gap-3 relative">
+          {/* Close Button */}
+          <button
+            onClick={() => setIsClosed(true)}
+            className="absolute top-2 right-2 md:relative md:top-auto md:right-auto ml-auto p-1.5 text-gray-400 hover:text-white hover:bg-gray-700/50 rounded-lg transition-all duration-200"
+            aria-label="Close booking bar"
+          >
+            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+              <path fillRule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clipRule="evenodd" />
+            </svg>
+          </button>
+
           <div className="flex-1">
             <div className="flex items-center gap-2">
               <svg className="w-4 h-4 text-primary-400" fill="currentColor" viewBox="0 0 20 20">
