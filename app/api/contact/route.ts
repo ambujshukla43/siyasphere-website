@@ -239,10 +239,14 @@ export async function POST(request: NextRequest) {
         `,
       });
 
-      // Log successful emails
-      console.log('✅ Emails sent successfully:', {
-        adminEmail: adminEmail.data?.id,
-        userEmail: userEmail.data?.id,
+      // Check if at least one email was sent successfully
+      const adminSuccess = adminEmail.data?.id && !adminEmail.error;
+      const userSuccess = userEmail.data?.id && !userEmail.error;
+
+      // Log results
+      console.log('📧 Email sending results:', {
+        adminEmail: { id: adminEmail.data?.id, error: adminEmail.error },
+        userEmail: { id: userEmail.data?.id, error: userEmail.error },
         submission: {
           email: body.email,
           name: body.name,
@@ -253,21 +257,23 @@ export async function POST(request: NextRequest) {
         },
       });
 
-      if (adminEmail.error || userEmail.error) {
-        console.error('Email sending errors:', {
-          adminError: adminEmail.error,
-          userError: userEmail.error,
-        });
+      // If both emails failed, return error
+      if (!adminSuccess && !userSuccess) {
+        console.error('❌ Both emails failed to send');
         return NextResponse.json(
-          { error: 'Submission received but email delivery failed' },
+          { error: 'Submission failed. Please try again.' },
           { status: 500 }
         );
       }
 
+      // If at least one email succeeded, consider it successful
+      // (admin email is most critical, but user confirmation is nice-to-have)
       return NextResponse.json(
         {
           success: true,
-          message: 'Your request has been submitted successfully. Check your email for confirmation.',
+          message: adminSuccess 
+            ? 'Your request has been submitted successfully. Check your email for confirmation.'
+            : 'Your request has been submitted. We will contact you soon.',
         },
         { status: 200 }
       );
