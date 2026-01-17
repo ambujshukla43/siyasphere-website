@@ -6,10 +6,9 @@ import Button from "@/components/ui/Button";
 
 export default function BookingBar() {
   const pathname = usePathname();
-  const [isClosed, setIsClosed] = useState(false);
   
-  // Hide on privacy and terms pages or if user closes it
-  if (pathname === "/privacy" || pathname === "/terms" || isClosed) {
+  // Hide on privacy and terms pages
+  if (pathname === "/privacy" || pathname === "/terms") {
     return null;
   }
 
@@ -86,17 +85,7 @@ export default function BookingBar() {
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-gradient-to-r from-gray-950/70 via-gray-900/70 to-gray-950/70 backdrop-blur-md shadow-2xl z-40 border-t border-primary-500/20">
       <div className="container-custom py-2 md:py-2.5">
-        <div className="flex flex-col md:flex-row items-center justify-between gap-3 relative">
-          {/* Close Button */}
-          <button
-            onClick={() => setIsClosed(true)}
-            className="absolute top-2 right-2 md:static text-gray-400 hover:text-gray-200 transition-colors p-1 flex-shrink-0"
-            aria-label="Close booking bar"
-          >
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-            </svg>
-          </button>
+        <div className="flex flex-col md:flex-row items-center justify-between gap-3">
           <div className="flex-1">
             <div className="flex items-center gap-2">
               <svg className="w-4 h-4 text-primary-400" fill="currentColor" viewBox="0 0 20 20">
