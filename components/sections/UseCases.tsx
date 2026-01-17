@@ -219,7 +219,7 @@ export default function UseCases() {
                           className="flex items-start space-x-2 text-gray-400"
                         >
                           <svg
-                            className="w-5 h-5 text-primary-400 mt-0.5 flex-shrink-0"
+                            className="w-5 h-5 text-[#7FC6C4] mt-0.5 flex-shrink-0"
                             fill="currentColor"
                             viewBox="0 0 20 20"
                           >
@@ -243,7 +243,7 @@ export default function UseCases() {
                       {useCase.tools.map((tool) => (
                         <span
                           key={tool}
-                          className="px-2 py-1 bg-primary-500/20 text-primary-300 text-xs font-medium rounded-md border border-primary-500/30"
+                          className="px-2 py-1 bg-[#7FC6C4]/20 text-[#7FC6C4] text-xs font-medium rounded-md border border-[#7FC6C4]/30"
                         >
                           {tool}
                         </span>
