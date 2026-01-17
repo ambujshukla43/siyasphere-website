@@ -11,39 +11,95 @@ export default function ContactForm() {
     name: "",
     company: "",
     phone: "",
+    website: "", // Honeypot field (should remain empty)
   });
 
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleChange = (
-    e: React.ChangeEvent<HTMLInputElement>
-  ) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
     });
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Client-side validation
+  const validateForm = (): string | null => {
+    // Email validation
+    if (!formData.email.trim()) {
+      return "Email is required";
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      return "Please provide a valid email address";
+    }
+
+    // Check for disposable email
+    const disposableDomains = ["tempmail", "guerrillamail", "10minutemail", "mailinator"];
+    const emailDomain = formData.email.split("@")[1].toLowerCase();
+    if (disposableDomains.some((domain) => emailDomain.includes(domain))) {
+      return "Please use a business email address";
+    }
+
+    // Name validation (optional but if provided, must be valid)
+    if (formData.name && (formData.name.length < 2 || formData.name.length > 100)) {
+      return "Name must be between 2 and 100 characters";
+    }
+
+    // Company validation (optional but if provided, must be valid)
+    if (formData.company && (formData.company.length < 2 || formData.company.length > 100)) {
+      return "Company name must be between 2 and 100 characters";
+    }
+
+    // Phone validation (optional but if provided, must be valid)
+    if (formData.phone) {
+      const phoneRegex = /^[\d\s\-\+\(\)]{10,}$/;
+      if (!phoneRegex.test(formData.phone.replace(/\s/g, ""))) {
+        return "Please provide a valid phone number";
+      }
+    }
+
+    return null;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
-    
-    if (!formData.email) {
-      setError("Email is required");
+    setLoading(true);
+
+    // Client-side validation
+    const validationError = validateForm();
+    if (validationError) {
+      setError(validationError);
+      setLoading(false);
       return;
     }
 
-    // Create mailto link with form data
-    const subject = encodeURIComponent("Book a GTM Audit Request");
-    const body = encodeURIComponent(
-      `Email: ${formData.email}\n` +
-      `${formData.name ? `Name: ${formData.name}\n` : ''}` +
-      `${formData.company ? `Company: ${formData.company}\n` : ''}` +
-      `${formData.phone ? `Phone: ${formData.phone}\n` : ''}`
-    );
-    window.location.href = `mailto:siyasphere15@gmail.com?subject=${subject}&body=${body}`;
-    setSubmitted(true);
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to submit form");
+      }
+
+      setSubmitted(true);
+      setFormData({ email: "", name: "", company: "", phone: "", website: "" });
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "An error occurred. Please try again.");
+      console.error("Form submission error:", err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   if (submitted) {
@@ -219,8 +275,27 @@ export default function ContactForm() {
                     />
                   </div>
 
-                  <Button type="submit" variant="primary" className="w-full mt-6">
-                    Request Audit
+                  {/* Honeypot field - hidden from users */}
+                  <div className="hidden" aria-hidden="true">
+                    <label htmlFor="website">Website</label>
+                    <input
+                      type="text"
+                      id="website"
+                      name="website"
+                      value={formData.website}
+                      onChange={handleChange}
+                      tabIndex={-1}
+                      autoComplete="off"
+                    />
+                  </div>
+
+                  <Button
+                    type="submit"
+                    variant="primary"
+                    className="w-full mt-6"
+                    disabled={loading}
+                  >
+                    {loading ? "Submitting..." : "Request Audit"}
                   </Button>
                 </form>
               </Card>

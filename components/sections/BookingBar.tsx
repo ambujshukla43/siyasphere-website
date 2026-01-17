@@ -7,25 +7,71 @@ export default function BookingBar() {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  // Client-side validation
+  const validateEmail = (emailToValidate: string): string | null => {
+    if (!emailToValidate.trim()) {
+      return "Email is required";
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(emailToValidate)) {
+      return "Please provide a valid email address";
+    }
+
+    // Check for disposable email
+    const disposableDomains = ["tempmail", "guerrillamail", "10minutemail", "mailinator"];
+    const emailDomain = emailToValidate.split("@")[1].toLowerCase();
+    if (disposableDomains.some((domain) => emailDomain.includes(domain))) {
+      return "Please use a business email address";
+    }
+
+    return null;
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError("");
+    setLoading(true);
 
-    if (!email) {
-      setError("Email is required");
+    // Client-side validation
+    const validationError = validateEmail(email);
+    if (validationError) {
+      setError(validationError);
+      setLoading(false);
       return;
     }
 
-    // Create mailto link
-    const subject = encodeURIComponent("Book a GTM Audit Meeting");
-    const body = encodeURIComponent(
-      `I'd like to book a meeting to discuss my GTM audit.\n\nEmail: ${email}`
-    );
-    window.location.href = `mailto:siyasphere15@gmail.com?subject=${subject}&body=${body}`;
-    setSubmitted(true);
-    setEmail("");
-    setTimeout(() => setSubmitted(false), 3000);
+    try {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          email,
+          name: "",
+          company: "",
+          phone: "",
+          website: "", // Honeypot
+        }),
+      });
+
+      const data = await response.json();
+
+      if (!response.ok) {
+        throw new Error(data.error || "Failed to submit");
+      }
+
+      setSubmitted(true);
+      setEmail("");
+      setTimeout(() => setSubmitted(false), 3000);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : "An error occurred");
+      console.error("Booking bar error:", err);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -41,7 +87,7 @@ export default function BookingBar() {
             </div>
             <p className="text-gray-300 text-xs mt-0.5">Schedule your free audit today.</p>
           </div>
-          
+
           <form onSubmit={handleSubmit} className="flex-1 md:flex-initial flex gap-2 w-full md:w-auto">
             <div className="flex-1 md:flex-initial relative">
               <input
@@ -49,18 +95,20 @@ export default function BookingBar() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="your@email.com"
-                className="w-full px-3 py-2 bg-white/10 backdrop-blur-sm border border-primary-500/30 rounded-lg text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-primary-400 text-xs transition-all"
+                disabled={loading}
+                className="w-full px-3 py-2 bg-white/10 backdrop-blur-sm border border-primary-500/30 rounded-lg text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-primary-400 text-xs transition-all disabled:opacity-50"
               />
               {error && (
-                <p className="absolute top-full mt-0.5 text-primary-300 text-xs">{error}</p>
+                <p className="absolute top-full mt-0.5 text-red-400 text-xs whitespace-nowrap">{error}</p>
               )}
             </div>
             <Button
               type="submit"
               variant="primary"
-              className="bg-primary-500 hover:bg-primary-400 text-white px-5 whitespace-nowrap text-sm"
+              className="bg-primary-500 hover:bg-primary-400 text-white px-5 whitespace-nowrap text-sm disabled:opacity-50"
+              disabled={loading}
             >
-              {submitted ? "✓ Sent!" : "Book Now"}
+              {submitted ? "✓ Sent!" : loading ? "Sending..." : "Book Now"}
             </Button>
           </form>
         </div>
