@@ -105,18 +105,18 @@ export default function Footer() {
         {/* Bottom bar */}
         <div className="mt-8 pt-8 border-t border-gray-800">
           {/* Legal Information */}
-          <div className="mb-6 pb-6 border-b border-gray-800">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-gray-400">
+          <div className="mb-8 pb-8 border-b border-gray-800">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 text-sm">
               <div>
-                <p className="font-semibold text-gray-300 mb-1">Legal Entity</p>
-                <p>SiyaSphere Consulting</p>
-                <p className="mt-2 font-semibold text-gray-300">Address</p>
-                <p>BM99 Sukhliya<br />Indore, MP 452010<br />India</p>
+                <p className="font-semibold text-gray-200 mb-2">Legal Entity</p>
+                <p className="text-gray-400">SiyaSphere Consulting</p>
+                <p className="font-semibold text-gray-200 mt-4 mb-2">Address</p>
+                <p className="text-gray-400 leading-relaxed">BM99 Sukhliya<br />Indore, MP 452010<br />India</p>
               </div>
               <div>
-                <p className="font-semibold text-gray-300 mb-1">Registration</p>
-                <p>UDYAM-MP-23-0206346</p>
-                <p className="mt-3 text-xs text-gray-500">Registered under UDYAM<br />Ministry of MSME, India</p>
+                <p className="font-semibold text-gray-200 mb-2">Registration</p>
+                <p className="text-gray-400 font-mono">UDYAM-MP-23-0206346</p>
+                <p className="text-xs text-gray-500 mt-3">Registered under UDYAM<br />Ministry of MSME, India</p>
               </div>
             </div>
           </div>
@@ -126,11 +126,11 @@ export default function Footer() {
             <p className="text-gray-400 text-sm">
               © {currentYear} SiyaSphere Consulting. All rights reserved.
             </p>
-            <div className="flex space-x-6 text-sm text-gray-400">
-              <Link href="/privacy" className="hover:text-primary-400 transition-colors">
+            <div className="flex space-x-6 text-sm text-gray-300 hover:text-gray-100 transition-colors">
+              <Link href="/privacy" className="hover:text-[#7FC6C4] transition-colors duration-200">
                 Privacy Policy
               </Link>
-              <Link href="/terms" className="hover:text-primary-400 transition-colors">
+              <Link href="/terms" className="hover:text-[#7FC6C4] transition-colors duration-200">
                 Terms of Service
               </Link>
             </div>
