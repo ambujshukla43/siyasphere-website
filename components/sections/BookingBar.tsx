@@ -112,7 +112,10 @@ export default function BookingBar() {
             <p className="text-gray-300 text-xs mt-0.5">Schedule your free audit today.</p>
           </div>
 
-          <form onSubmit={handleSubmit} className="flex-1 md:flex-initial flex gap-2 w-full md:w-auto">
+          <form onSubmit={handleSubmit} className="flex-1 md:flex-initial flex gap-2 w-full md:w-auto items-center">
+            {error && (
+              <p className="text-red-400 text-xs whitespace-nowrap hidden md:block">{error}</p>
+            )}
             <div className="flex-1 md:flex-initial relative">
               <input
                 type="email"
@@ -123,7 +126,7 @@ export default function BookingBar() {
                 className="w-full px-3 py-2 bg-white/10 backdrop-blur-sm border border-primary-500/30 rounded-lg text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-primary-400 text-xs transition-all disabled:opacity-50"
               />
               {error && (
-                <p className="absolute top-full mt-0.5 text-red-400 text-xs whitespace-nowrap">{error}</p>
+                <p className="md:hidden text-red-400 text-xs whitespace-nowrap absolute top-full mt-0.5 left-0">{error}</p>
               )}
             </div>
             <Button
