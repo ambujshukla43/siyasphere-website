@@ -104,19 +104,30 @@ export default function Footer() {
 
         {/* Bottom bar */}
         <div className="mt-8 pt-8 border-t border-gray-800">
-          {/* Legal Information */}
+          {/* Legal Information - Optimized Single Section */}
           <div className="mb-6 pb-6 border-b border-gray-800">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-sm text-gray-400">
-              <div>
-                <p className="font-semibold text-gray-300 mb-1">Legal Entity</p>
-                <p>SiyaSphere Consulting</p>
-                <p className="mt-2 font-semibold text-gray-300">Address</p>
-                <p>BM99 Sukhliya<br />Indore, MP 452010<br />India</p>
+            <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-8">
+              {/* Company Info */}
+              <div className="text-sm">
+                <p className="text-gray-100 font-semibold mb-3">SiyaSphere Consulting</p>
+                <div className="text-gray-400 leading-relaxed text-xs md:text-sm space-y-1">
+                  <p>BM99 Sukhliya, Indore</p>
+                  <p>MP 452010, India</p>
+                  <p className="pt-2 text-gray-500">UDYAM-MP-23-0206346</p>
+                </div>
               </div>
-              <div>
-                <p className="font-semibold text-gray-300 mb-1">Registration</p>
-                <p>UDYAM-MP-23-0206346</p>
-                <p className="mt-3 text-xs text-gray-500">Registered under UDYAM<br />Ministry of MSME, India</p>
+              
+              {/* Divider - Hidden on mobile */}
+              <div className="hidden md:block w-px h-12 bg-gray-700"></div>
+              
+              {/* Compliance Badge */}
+              <div className="md:text-right">
+                <div className="inline-block md:block">
+                  <p className="text-xs font-semibold text-[#7FC6C4] mb-2">Registered Business</p>
+                  <p className="text-xs text-gray-400 leading-relaxed">
+                    Ministry of MSME<br className="hidden md:block" />Government of India
+                  </p>
+                </div>
               </div>
             </div>
           </div>
