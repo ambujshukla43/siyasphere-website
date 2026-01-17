@@ -1,9 +1,17 @@
 "use client";
 
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import Button from "@/components/ui/Button";
 
 export default function BookingBar() {
+  const pathname = usePathname();
+  
+  // Hide on privacy and terms pages
+  if (pathname === "/privacy" || pathname === "/terms") {
+    return null;
+  }
+
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");

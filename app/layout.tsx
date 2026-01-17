@@ -52,7 +52,7 @@ export default function RootLayout({
       </head>
       <body className={inter.className}>
         <Header />
-        <main className="pb-24">{children}</main>
+        <main className="pb-32">{children}</main>
         <BookingBar />
         <Footer />
       </body>
