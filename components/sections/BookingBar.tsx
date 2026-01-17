@@ -88,7 +88,7 @@ export default function BookingBar() {
   }
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 bg-gradient-to-r from-gray-950/70 via-gray-900/70 to-gray-950/70 backdrop-blur-md shadow-2xl z-40 border-t border-primary-500/20">
+    <div className="fixed bottom-0 left-0 right-0 bg-gradient-to-r from-gray-950/70 via-gray-900/70 to-gray-950/70 backdrop-blur-md shadow-2xl z-40 border-t border-[#7FC6C4]/20">
       <div className="container-custom py-2 md:py-2.5">
         <div className="flex flex-col md:flex-row items-center justify-between gap-3 relative">
           {/* Close Button */}
@@ -104,7 +104,7 @@ export default function BookingBar() {
 
           <div className="flex-1">
             <div className="flex items-center gap-2">
-              <svg className="w-4 h-4 text-primary-400" fill="currentColor" viewBox="0 0 20 20">
+              <svg className="w-4 h-4 text-[#7FC6C4]" fill="currentColor" viewBox="0 0 20 20">
                 <path d="M2 11a1 1 0 011-1h2a1 1 0 011 1v5a1 1 0 01-1 1H3a1 1 0 01-1-1v-5zM8 7a1 1 0 011-1h2a1 1 0 011 1v9a1 1 0 01-1 1H9a1 1 0 01-1-1V7zM14 4a1 1 0 011-1h2a1 1 0 011 1v12a1 1 0 01-1 1h-2a1 1 0 01-1-1V4z" />
               </svg>
               <h3 className="text-white font-semibold text-sm">Ready to transform your GTM?</h3>
@@ -123,7 +123,7 @@ export default function BookingBar() {
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="your@email.com"
                 disabled={loading}
-                className="w-full px-3 py-2 bg-white/10 backdrop-blur-sm border border-primary-500/30 rounded-lg text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-primary-400 text-xs transition-all disabled:opacity-50"
+                className="w-full px-3 py-2 bg-white/10 backdrop-blur-sm border border-[#7FC6C4]/30 rounded-lg text-gray-100 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-[#7FC6C4] focus:border-[#7FC6C4] text-xs transition-all disabled:opacity-50"
               />
               {error && (
                 <p className="md:hidden text-red-400 text-xs whitespace-nowrap absolute top-full mt-0.5 left-0">{error}</p>
@@ -132,7 +132,7 @@ export default function BookingBar() {
             <Button
               type="submit"
               variant="primary"
-              className="bg-primary-500 hover:bg-primary-400 text-white px-5 whitespace-nowrap text-sm disabled:opacity-50"
+              className="bg-[#7FC6C4] hover:bg-cyan-400 text-gray-950 px-5 whitespace-nowrap text-sm disabled:opacity-50 font-semibold"
               disabled={loading}
             >
               {submitted ? "✓ Sent!" : loading ? "Sending..." : "Book Now"}
