@@ -6,17 +6,20 @@ import Button from "@/components/ui/Button";
 
 export default function BookingBar() {
   const pathname = usePathname();
-  
-  // Hide on privacy and terms pages
-  if (pathname === "/privacy" || pathname === "/terms") {
-    return null;
-  }
-
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
   const [isClosed, setIsClosed] = useState(false);
+
+  // Hide on privacy and terms pages
+  if (pathname === "/privacy" || pathname === "/terms") {
+    return null;
+  }
+
+  if (isClosed) {
+    return null;
+  }
 
   // Client-side validation
   const validateEmail = (emailToValidate: string): string | null => {
@@ -82,10 +85,6 @@ export default function BookingBar() {
       setLoading(false);
     }
   };
-
-  if (isClosed) {
-    return null;
-  }
 
   return (
     <div className="fixed bottom-0 left-0 right-0 bg-gradient-to-r from-gray-950/70 via-gray-900/70 to-gray-950/70 backdrop-blur-md shadow-2xl z-40 border-t border-[#7FC6C4]/20">
