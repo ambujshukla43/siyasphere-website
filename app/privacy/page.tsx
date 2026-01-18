@@ -259,7 +259,7 @@ export default function PrivacyPolicy() {
                     We&apos;re here to help. Contact us with any questions or concerns about our privacy practices.
                   </p>
                   <a
-                    href="mailto:siyasphere15@gmail.com"
+                    href="mailto:contact@siyasphere.in"
                     className="inline-flex items-center gap-2 px-4 py-2 bg-[#7FC6C4] hover:bg-[#7FC6C4]/90 text-gray-950 font-semibold rounded-lg transition-colors"
                   >
                     <span>Email Us</span>

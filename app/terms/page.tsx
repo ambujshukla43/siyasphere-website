@@ -218,7 +218,7 @@ export default function TermsOfService() {
                     If you have any questions about these Terms of Service, please reach out to us.
                   </p>
                   <a
-                    href="mailto:siyasphere15@gmail.com"
+                    href="mailto:contact@siyasphere.in"
                     className="inline-flex items-center gap-2 px-4 py-2 bg-[#7FC6C4] hover:bg-[#7FC6C4]/90 text-gray-950 font-semibold rounded-lg transition-colors"
                   >
                     <span>Contact Us</span>

@@ -96,8 +96,8 @@ export const organizationSchema = {
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "Customer Support",
-    email: "siyasphere15@gmail.com",
-    url: "https://siyasphere.com/contact",
+    email: "contact@siyasphere.in",
+    url: "https://siyasphere.in/contact",
   },
   sameAs: [
     "https://linkedin.com/company/siyasphere",
@@ -119,7 +119,7 @@ export const localBusinessSchema = {
     postalCode: "452010",
     addressCountry: "IN",
   },
-  email: "siyasphere15@gmail.com",
+  email: "contact@siyasphere.in",
   priceRange: "$$",
   serviceType: [
     "GTM Consulting",
