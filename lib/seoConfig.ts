@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 
 export const baseMetadata: Metadata = {
-  metadataBase: new URL("https://siyasphere.com"),
+  metadataBase: new URL("https://siyasphere.in"),
   title: {
     default: "SiyaSphere | AI-Powered GTM Systems",
     template: "%s | SiyaSphere",
@@ -37,14 +37,14 @@ export const baseMetadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://siyasphere.com",
+    url: "https://siyasphere.in",
     siteName: "SiyaSphere",
     title: "SiyaSphere | AI-Powered GTM Systems",
     description:
       "Scale revenue by fixing broken GTM systems through AI-powered RevOps and Tech Integration.",
     images: [
       {
-        url: "https://siyasphere.com/og-image.png",
+        url: "https://siyasphere.in/og-image.png",
         width: 1200,
         height: 630,
         alt: "SiyaSphere - Fix Your Broken GTM Systems",
@@ -56,7 +56,7 @@ export const baseMetadata: Metadata = {
     title: "SiyaSphere | AI-Powered GTM Systems",
     description:
       "Scale revenue by fixing broken GTM systems. AI-powered RevOps, Marketing Automation, and Tech Integration.",
-    images: ["https://siyasphere.com/og-image.png"],
+    images: ["https://siyasphere.in/og-image.png"],
   },
   icons: {
     icon: "/favicon.ico",
@@ -74,8 +74,8 @@ export const organizationSchema = {
   "@type": "Organization",
   name: "SiyaSphere",
   legalName: "SiyaSphere Consulting",
-  url: "https://siyasphere.com",
-  logo: "https://siyasphere.com/logo.png",
+  url: "https://siyasphere.in",
+  logo: "https://siyasphere.in/logo.png",
   description:
     "AI-powered GTM systems platform specializing in RevOps, Marketing Automation, and Tech Integration.",
   address: {
@@ -110,7 +110,7 @@ export const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   name: "SiyaSphere Consulting",
-  url: "https://siyasphere.com",
+  url: "https://siyasphere.in",
   address: {
     "@type": "PostalAddress",
     streetAddress: "BM99 Sukhliya",
