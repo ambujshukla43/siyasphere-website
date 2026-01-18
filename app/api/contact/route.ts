@@ -1,13 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-// Lazy-load Resend client to avoid build-time errors
-const getResendClient = () => {
-  if (!process.env.RESEND_API_KEY) {
-    throw new Error('Missing RESEND_API_KEY environment variable');
-  }
-  return new Resend(process.env.RESEND_API_KEY);
-};
+// Initialize Resend client with API key (only when API key exists)
+const resend = process.env.RESEND_API_KEY 
+  ? new Resend(process.env.RESEND_API_KEY)
+  : null;
 
 // Validation utilities
 const validateEmail = (email: string): boolean => {
@@ -162,8 +159,19 @@ export async function POST(request: NextRequest) {
 
     // ====== EMAIL SENDING (Resend Integration) ======
     try {
+      if (!resend) {
+        console.warn('⚠️  RESEND_API_KEY not configured. Skipping email sending.');
+        return NextResponse.json(
+          {
+            success: true,
+            message: 'Your request has been submitted.',
+          },
+          { status: 200 }
+        );
+      }
+
       // Send email to admin
-      const adminEmail = await getResendClient().emails.send({
+      const adminEmail = await resend.emails.send({
         from: 'GTM Audit <noreply@siyasphere.in>',
         to: process.env.CONTACT_EMAIL || 'contact@siyasphere.in',
         subject: `New GTM Audit Request from ${body.name || 'Prospect'}`,
@@ -201,7 +209,7 @@ export async function POST(request: NextRequest) {
       });
 
       // Send confirmation email to user
-      const userEmail = await getResendClient().emails.send({
+      const userEmail = await resend.emails.send({
         from: 'SiyaSphere <noreply@siyasphere.in>',
         to: body.email,
         subject: '✅ We received your GTM Audit Request',
