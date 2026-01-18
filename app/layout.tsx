@@ -48,7 +48,7 @@ export default function RootLayout({
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         
         {/* Alternative links for international SEO */}
-        <link rel="alternate" hrefLang="en" href="https://siyasphere.com" />
+        <link rel="alternate" hrefLang="en" href="https://siyasphere.in" />
       </head>
       <body className={inter.className}>
         <Header />

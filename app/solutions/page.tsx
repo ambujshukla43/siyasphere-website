@@ -12,7 +12,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "GTM Solutions | SiyaSphere",
     description: "AI-powered GTM solutions to transform your revenue engine.",
-    url: "https://siyasphere.com/solutions",
+    url: "https://siyasphere.in/solutions",
     type: "website",
   },
 };

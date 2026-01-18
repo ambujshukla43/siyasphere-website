@@ -14,4 +14,4 @@ Allow: /
 Crawl-delay: 1
 
 # Sitemap location
-Sitemap: https://siyasphere.com/sitemap.xml
+Sitemap: https://siyasphere.in/sitemap.xml
