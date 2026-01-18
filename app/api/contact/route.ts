@@ -158,8 +158,8 @@ export async function POST(request: NextRequest) {
     try {
       // Send email to admin
       const adminEmail = await resend.emails.send({
-        from: 'GTM Audit <onboarding@resend.dev>',
-        to: process.env.NEXT_PUBLIC_CONTACT_EMAIL || 'siyasphere15@gmail.com',
+        from: 'GTM Audit <noreply@siyasphere.in>',
+        to: process.env.CONTACT_EMAIL || 'contact@siyasphere.in',
         subject: `New GTM Audit Request from ${body.name || 'Prospect'}`,
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -196,7 +196,7 @@ export async function POST(request: NextRequest) {
 
       // Send confirmation email to user
       const userEmail = await resend.emails.send({
-        from: 'SiyaSphere <onboarding@resend.dev>',
+        from: 'SiyaSphere <noreply@siyasphere.in>',
         to: body.email,
         subject: '✅ We received your GTM Audit Request',
         html: `
@@ -221,7 +221,7 @@ export async function POST(request: NextRequest) {
             </p>
             
             <div style="text-align: center; margin: 30px 0;">
-              <a href="https://siyasphere.com/case-studies" style="background-color: #7FC6C4; color: white; padding: 12px 30px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block;">
+              <a href="https://siyasphere.in/case-studies" style="background-color: #7FC6C4; color: white; padding: 12px 30px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block;">
                 View Case Studies
               </a>
             </div>
