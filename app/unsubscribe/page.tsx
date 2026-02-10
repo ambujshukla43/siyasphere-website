@@ -30,7 +30,7 @@ async function UnsubscribePage({
           </div>
           <h1 className="text-2xl font-bold text-gray-100 mb-2">Unsubscribe</h1>
           <p className="text-gray-400 text-sm">
-            We're sorry to see you go. You can unsubscribe below.
+            We&apos;re sorry to see you go. You can unsubscribe below.
           </p>
         </div>
 
@@ -49,7 +49,7 @@ async function UnsubscribePage({
           {/* Message */}
           <div className="bg-amber-900/20 border border-amber-800/30 rounded-lg p-4">
             <p className="text-sm text-amber-100">
-              We've processed your unsubscribe request. You should no longer
+              We&apos;ve processed your unsubscribe request. You should no longer
               receive marketing emails from us within 24 hours. You may still
               receive transactional emails (like appointment confirmations) if
               you have an active engagement with SiyaSphere.
@@ -59,7 +59,7 @@ async function UnsubscribePage({
           {/* Feedback */}
           <div className="border-t border-gray-800 pt-6">
             <p className="text-sm text-gray-400 mb-4">
-              We'd love to know why you're unsubscribing. Your feedback helps
+              We&apos;d love to know why you&apos;re unsubscribing. Your feedback helps
               us improve:
             </p>
             <button className="w-full px-4 py-2 bg-gray-800 hover:bg-gray-700 border border-gray-700 rounded-lg text-gray-100 text-sm font-medium transition-colors">
