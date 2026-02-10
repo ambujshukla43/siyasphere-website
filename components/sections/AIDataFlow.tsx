@@ -5,119 +5,133 @@ import { useEffect, useState } from "react";
 interface Tool {
   name: string;
   icon: string;
+  color: string;
   stage: string;
   role: string;
 }
-
-const ACCENT = "#7FC6C4";
-const ACCENT_2 = "#06B6D4";
 
 const tools: Tool[] = [
   {
     name: "ZoomInfo",
     icon: "🔍",
+    color: "#FF6B6B",
     stage: "data",
     role: "Lead Research",
   },
   {
     name: "Clearbit",
     icon: "🏢",
+    color: "#FF6B6B",
     stage: "data",
     role: "Company Data",
   },
   {
     name: "Dedup",
     icon: "🔄",
+    color: "#FFA500",
     stage: "enrich",
     role: "Remove Duplicates",
   },
   {
     name: "Normalize",
     icon: "⚙️",
+    color: "#FFA500",
     stage: "enrich",
     role: "Standardize Data",
   },
   {
     name: "Validate",
     icon: "✅",
+    color: "#FFA500",
     stage: "enrich",
     role: "Quality Check",
   },
   {
     name: "Salesforce",
     icon: "☁️",
+    color: "#4A90E2",
     stage: "crm",
     role: "Account Hub",
   },
   {
     name: "HubSpot",
     icon: "📊",
+    color: "#4A90E2",
     stage: "crm",
     role: "Contact Mgmt",
   },
   {
     name: "Outreach",
     icon: "📞",
+    color: "#7C3AED",
     stage: "sales",
     role: "Sales Engagement",
   },
   {
     name: "Salesloft",
     icon: "🎯",
+    color: "#7C3AED",
     stage: "sales",
     role: "Rep Intelligence",
   },
   {
     name: "Marketo",
     icon: "📧",
+    color: "#EC4899",
     stage: "marketing",
     role: "Campaign Automation",
   },
   {
     name: "Pardot",
     icon: "🤝",
+    color: "#EC4899",
     stage: "marketing",
     role: "Lead Nurture",
   },
   {
     name: "Snowflake",
     icon: "❄️",
+    color: "#06B6D4",
     stage: "analytics",
     role: "Data Warehouse",
   },
   {
     name: "BigQuery",
     icon: "🗄️",
+    color: "#06B6D4",
     stage: "analytics",
     role: "Analytics Engine",
   },
   {
     name: "Looker",
     icon: "📈",
+    color: "#06B6D4",
     stage: "analytics",
     role: "Dashboards",
   },
   {
     name: "Power BI",
     icon: "💪",
+    color: "#06B6D4",
     stage: "analytics",
     role: "Business Analytics",
   },
   {
     name: "Tableau",
     icon: "📊",
+    color: "#06B6D4",
     stage: "analytics",
     role: "Visual Analytics",
   },
 ];
 
 const stageFlow = [
-  { id: "data", title: "Data Sources", color: ACCENT },
-  { id: "enrich", title: "Data Enrichment", color: ACCENT },
-  { id: "crm", title: "CRM Core", color: ACCENT },
-  { id: "sales", title: "Sales Execution", color: ACCENT },
-  { id: "marketing", title: "Marketing", color: ACCENT },
-  { id: "analytics", title: "Analytics", color: ACCENT },
+  { id: "data", title: "Data Sources", color: "#FF6B6B" },
+  { id: "enrich", title: "Data Enrichment", color: "#FFA500" },
+  { id: "crm", title: "CRM Core", color: "#4A90E2" },
+  { id: "sales", title: "Sales Execution", color: "#7C3AED" },
+  { id: "marketing", title: "Marketing", color: "#EC4899" },
+  { id: "analytics", title: "Analytics", color: "#06B6D4" },
 ];
 
 const AnimatedParticle = ({
@@ -127,7 +141,18 @@ const AnimatedParticle = ({
   delay: number;
   prefersReducedMotion: boolean;
 }) => {
-  const size = delay % 2 === 0 ? 2 : 1.5;
+  const stages = ["data", "enrich", "crm", "sales", "marketing", "analytics"];
+  const stageIndex = Math.floor((delay / 3) % stages.length);
+
+  // Color progression: blue (raw) → green (enriched) → purple (activated) → cyan (AI)
+  const colorMap: { [key: string]: string } = {
+    data: "#3B82F6", // blue
+    enrich: "#10B981", // green
+    crm: "#A78BFA", // purple
+    sales: "#A78BFA", // purple
+    marketing: "#06B6D4", // cyan (AI activated)
+    analytics: "#06B6D4", // cyan
+  };
 
   return (
     <div
@@ -140,10 +165,8 @@ const AnimatedParticle = ({
               left: "5%",
               top: "50%",
               transform: "translate(-50%, -50%)",
-              width: `${size}rem`,
-              height: `${size}rem`,
-              backgroundColor: ACCENT,
-              boxShadow: `0 0 14px ${ACCENT}`,
+              backgroundColor: colorMap[stages[stageIndex]],
+              boxShadow: `0 0 12px ${colorMap[stages[stageIndex]]}`,
             }
           : { display: "none" }
       }
@@ -154,7 +177,6 @@ const AnimatedParticle = ({
 export default function AIDataFlow() {
   const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const [hoveredStage, setHoveredStage] = useState<string | null>(null);
-  const [activeStage, setActiveStage] = useState<string>(stageFlow[0].id);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -167,21 +189,6 @@ export default function AIDataFlow() {
     mediaQuery.addEventListener("change", handleChange);
     return () => mediaQuery.removeEventListener("change", handleChange);
   }, []);
-
-  useEffect(() => {
-    if (prefersReducedMotion) return;
-    if (hoveredStage) return;
-
-    const interval = window.setInterval(() => {
-      setActiveStage((current) => {
-        const idx = stageFlow.findIndex((s) => s.id === current);
-        const nextIdx = idx === -1 ? 0 : (idx + 1) % stageFlow.length;
-        return stageFlow[nextIdx].id;
-      });
-    }, 2200);
-
-    return () => window.clearInterval(interval);
-  }, [hoveredStage, prefersReducedMotion]);
 
   return (
     <section className="pt-8 pb-16 bg-gradient-to-b from-gray-950 via-gray-950 to-gray-900">
@@ -221,10 +228,11 @@ export default function AIDataFlow() {
                 x2="100%"
                 y2="0%"
               >
-                <stop offset="0%" stopColor={ACCENT} stopOpacity="0" />
-                <stop offset="35%" stopColor={ACCENT} stopOpacity="0.55" />
-                <stop offset="60%" stopColor={ACCENT_2} stopOpacity="0.85" />
-                <stop offset="100%" stopColor={ACCENT_2} stopOpacity="0" />
+                <stop offset="0%" stopColor="#3B82F6" stopOpacity="0" />
+                <stop offset="25%" stopColor="#10B981" stopOpacity="0.6" />
+                <stop offset="50%" stopColor="#A78BFA" stopOpacity="0.8" />
+                <stop offset="75%" stopColor="#06B6D4" stopOpacity="0.8" />
+                <stop offset="100%" stopColor="#06B6D4" stopOpacity="0" />
               </linearGradient>
               <linearGradient
                 id="aiGradient"
@@ -233,8 +241,8 @@ export default function AIDataFlow() {
                 x2="100%"
                 y2="100%"
               >
-                <stop offset="0%" stopColor={ACCENT} />
-                <stop offset="100%" stopColor={ACCENT_2} />
+                <stop offset="0%" stopColor="#06B6D4" />
+                <stop offset="100%" stopColor="#7C3AED" />
               </linearGradient>
               <style>{`
                 .connection-line {
@@ -311,43 +319,19 @@ export default function AIDataFlow() {
             <path
               className="connection-line"
               d="M 1450 280 Q 1100 380, 800 300"
-              stroke={ACCENT}
+              stroke="#06B6D4"
               fill="none"
               filter="url(#connectionGlow)"
               opacity="0.2"
             />
 
             {/* AI to Stage Connection Lines - Animated */}
-            <path
-              className="ai-connection"
-              d="M 800 160 L 280 250"
-              style={{ opacity: (hoveredStage ?? activeStage) === "data" ? 0.75 : 0.2 }}
-            />
-            <path
-              className="ai-connection"
-              d="M 800 160 L 550 250"
-              style={{ opacity: (hoveredStage ?? activeStage) === "enrich" ? 0.75 : 0.2 }}
-            />
-            <path
-              className="ai-connection"
-              d="M 800 160 L 850 250"
-              style={{ opacity: (hoveredStage ?? activeStage) === "crm" ? 0.75 : 0.2 }}
-            />
-            <path
-              className="ai-connection"
-              d="M 800 160 L 1100 250"
-              style={{ opacity: (hoveredStage ?? activeStage) === "sales" ? 0.75 : 0.2 }}
-            />
-            <path
-              className="ai-connection"
-              d="M 800 160 L 1350 250"
-              style={{ opacity: (hoveredStage ?? activeStage) === "marketing" ? 0.75 : 0.2 }}
-            />
-            <path
-              className="ai-connection"
-              d="M 800 160 L 1450 250"
-              style={{ opacity: (hoveredStage ?? activeStage) === "analytics" ? 0.75 : 0.2 }}
-            />
+            <path className="ai-connection" d="M 800 160 L 280 250" />
+            <path className="ai-connection" d="M 800 160 L 550 250" />
+            <path className="ai-connection" d="M 800 160 L 850 250" />
+            <path className="ai-connection" d="M 800 160 L 1100 250" />
+            <path className="ai-connection" d="M 800 160 L 1350 250" />
+            <path className="ai-connection" d="M 800 160 L 1450 250" />
 
             {/* Central AI Orchestration Core */}
             {/* Outer glow effect */}
@@ -417,8 +401,8 @@ export default function AIDataFlow() {
 
             {/* Human-in-the-Loop indicator */}
             <g opacity={hoveredStage ? "1" : "0"} style={{ transition: "opacity 0.3s" }}>
-              <rect x="740" y="180" width="120" height="24" rx="4" fill={ACCENT} opacity="0.08" />
-              <text x="800" y="196" textAnchor="middle" fontSize="11" fill={ACCENT}>
+              <rect x="750" y="180" width="100" height="24" rx="4" fill="#7C3AED" opacity="0.1" />
+              <text x="800" y="196" textAnchor="middle" fontSize="11" fill="#7C3AED">
                 🤖 + 👤 Human-AI Loop
               </text>
             </g>
@@ -460,8 +444,7 @@ export default function AIDataFlow() {
             <div className="flex justify-between gap-6 mb-12">
               {stageFlow.map((stage) => {
                 const stageTools = tools.filter((t) => t.stage === stage.id);
-                const focusedStage = hoveredStage ?? activeStage;
-                const isHovered = focusedStage === stage.id;
+                const isHovered = hoveredStage === stage.id;
                 return (
                   <div
                     key={stage.id}
@@ -469,7 +452,7 @@ export default function AIDataFlow() {
                     onMouseEnter={() => setHoveredStage(stage.id)}
                     onMouseLeave={() => setHoveredStage(null)}
                     style={{
-                      opacity: focusedStage && !isHovered ? 0.45 : 1,
+                      opacity: hoveredStage && !isHovered ? 0.4 : 1,
                     }}
                   >
                     {/* Stage Header */}
@@ -478,7 +461,7 @@ export default function AIDataFlow() {
                         className="text-xs font-bold uppercase tracking-wider text-center transition-all duration-300"
                         style={{
                           color: stage.color,
-                          textShadow: isHovered ? `0 0 14px ${ACCENT}80` : "none",
+                          textShadow: isHovered ? `0 0 12px ${stage.color}80` : "none",
                         }}
                       >
                         {stage.title}
@@ -492,24 +475,24 @@ export default function AIDataFlow() {
                           key={tool.name}
                           className="p-3 rounded-lg border-2 border-dashed backdrop-blur-sm hover:border-solid transition-all duration-300 group cursor-pointer"
                           style={{
-                            borderColor: `${ACCENT}${isHovered ? "B3" : "4D"}`,
-                            backgroundColor: isHovered ? `${ACCENT}14` : "rgba(255,255,255,0.02)",
-                            boxShadow: isHovered ? `0 0 18px ${ACCENT}40` : "none",
+                            borderColor: `${tool.color}${isHovered ? "CC" : "60"}`,
+                            backgroundColor: `${tool.color}${isHovered ? "18" : "08"}`,
+                            boxShadow: isHovered ? `0 0 16px ${tool.color}40` : "none",
                           }}
                         >
                           <div className="flex items-center gap-2 mb-1.5">
                             <div
                               className="w-7 h-7 rounded flex items-center justify-center text-sm group-hover:scale-110 transition-transform"
                               style={{
-                                backgroundColor: `${ACCENT}1A`,
-                                border: `1px solid ${ACCENT}`,
+                                backgroundColor: `${tool.color}20`,
+                                border: `1px solid ${tool.color}`,
                               }}
                             >
                               {tool.icon}
                             </div>
                             <p
                               className="text-xs font-bold"
-                              style={{ color: isHovered ? ACCENT : "#E5E7EB" }}
+                              style={{ color: tool.color }}
                             >
                               {tool.name}
                             </p>
@@ -587,8 +570,14 @@ export default function AIDataFlow() {
               5% {
                 opacity: 1;
               }
+              25% {
+                filter: hue-rotate(0deg);
+              }
               50% {
-                transform: translate(-50%, -50%) scale(1.15);
+                filter: hue-rotate(90deg);
+              }
+              75% {
+                filter: hue-rotate(180deg);
               }
               95% {
                 opacity: 1;

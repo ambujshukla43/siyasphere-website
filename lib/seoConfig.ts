@@ -3,15 +3,20 @@ import { Metadata } from "next";
 export const baseMetadata: Metadata = {
   metadataBase: new URL("https://siyasphere.in"),
   title: {
-    default: "SiyaSphere | AI-Powered GTM Systems",
-    template: "%s | SiyaSphere",
+    default: "SiyaSphere - Siya Sphere GTM Platform | AI-Powered Go-To-Market Solutions",
+    template: "%s | Siya Sphere",
   },
   description:
-    "Scale revenue by fixing broken GTM systems. AI-powered RevOps, Marketing Automation, Tech Integration, and Sales Analytics for B2B SaaS companies.",
+    "SiyaSphere (Siya Sphere) - Scale revenue by fixing broken GTM systems. AI-powered RevOps, Marketing Automation, Tech Integration, and Sales Analytics for B2B SaaS companies. Transform your Go-To-Market strategy with Siya.",
   keywords: [
+    "Siya",
+    "Siya Sphere",
+    "SiyaSphere",
     "GTM",
     "Go-To-Market",
+    "Go to Market",
     "RevOps",
+    "Revenue Operations",
     "Marketing Automation",
     "Salesforce",
     "HubSpot",
@@ -20,9 +25,12 @@ export const baseMetadata: Metadata = {
     "Tech Integration",
     "B2B SaaS",
     "GTM Systems",
+    "GTM Platform",
     "Demand Generation",
     "Pipeline Management",
     "Data Integration",
+    "AI Go-To-Market",
+    "AI GTM",
   ],
   authors: [{ name: "SiyaSphere" }],
   creator: "SiyaSphere",
@@ -38,24 +46,24 @@ export const baseMetadata: Metadata = {
     type: "website",
     locale: "en_US",
     url: "https://siyasphere.in",
-    siteName: "SiyaSphere",
-    title: "SiyaSphere | AI-Powered GTM Systems",
+    siteName: "Siya Sphere (SiyaSphere)",
+    title: "SiyaSphere - Siya Sphere | AI-Powered GTM Platform",
     description:
-      "Scale revenue by fixing broken GTM systems through AI-powered RevOps and Tech Integration.",
+      "SiyaSphere (Siya Sphere) - Scale revenue by fixing broken GTM systems through AI-powered RevOps, Marketing Automation, and Tech Integration. Siya helps B2B SaaS companies transform their Go-To-Market strategy.",
     images: [
       {
         url: "https://siyasphere.in/og-image.png",
         width: 1200,
         height: 630,
-        alt: "SiyaSphere - Fix Your Broken GTM Systems",
+        alt: "SiyaSphere (Siya Sphere) - Fix Your Broken GTM Systems",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "SiyaSphere | AI-Powered GTM Systems",
+    title: "SiyaSphere - Siya Sphere GTM Platform",
     description:
-      "Scale revenue by fixing broken GTM systems. AI-powered RevOps, Marketing Automation, and Tech Integration.",
+      "SiyaSphere (Siya Sphere) - Scale revenue with AI-powered RevOps, Marketing Automation, and Tech Integration for B2B SaaS. Transform your Go-To-Market system with Siya.",
     images: ["https://siyasphere.in/og-image.png"],
   },
   icons: {
@@ -64,7 +72,7 @@ export const baseMetadata: Metadata = {
   },
   manifest: "/manifest.json",
   verification: {
-    google: "your-google-verification-code", // Replace with your code
+    google: "your-google-verification-code",
   },
 };
 
@@ -72,12 +80,13 @@ export const baseMetadata: Metadata = {
 export const organizationSchema = {
   "@context": "https://schema.org",
   "@type": "Organization",
-  name: "SiyaSphere",
+  name: "SiyaSphere (Siya Sphere)",
+  alternateName: "Siya Sphere",
   legalName: "SiyaSphere Consulting",
   url: "https://siyasphere.in",
   logo: "https://siyasphere.in/logo.png",
   description:
-    "AI-powered GTM systems platform specializing in RevOps, Marketing Automation, and Tech Integration.",
+    "SiyaSphere - AI-powered GTM systems platform specializing in RevOps, Marketing Automation, Tech Integration, and Sales Analytics for B2B SaaS companies. Siya Sphere helps fix broken Go-To-Market systems.",
   address: {
     "@type": "PostalAddress",
     streetAddress: "BM99 Sukhliya",
@@ -101,7 +110,6 @@ export const organizationSchema = {
   },
   sameAs: [
     "https://linkedin.com/company/siyasphere",
-    // Add actual social URLs
   ],
 };
 
@@ -109,7 +117,8 @@ export const organizationSchema = {
 export const localBusinessSchema = {
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
-  name: "SiyaSphere Consulting",
+  name: "SiyaSphere (Siya Sphere) Consulting",
+  alternateName: "Siya Sphere",
   url: "https://siyasphere.in",
   address: {
     "@type": "PostalAddress",
@@ -134,12 +143,13 @@ export const localBusinessSchema = {
 export const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  name: "GTM Audit & Transformation",
+  name: "GTM Audit & Transformation by SiyaSphere (Siya Sphere)",
   description:
-    "Comprehensive GTM audit and transformation service to fix broken systems and scale revenue.",
+    "Comprehensive GTM audit and transformation service by SiyaSphere (Siya Sphere) to fix broken systems and scale revenue for B2B SaaS companies.",
   provider: {
     "@type": "Organization",
-    name: "SiyaSphere",
+    name: "SiyaSphere (Siya Sphere)",
+    alternateName: "Siya Sphere",
   },
   areaServed: "US",
   hasOfferCatalog: {
@@ -189,6 +199,14 @@ export const faqSchema = {
   mainEntity: [
     {
       "@type": "Question",
+      name: "What is Siya Sphere (SiyaSphere)?",
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: "Siya Sphere (SiyaSphere) is an AI-powered GTM platform that specializes in fixing broken Go-To-Market systems for B2B SaaS companies through RevOps, Marketing Automation, and Tech Integration.",
+      },
+    },
+    {
+      "@type": "Question",
       name: "What is GTM and why does it matter?",
       acceptedAnswer: {
         "@type": "Answer",
@@ -197,7 +215,7 @@ export const faqSchema = {
     },
     {
       "@type": "Question",
-      name: "How long does a GTM transformation take?",
+      name: "How long does a GTM transformation take with Siya?",
       acceptedAnswer: {
         "@type": "Answer",
         text: "Our proven process typically takes 8 weeks from audit to launch, with some results visible within the first 2-3 weeks.",
@@ -205,7 +223,7 @@ export const faqSchema = {
     },
     {
       "@type": "Question",
-      name: "What is included in a GTM audit?",
+      name: "What is included in a GTM audit by Siya Sphere?",
       acceptedAnswer: {
         "@type": "Answer",
         text: "Our comprehensive GTM audit includes tech stack analysis, process evaluation, data flow assessment, team capability review, and actionable recommendations.",

@@ -172,7 +172,7 @@ export async function POST(request: NextRequest) {
 
       // Send email to admin
       const adminEmail = await resend.emails.send({
-        from: 'GTM Audit <noreply@siyasphere.in>',
+        from: 'SiyaSphere Form <contact@siyasphere.in>',
         to: process.env.CONTACT_EMAIL || 'contact@siyasphere.in',
         subject: `New GTM Audit Request from ${body.name || 'Prospect'}`,
         html: `
@@ -181,27 +181,31 @@ export async function POST(request: NextRequest) {
               🎯 New GTM Audit Request
             </h2>
             
-            <div style="background-color: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0;">
-              <p><strong>Name:</strong> ${body.name || 'Not provided'}</p>
-              <p><strong>Email:</strong> <a href="mailto:${body.email}">${body.email}</a></p>
-              <p><strong>Company:</strong> ${body.company || 'Not provided'}</p>
-              <p><strong>Phone:</strong> ${body.phone || 'Not provided'}</p>
+            <div style="background-color: #f5f5f5; padding: 20px; border-radius: 8px; margin: 20px 0; border-left: 4px solid #7FC6C4;">
+              <p><strong style="font-size: 14px;">Prospect Details:</strong></p>
+              <p style="margin: 10px 0;"><strong>Name:</strong> ${body.name || 'Not provided'}</p>
+              <p style="margin: 10px 0;"><strong>Email:</strong> <a href="mailto:${body.email}" style="color: #7FC6C4; text-decoration: none;">${body.email}</a></p>
+              <p style="margin: 10px 0;"><strong>Company:</strong> ${body.company || 'Not provided'}</p>
+              <p style="margin: 10px 0;"><strong>Phone:</strong> ${body.phone || 'Not provided'}</p>
             </div>
             
             <div style="margin: 20px 0;">
-              <p><strong>Submitted:</strong> ${new Date().toLocaleString()}</p>
-              <p><strong>IP Address:</strong> ${clientIp}</p>
+              <p style="margin: 5px 0;"><strong>Submitted:</strong> ${new Date().toLocaleString()}</p>
+              <p style="margin: 5px 0;"><strong>IP Address:</strong> ${clientIp}</p>
             </div>
             
-            <div style="background-color: #f0f8ff; padding: 15px; border-left: 4px solid #7FC6C4; border-radius: 4px; margin-top: 20px;">
-              <p style="margin: 0;">
-                <strong>Next Steps:</strong> Review this prospect and reach out within 24 hours to schedule the GTM audit.
+            <div style="background-color: #fff3cd; padding: 15px; border-left: 4px solid #ffc107; border-radius: 4px; margin-top: 20px;">
+              <p style="margin: 0;"><strong>Next Steps:</strong></p>
+              <p style="margin: 10px 0 0 0;">
+                1. Review this prospect and verify they are a good fit<br/>
+                2. Reach out within 24 hours to schedule the GTM audit<br/>
+                3. Confirmation email has been sent to the prospect
               </p>
             </div>
             
             <hr style="border: none; border-top: 1px solid #ddd; margin: 30px 0;" />
             <p style="color: #999; font-size: 12px; text-align: center;">
-              This is an automated email from SiyaSphere Contact Form
+              This is an automated notification from SiyaSphere Contact Form
             </p>
           </div>
         `,
@@ -210,47 +214,66 @@ export async function POST(request: NextRequest) {
 
       // Send confirmation email to user
       const userEmail = await resend.emails.send({
-        from: 'SiyaSphere <noreply@siyasphere.in>',
+        from: 'SiyaSphere Team <contact@siyasphere.in>',
         to: body.email,
         subject: '✅ We received your GTM Audit Request',
         html: `
-          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-            <h2 style="color: #7FC6C4;">Thank you for your interest, ${body.name || 'there'}!</h2>
+          <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333;">
+            <div style="margin-bottom: 30px;">
+              <h2 style="color: #7FC6C4; margin: 0 0 10px 0;">Thank you for your interest, ${body.name || 'there'}!</h2>
+            </div>
             
-            <p style="font-size: 16px; color: #333;">
+            <p style="font-size: 16px; line-height: 1.6; margin: 20px 0;">
               We've received your request for a GTM audit. Our team will carefully review your information and reach out within <strong>24 hours</strong> to schedule your consultation.
             </p>
             
-            <div style="background-color: #f5f5f5; padding: 15px; border-radius: 8px; margin: 20px 0;">
-              <p style="margin: 0;"><strong>📋 What to Expect:</strong></p>
-              <ul style="margin: 10px 0; padding-left: 20px;">
+            <div style="background-color: #f5f5f5; padding: 20px; border-radius: 8px; margin: 30px 0; border-left: 4px solid #7FC6C4;">
+              <p style="margin: 0 0 15px 0;"><strong style="font-size: 16px;">📋 What to Expect:</strong></p>
+              <ul style="margin: 0; padding-left: 20px; line-height: 1.8;">
                 <li>30-minute discovery call to understand your GTM challenges</li>
                 <li>Comprehensive analysis of your tech stack and processes</li>
                 <li>Actionable recommendations with a prioritized roadmap</li>
               </ul>
             </div>
             
-            <p style="margin: 20px 0;">
+            <p style="margin: 30px 0; font-size: 15px;">
               In the meantime, feel free to explore our case studies to see how we've helped other companies:
             </p>
             
             <div style="text-align: center; margin: 30px 0;">
-              <a href="https://siyasphere.in/case-studies" style="background-color: #7FC6C4; color: white; padding: 12px 30px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block;">
+              <a href="https://siyasphere.in/case-studies" style="background-color: #7FC6C4; color: white; padding: 14px 32px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block; font-size: 15px;">
                 View Case Studies
               </a>
             </div>
             
-            <p style="color: #666; margin-top: 30px;">
+            <p style="margin: 30px 0; font-size: 15px;">
               Have questions? Reply to this email and we'll get back to you right away.
             </p>
             
-            <hr style="border: none; border-top: 1px solid #ddd; margin: 30px 0;" />
-            <p style="color: #999; font-size: 12px; text-align: center;">
-              Best regards,<br/>
-              <strong>SiyaSphere Team</strong>
+            <hr style="border: none; border-top: 1px solid #ddd; margin: 40px 0 30px 0;" />
+            
+            <!-- Company Information & Legal Footer -->
+            <div style="background-color: #f9f9f9; padding: 20px; border-radius: 6px; font-size: 13px; color: #666; line-height: 1.6;">
+              <p style="margin: 0 0 15px 0;"><strong>SiyaSphere</strong></p>
+              <p style="margin: 0;"><strong>Email:</strong> contact@siyasphere.in</p>
+              <p style="margin: 0;"><strong>Website:</strong> https://siyasphere.in</p>
+              <p style="margin: 15px 0 0 0; border-top: 1px solid #ddd; padding-top: 15px;">
+                We respect your privacy. You received this email because you submitted a contact form on our website. 
+                <a href="https://siyasphere.in/privacy" style="color: #7FC6C4; text-decoration: none;">View our Privacy Policy</a>.
+              </p>
+              <p style="margin: 10px 0 0 0;">
+                <strong>Want to stop receiving emails?</strong> 
+                <a href="https://siyasphere.in/unsubscribe?email=${encodeURIComponent(body.email)}" style="color: #7FC6C4; text-decoration: none;">Unsubscribe here</a> 
+                (though we'd love to hear from you!)
+              </p>
+            </div>
+            
+            <p style="margin: 30px 0 0 0; text-align: center; font-size: 12px; color: #999;">
+              This is an automated confirmation email. Please do not reply with sensitive information.
             </p>
           </div>
         `,
+        replyTo: 'contact@siyasphere.in',
       });
 
       // Check if at least one email was sent successfully

@@ -1,17 +1,12 @@
-# Allow all bots to crawl the site
+# Robots.txt for SiyaSphere (Siya Sphere)
 User-agent: *
 Allow: /
+Disallow: /admin
 Disallow: /api/
-Disallow: /.next/
+Disallow: /.env
 
-# Specific rules for common bots
-User-agent: Googlebot
-Allow: /
-Crawl-delay: 0
-
-User-agent: Bingbot
-Allow: /
-Crawl-delay: 1
-
-# Sitemap location
+# Sitemaps
 Sitemap: https://siyasphere.in/sitemap.xml
+
+# Crawl delay for slower connections
+Crawl-delay: 1
