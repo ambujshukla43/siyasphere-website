@@ -1,25 +1,38 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
-// Initialize Zoho SMTP transporter
+// Create Zoho SMTP transporter
 const createTransporter = () => {
   if (!process.env.ZOHO_SMTP_HOST || !process.env.ZOHO_SMTP_USER || !process.env.ZOHO_SMTP_PASSWORD) {
-    console.warn('⚠️  Zoho SMTP credentials not configured');
+    console.error('❌ Zoho SMTP credentials not configured');
+    console.error('Missing:', {
+      ZOHO_SMTP_HOST: !!process.env.ZOHO_SMTP_HOST,
+      ZOHO_SMTP_USER: !!process.env.ZOHO_SMTP_USER,
+      ZOHO_SMTP_PASSWORD: !!process.env.ZOHO_SMTP_PASSWORD,
+      ZOHO_SMTP_PORT: process.env.ZOHO_SMTP_PORT,
+    });
     return null;
   }
 
-  return nodemailer.createTransport({
-    host: process.env.ZOHO_SMTP_HOST,
-    port: parseInt(process.env.ZOHO_SMTP_PORT || '587'),
-    secure: process.env.ZOHO_SMTP_PORT === '465', // true for 465, false for other ports
-    auth: {
-      user: process.env.ZOHO_SMTP_USER,
-      pass: process.env.ZOHO_SMTP_PASSWORD,
-    },
-  });
+  try {
+    const transporter = nodemailer.createTransport({
+      host: process.env.ZOHO_SMTP_HOST,
+      port: parseInt(process.env.ZOHO_SMTP_PORT || '587'),
+      secure: process.env.ZOHO_SMTP_PORT === '465', // true for 465, false for other ports
+      auth: {
+        user: process.env.ZOHO_SMTP_USER,
+        pass: process.env.ZOHO_SMTP_PASSWORD,
+      },
+      logger: true,
+      debug: true,
+    });
+    console.log('✅ Zoho SMTP transporter created successfully');
+    return transporter;
+  } catch (error) {
+    console.error('❌ Error creating transporter:', error);
+    return null;
+  }
 };
-
-const transporter = createTransporter();
 
 // Validation utilities
 const validateEmail = (email: string): boolean => {
@@ -174,14 +187,16 @@ export async function POST(request: NextRequest) {
 
     // ====== EMAIL SENDING (Zoho SMTP Integration) ======
     try {
+      const transporter = createTransporter();
+      
       if (!transporter) {
         console.warn('⚠️  Zoho SMTP not configured. Skipping email sending.');
         return NextResponse.json(
           {
-            success: true,
-            message: 'Your request has been submitted.',
+            success: false,
+            error: 'Email service not configured. Please contact support.',
           },
-          { status: 200 }
+          { status: 500 }
         );
       }
 
