@@ -1,10 +1,25 @@
 import { NextRequest, NextResponse } from 'next/server';
-import { Resend } from 'resend';
+import nodemailer from 'nodemailer';
 
-// Initialize Resend client with API key (only when API key exists)
-const resend = process.env.RESEND_API_KEY 
-  ? new Resend(process.env.RESEND_API_KEY)
-  : null;
+// Initialize Zoho SMTP transporter
+const createTransporter = () => {
+  if (!process.env.ZOHO_SMTP_HOST || !process.env.ZOHO_SMTP_USER || !process.env.ZOHO_SMTP_PASSWORD) {
+    console.warn('⚠️  Zoho SMTP credentials not configured');
+    return null;
+  }
+
+  return nodemailer.createTransport({
+    host: process.env.ZOHO_SMTP_HOST,
+    port: parseInt(process.env.ZOHO_SMTP_PORT || '587'),
+    secure: process.env.ZOHO_SMTP_PORT === '465', // true for 465, false for other ports
+    auth: {
+      user: process.env.ZOHO_SMTP_USER,
+      pass: process.env.ZOHO_SMTP_PASSWORD,
+    },
+  });
+};
+
+const transporter = createTransporter();
 
 // Validation utilities
 const validateEmail = (email: string): boolean => {
@@ -157,10 +172,10 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // ====== EMAIL SENDING (Resend Integration) ======
+    // ====== EMAIL SENDING (Zoho SMTP Integration) ======
     try {
-      if (!resend) {
-        console.warn('⚠️  RESEND_API_KEY not configured. Skipping email sending.');
+      if (!transporter) {
+        console.warn('⚠️  Zoho SMTP not configured. Skipping email sending.');
         return NextResponse.json(
           {
             success: true,
@@ -170,10 +185,13 @@ export async function POST(request: NextRequest) {
         );
       }
 
+      const contactEmail = process.env.CONTACT_EMAIL || 'contact@siyasphere.in';
+      const senderEmail = process.env.ZOHO_SENDER_EMAIL || contactEmail;
+
       // Send email to admin
-      const adminEmail = await resend.emails.send({
-        from: 'SiyaSphere Form <contact@siyasphere.in>',
-        to: process.env.CONTACT_EMAIL || 'contact@siyasphere.in',
+      const adminEmailPromise = transporter.sendMail({
+        from: `SiyaSphere <${senderEmail}>`,
+        to: contactEmail,
         subject: `New GTM Audit Request from ${body.name || 'Prospect'}`,
         html: `
           <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
@@ -213,8 +231,8 @@ export async function POST(request: NextRequest) {
       });
 
       // Send confirmation email to user
-      const userEmail = await resend.emails.send({
-        from: 'SiyaSphere Team <contact@siyasphere.in>',
+      const userEmailPromise = transporter.sendMail({
+        from: `SiyaSphere <${senderEmail}>`,
         to: body.email,
         subject: '✅ We received your GTM Audit Request',
         html: `
@@ -273,17 +291,19 @@ export async function POST(request: NextRequest) {
             </p>
           </div>
         `,
-        replyTo: 'contact@siyasphere.in',
+        replyTo: contactEmail,
       });
 
-      // Check if at least one email was sent successfully
-      const adminSuccess = adminEmail.data?.id && !adminEmail.error;
-      const userSuccess = userEmail.data?.id && !userEmail.error;
+      // Wait for both emails to send
+      const [adminResult, userResult] = await Promise.allSettled([adminEmailPromise, userEmailPromise]);
+
+      const adminSuccess = adminResult.status === 'fulfilled';
+      const userSuccess = userResult.status === 'fulfilled';
 
       // Log results
       console.log('📧 Email sending results:', {
-        adminEmail: { id: adminEmail.data?.id, error: adminEmail.error },
-        userEmail: { id: userEmail.data?.id, error: userEmail.error },
+        admin: { success: adminSuccess, error: adminResult.status === 'rejected' ? adminResult.reason : null },
+        user: { success: userSuccess, error: userResult.status === 'rejected' ? userResult.reason : null },
         submission: {
           email: body.email,
           name: body.name,
@@ -304,7 +324,6 @@ export async function POST(request: NextRequest) {
       }
 
       // If at least one email succeeded, consider it successful
-      // (admin email is most critical, but user confirmation is nice-to-have)
       return NextResponse.json(
         {
           success: true,
