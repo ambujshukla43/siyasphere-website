@@ -1,14 +1,76 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 
+/* ─── Data Model ─── */
 interface Tool {
   name: string;
   icon: string;
   color: string;
   stage: string;
   role: string;
+  summary: string;
 }
+
+interface Stage {
+  id: string;
+  title: string;
+  label: string;
+  color: string;
+  description: string;
+}
+
+const stages: Stage[] = [
+  {
+    id: "data",
+    title: "Data Sources",
+    label: "① Capture",
+    color: "#FF6B6B",
+    description:
+      "Raw prospect & company intelligence is ingested from multiple enrichment providers in real-time.",
+  },
+  {
+    id: "enrich",
+    title: "Enrichment",
+    label: "② Enrich",
+    color: "#F59E0B",
+    description:
+      "AI deduplicates, normalizes, and validates every record to ensure CRM-ready data quality.",
+  },
+  {
+    id: "crm",
+    title: "CRM Hub",
+    label: "③ Unify",
+    color: "#3B82F6",
+    description:
+      "Clean records flow into your single source of truth — accounts, contacts, and opportunities unified.",
+  },
+  {
+    id: "sales",
+    title: "Sales Execution",
+    label: "④ Execute",
+    color: "#8B5CF6",
+    description:
+      "Reps receive AI-prioritized sequences with dynamic talk-tracks and optimal send-times.",
+  },
+  {
+    id: "marketing",
+    title: "Marketing",
+    label: "⑤ Activate",
+    color: "#EC4899",
+    description:
+      "Multi-touch campaigns auto-trigger based on intent signals, scoring thresholds, and lifecycle stage.",
+  },
+  {
+    id: "analytics",
+    title: "Analytics",
+    label: "⑥ Measure",
+    color: "#06B6D4",
+    description:
+      "Revenue attribution, pipeline forecasting, and AI-driven insights feed back into every stage.",
+  },
+];
 
 const tools: Tool[] = [
   {
@@ -16,63 +78,90 @@ const tools: Tool[] = [
     icon: "🔍",
     color: "#FF6B6B",
     stage: "data",
-    role: "Lead Research",
+    role: "Lead Intelligence",
+    summary:
+      "Pulls firmographic & technographic data for 100M+ contacts. AI matches ideal customer profiles in real-time.",
   },
   {
     name: "Clearbit",
     icon: "🏢",
     color: "#FF6B6B",
     stage: "data",
-    role: "Company Data",
+    role: "Company Enrichment",
+    summary:
+      "Enriches inbound leads with 100+ company attributes — industry, revenue, employee count, tech stack.",
   },
   {
-    name: "Dedup",
+    name: "6sense",
+    icon: "🎯",
+    color: "#FF6B6B",
+    stage: "data",
+    role: "Intent Signals",
+    summary:
+      "Captures anonymous buying signals across the web. AI identifies accounts actively researching your category.",
+  },
+  {
+    name: "Dedup Engine",
     icon: "🔄",
-    color: "#FFA500",
+    color: "#F59E0B",
     stage: "enrich",
-    role: "Remove Duplicates",
+    role: "Deduplication",
+    summary:
+      "Fuzzy-matching algorithm merges duplicate records across sources. Maintains a single golden record per entity.",
   },
   {
     name: "Normalize",
     icon: "⚙️",
-    color: "#FFA500",
+    color: "#F59E0B",
     stage: "enrich",
-    role: "Standardize Data",
+    role: "Standardization",
+    summary:
+      "Maps disparate field formats into a unified schema — job titles, industries, addresses normalized globally.",
   },
   {
-    name: "Validate",
+    name: "Validation",
     icon: "✅",
-    color: "#FFA500",
+    color: "#F59E0B",
     stage: "enrich",
-    role: "Quality Check",
+    role: "Quality Gate",
+    summary:
+      "Email verification, phone validation, and data completeness scoring. Only clean records pass through.",
   },
   {
     name: "Salesforce",
     icon: "☁️",
-    color: "#4A90E2",
+    color: "#3B82F6",
     stage: "crm",
     role: "Account Hub",
+    summary:
+      "Central system of record. AI auto-creates accounts, assigns territories, and triggers stage-based workflows.",
   },
   {
     name: "HubSpot",
     icon: "📊",
-    color: "#4A90E2",
+    color: "#3B82F6",
     stage: "crm",
-    role: "Contact Mgmt",
+    role: "Contact Management",
+    summary:
+      "Manages lifecycle stages, tracks every touchpoint, and syncs bi-directionally with sales tools.",
   },
   {
     name: "Outreach",
     icon: "📞",
-    color: "#7C3AED",
+    color: "#8B5CF6",
     stage: "sales",
     role: "Sales Engagement",
+    summary:
+      "AI-optimized multi-step sequences — emails, calls, social touches — with A/B testing and send-time optimization.",
   },
   {
     name: "Salesloft",
     icon: "🎯",
-    color: "#7C3AED",
+    color: "#8B5CF6",
     stage: "sales",
-    role: "Rep Intelligence",
+    role: "Revenue Intelligence",
+    summary:
+      "Conversation intelligence, deal inspection, and forecast modeling. AI coaches reps on winning behaviors.",
   },
   {
     name: "Marketo",
@@ -80,6 +169,8 @@ const tools: Tool[] = [
     color: "#EC4899",
     stage: "marketing",
     role: "Campaign Automation",
+    summary:
+      "Orchestrates nurture streams, triggers smart campaigns based on behavior scores and lifecycle transitions.",
   },
   {
     name: "Pardot",
@@ -87,6 +178,8 @@ const tools: Tool[] = [
     color: "#EC4899",
     stage: "marketing",
     role: "Lead Nurture",
+    summary:
+      "B2B marketing automation with engagement scoring, drip programs, and Salesforce-native lead handoff.",
   },
   {
     name: "Snowflake",
@@ -94,27 +187,17 @@ const tools: Tool[] = [
     color: "#06B6D4",
     stage: "analytics",
     role: "Data Warehouse",
-  },
-  {
-    name: "BigQuery",
-    icon: "🗄️",
-    color: "#06B6D4",
-    stage: "analytics",
-    role: "Analytics Engine",
+    summary:
+      "Unified data lake storing all GTM telemetry. Powers cross-functional reporting and ML model training.",
   },
   {
     name: "Looker",
     icon: "📈",
     color: "#06B6D4",
     stage: "analytics",
-    role: "Dashboards",
-  },
-  {
-    name: "Power BI",
-    icon: "💪",
-    color: "#06B6D4",
-    stage: "analytics",
-    role: "Business Analytics",
+    role: "BI Dashboards",
+    summary:
+      "Self-serve analytics with embedded dashboards. Revenue teams track pipeline velocity, conversion, and ROI.",
   },
   {
     name: "Tableau",
@@ -122,568 +205,576 @@ const tools: Tool[] = [
     color: "#06B6D4",
     stage: "analytics",
     role: "Visual Analytics",
+    summary:
+      "Advanced visualization for executive reporting — cohort analysis, funnel diagnostics, and territory planning.",
   },
 ];
 
-const stageFlow = [
-  { id: "data", title: "Data Sources", color: "#FF6B6B" },
-  { id: "enrich", title: "Data Enrichment", color: "#FFA500" },
-  { id: "crm", title: "CRM Core", color: "#4A90E2" },
-  { id: "sales", title: "Sales Execution", color: "#7C3AED" },
-  { id: "marketing", title: "Marketing", color: "#EC4899" },
-  { id: "analytics", title: "Analytics", color: "#06B6D4" },
+const aiCapabilities = [
+  { label: "Lead Scoring", icon: "🎯", desc: "Predict conversion probability" },
+  { label: "Smart Routing", icon: "🔀", desc: "Auto-assign to best rep" },
+  { label: "Personalization", icon: "✨", desc: "Dynamic content at scale" },
+  { label: "Forecasting", icon: "📈", desc: "AI pipeline predictions" },
+  { label: "Revenue Intel", icon: "💰", desc: "Deal health & risk signals" },
 ];
 
-const AnimatedParticle = ({
-  delay,
-  prefersReducedMotion,
-}: {
-  delay: number;
-  prefersReducedMotion: boolean;
-}) => {
-  const stages = ["data", "enrich", "crm", "sales", "marketing", "analytics"];
-  const stageIndex = Math.floor((delay / 3) % stages.length);
-
-  // Color progression: blue (raw) → green (enriched) → purple (activated) → cyan (AI)
-  const colorMap: { [key: string]: string } = {
-    data: "#3B82F6", // blue
-    enrich: "#10B981", // green
-    crm: "#A78BFA", // purple
-    sales: "#A78BFA", // purple
-    marketing: "#06B6D4", // cyan (AI activated)
-    analytics: "#06B6D4", // cyan
-  };
+/* ─── Flowing Particle ─── */
+function FlowParticle({ index }: { index: number }) {
+  const colors = [
+    "#FF6B6B",
+    "#F59E0B",
+    "#3B82F6",
+    "#8B5CF6",
+    "#EC4899",
+    "#06B6D4",
+  ];
+  const color = colors[index % colors.length];
+  const duration = 6 + index * 1.5;
+  const delay = index * 2;
 
   return (
-    <div
-      className="absolute w-2 h-2 rounded-full"
-      style={
-        !prefersReducedMotion
-          ? {
-              animation: `flowParticle 12s ease-in-out infinite`,
-              animationDelay: `${delay}s`,
-              left: "5%",
-              top: "50%",
-              transform: "translate(-50%, -50%)",
-              backgroundColor: colorMap[stages[stageIndex]],
-              boxShadow: `0 0 12px ${colorMap[stages[stageIndex]]}`,
-            }
-          : { display: "none" }
-      }
+    <motion.div
+      className="absolute w-1.5 h-1.5 rounded-full pointer-events-none"
+      style={{
+        backgroundColor: color,
+        boxShadow: `0 0 8px ${color}, 0 0 20px ${color}50`,
+        top: `${30 + (index % 3) * 20}%`,
+      }}
+      animate={{
+        left: ["0%", "100%"],
+        opacity: [0, 1, 1, 1, 0],
+        scale: [0.5, 1.2, 1, 1.2, 0.5],
+      }}
+      transition={{
+        duration: duration,
+        delay: delay,
+        repeat: Infinity,
+        ease: "linear",
+      }}
     />
   );
-};
+}
 
+/* ─── Connection Arrow Between Stages ─── */
+function StageConnector({
+  color,
+  nextColor,
+  isActive,
+}: {
+  color: string;
+  nextColor: string;
+  isActive: boolean;
+}) {
+  return (
+    <div className="flex items-center justify-center self-center mx-[-8px] z-10">
+      <div className="relative flex items-center">
+        {/* Animated flowing line */}
+        <div className="w-8 h-[2px] relative overflow-hidden">
+          <motion.div
+            className="absolute inset-0"
+            style={{
+              background: `linear-gradient(90deg, ${color}, ${nextColor})`,
+            }}
+            animate={{
+              opacity: isActive ? [0.4, 1, 0.4] : 0.2,
+            }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+          />
+          {/* Flowing dot */}
+          <motion.div
+            className="absolute top-1/2 -translate-y-1/2 w-1.5 h-1.5 rounded-full"
+            style={{
+              backgroundColor: nextColor,
+              boxShadow: `0 0 6px ${nextColor}`,
+            }}
+            animate={{ left: ["-10%", "110%"] }}
+            transition={{
+              duration: 1.2,
+              repeat: Infinity,
+              ease: "linear",
+            }}
+          />
+        </div>
+        {/* Arrow head */}
+        <div
+          className="w-0 h-0 border-t-[5px] border-b-[5px] border-l-[7px] border-t-transparent border-b-transparent"
+          style={{
+            borderLeftColor: isActive ? nextColor : `${nextColor}40`,
+            filter: isActive
+              ? `drop-shadow(0 0 4px ${nextColor})`
+              : "none",
+            transition: "all 0.3s",
+          }}
+        />
+      </div>
+    </div>
+  );
+}
+
+/* ─── Tool Card ─── */
+function ToolCard({
+  tool,
+  isStageHovered,
+}: {
+  tool: Tool;
+  isStageHovered: boolean;
+}) {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <div className="relative">
+      <motion.div
+        className="relative p-2.5 rounded-lg border backdrop-blur-sm cursor-pointer overflow-hidden"
+        style={{
+          borderColor: isHovered ? `${tool.color}CC` : `${tool.color}40`,
+          backgroundColor: isHovered ? `${tool.color}15` : `${tool.color}08`,
+        }}
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+        whileHover={{ scale: 1.03, y: -2 }}
+        transition={{ type: "spring", stiffness: 400, damping: 25 }}
+      >
+        {/* Glow effect on hover */}
+        {isHovered && (
+          <motion.div
+            className="absolute inset-0 rounded-lg pointer-events-none"
+            style={{
+              boxShadow: `inset 0 0 30px ${tool.color}15, 0 0 20px ${tool.color}20`,
+            }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          />
+        )}
+
+        {/* Active processing indicator */}
+        {isStageHovered && (
+          <motion.div
+            className="absolute top-1 right-1 w-1.5 h-1.5 rounded-full"
+            style={{ backgroundColor: tool.color }}
+            animate={{ opacity: [1, 0.3, 1], scale: [1, 0.8, 1] }}
+            transition={{ duration: 1.5, repeat: Infinity }}
+          />
+        )}
+
+        <div className="flex items-center gap-2 relative z-10">
+          <div
+            className="w-7 h-7 rounded-md flex items-center justify-center text-sm flex-shrink-0"
+            style={{
+              background: `linear-gradient(135deg, ${tool.color}30, ${tool.color}10)`,
+              border: `1px solid ${tool.color}60`,
+            }}
+          >
+            {tool.icon}
+          </div>
+          <div className="min-w-0">
+            <p
+              className="text-[11px] font-semibold truncate"
+              style={{ color: tool.color }}
+            >
+              {tool.name}
+            </p>
+            <p className="text-[9px] text-gray-500 truncate">{tool.role}</p>
+          </div>
+        </div>
+      </motion.div>
+
+      {/* Hover Tooltip */}
+      <AnimatePresence>
+        {isHovered && (
+          <motion.div
+            className="absolute z-50 bottom-full left-1/2 -translate-x-1/2 mb-2 w-64 pointer-events-none"
+            initial={{ opacity: 0, y: 8, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: 8, scale: 0.95 }}
+            transition={{ duration: 0.2 }}
+          >
+            <div
+              className="rounded-xl p-3.5 border shadow-2xl backdrop-blur-xl"
+              style={{
+                background:
+                  "linear-gradient(135deg, rgba(17,24,39,0.97), rgba(17,24,39,0.92))",
+                borderColor: `${tool.color}40`,
+                boxShadow: `0 20px 60px rgba(0,0,0,0.5), 0 0 30px ${tool.color}15`,
+              }}
+            >
+              <div className="flex items-center gap-2 mb-2">
+                <span className="text-base">{tool.icon}</span>
+                <span
+                  className="text-sm font-bold"
+                  style={{ color: tool.color }}
+                >
+                  {tool.name}
+                </span>
+                <span
+                  className="ml-auto text-[9px] px-1.5 py-0.5 rounded-full font-medium"
+                  style={{
+                    backgroundColor: `${tool.color}20`,
+                    color: tool.color,
+                    border: `1px solid ${tool.color}30`,
+                  }}
+                >
+                  {tool.role}
+                </span>
+              </div>
+              <p className="text-[11px] text-gray-300 leading-relaxed">
+                {tool.summary}
+              </p>
+              {/* Mini data flow indicator */}
+              <div className="mt-2 flex items-center gap-1">
+                <div className="h-[2px] flex-1 rounded-full overflow-hidden bg-gray-800">
+                  <motion.div
+                    className="h-full rounded-full"
+                    style={{
+                      background: `linear-gradient(90deg, transparent, ${tool.color})`,
+                    }}
+                    animate={{ width: ["0%", "100%"] }}
+                    transition={{ duration: 1.5, repeat: Infinity }}
+                  />
+                </div>
+                <span className="text-[8px] text-gray-500">PROCESSING</span>
+              </div>
+            </div>
+            {/* Arrow */}
+            <div
+              className="w-2.5 h-2.5 rotate-45 mx-auto -mt-1.5"
+              style={{
+                backgroundColor: "rgba(17,24,39,0.97)",
+                borderRight: `1px solid ${tool.color}40`,
+                borderBottom: `1px solid ${tool.color}40`,
+              }}
+            />
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </div>
+  );
+}
+
+/* ─── Stage Column ─── */
+function StageColumn({
+  stage,
+  stageTools,
+  isHovered,
+  isAnyHovered,
+  onHover,
+  onLeave,
+}: {
+  stage: Stage;
+  stageTools: Tool[];
+  isHovered: boolean;
+  isAnyHovered: boolean;
+  onHover: () => void;
+  onLeave: () => void;
+}) {
+  return (
+    <motion.div
+      className="flex-1 min-w-0"
+      onMouseEnter={onHover}
+      onMouseLeave={onLeave}
+      animate={{
+        opacity: isAnyHovered && !isHovered ? 0.35 : 1,
+        scale: isHovered ? 1.02 : 1,
+      }}
+      transition={{ duration: 0.3 }}
+    >
+      {/* Stage Header */}
+      <div className="text-center mb-3">
+        <motion.div
+          className="inline-block px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest mb-1.5"
+          style={{
+            color: stage.color,
+            backgroundColor: `${stage.color}12`,
+            border: `1px solid ${stage.color}30`,
+          }}
+          animate={{
+            borderColor: isHovered ? `${stage.color}80` : `${stage.color}30`,
+            boxShadow: isHovered
+              ? `0 0 15px ${stage.color}25`
+              : "0 0 0px transparent",
+          }}
+          transition={{ duration: 0.3 }}
+        >
+          {stage.title}
+        </motion.div>
+      </div>
+
+      {/* Tools */}
+      <div className="flex flex-col gap-1.5">
+        {stageTools.map((tool) => (
+          <ToolCard
+            key={tool.name}
+            tool={tool}
+            isStageHovered={isHovered}
+          />
+        ))}
+      </div>
+
+      {/* Stage Step Label */}
+      <motion.div
+        className="mt-3 text-center"
+        animate={{ opacity: isHovered ? 1 : 0.5 }}
+        transition={{ duration: 0.3 }}
+      >
+        <p
+          className="text-[10px] font-semibold"
+          style={{ color: stage.color }}
+        >
+          {stage.label}
+        </p>
+        <AnimatePresence>
+          {isHovered && (
+            <motion.p
+              className="text-[9px] text-gray-400 mt-1 leading-snug"
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: "auto" }}
+              exit={{ opacity: 0, height: 0 }}
+              transition={{ duration: 0.2 }}
+            >
+              {stage.description}
+            </motion.p>
+          )}
+        </AnimatePresence>
+      </motion.div>
+    </motion.div>
+  );
+}
+
+/* ─── Main Component ─── */
 export default function AIDataFlow() {
-  const [prefersReducedMotion, setPrefersReducedMotion] = useState(false);
   const [hoveredStage, setHoveredStage] = useState<string | null>(null);
+  const [activeDataPoint, setActiveDataPoint] = useState(0);
+  const containerRef = useRef<HTMLDivElement>(null);
 
+  // Cycle through active data points for ambient animation
   useEffect(() => {
-    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
-    setPrefersReducedMotion(mediaQuery.matches);
-
-    const handleChange = (e: MediaQueryListEvent) => {
-      setPrefersReducedMotion(e.matches);
-    };
-
-    mediaQuery.addEventListener("change", handleChange);
-    return () => mediaQuery.removeEventListener("change", handleChange);
+    const interval = setInterval(() => {
+      setActiveDataPoint((prev) => (prev + 1) % stages.length);
+    }, 3000);
+    return () => clearInterval(interval);
   }, []);
 
   return (
-    <section className="pt-8 pb-16 bg-gradient-to-b from-gray-950 via-gray-950 to-gray-900">
+    <section className="py-20 bg-gradient-to-b from-gray-950 via-gray-950 to-gray-900 overflow-hidden">
       <div className="container-custom">
         {/* Header */}
-        <div className="text-center mb-12">
+        <motion.div
+          className="text-center mb-14"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#7FC6C4]/10 border border-[#7FC6C4]/20 mb-5">
+            <motion.span
+              className="w-2 h-2 rounded-full bg-[#7FC6C4]"
+              animate={{
+                opacity: [1, 0.3, 1],
+                scale: [1, 0.8, 1],
+              }}
+              transition={{ duration: 2, repeat: Infinity }}
+            />
+            <span className="text-xs font-medium text-[#7FC6C4] tracking-wider uppercase">
+              Live Data Orchestration
+            </span>
+          </div>
           <h2 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            AI-Powered GTM Data Flow
+            AI-Powered{" "}
+            <span className="bg-gradient-to-r from-[#7FC6C4] to-cyan-400 bg-clip-text text-transparent">
+              GTM Data Flow
+            </span>
           </h2>
-          <p className="text-lg text-gray-300">
-            Intelligent data orchestration across your complete GTM tech stack.
+          <p className="text-lg text-gray-400 max-w-2xl mx-auto">
+            See how data flows through your entire GTM stack — from raw
+            signals to revenue insights, orchestrated by AI.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Main Compact Flow Diagram */}
-        <div className="relative bg-gradient-to-b from-gray-900/80 to-gray-900/60 rounded-2xl border border-[#7FC6C4]/30 p-8 overflow-hidden">
-          {/* SVG Connection Lines & AI Core */}
-          <svg
-            viewBox="0 0 1600 500"
-            className="absolute inset-0 w-full h-full"
-            style={{ pointerEvents: "none" }}
-          >
-            <defs>
-              <filter id="connectionGlow">
-                <feGaussianBlur stdDeviation="1.5" />
-              </filter>
-              <filter id="aiGlow">
-                <feGaussianBlur stdDeviation="3" />
-                <feComponentTransfer>
-                  <feFuncA type="linear" slope="0.8" />
-                </feComponentTransfer>
-              </filter>
-              <linearGradient
-                id="flowGradient"
-                x1="0%"
-                y1="0%"
-                x2="100%"
-                y2="0%"
-              >
-                <stop offset="0%" stopColor="#3B82F6" stopOpacity="0" />
-                <stop offset="25%" stopColor="#10B981" stopOpacity="0.6" />
-                <stop offset="50%" stopColor="#A78BFA" stopOpacity="0.8" />
-                <stop offset="75%" stopColor="#06B6D4" stopOpacity="0.8" />
-                <stop offset="100%" stopColor="#06B6D4" stopOpacity="0" />
-              </linearGradient>
-              <linearGradient
-                id="aiGradient"
-                x1="0%"
-                y1="0%"
-                x2="100%"
-                y2="100%"
-              >
-                <stop offset="0%" stopColor="#06B6D4" />
-                <stop offset="100%" stopColor="#7C3AED" />
-              </linearGradient>
-              <style>{`
-                .connection-line {
-                  stroke-dasharray: 8, 4;
-                  stroke-width: 2;
-                  opacity: 0.25;
-                }
-                .animated-flow-line {
-                  stroke: url(#flowGradient);
-                  stroke-width: 3;
-                  opacity: 0.7;
-                  animation: ${!prefersReducedMotion ? "flowAcross 4s ease-in-out infinite" : "none"};
-                }
-                .ai-connection {
-                  stroke: url(#aiGradient);
-                  stroke-width: 2;
-                  opacity: 0;
-                  animation: ${!prefersReducedMotion ? "pulseConnect 6s ease-in-out infinite" : "none"};
-                }
-                @keyframes flowAcross {
-                  0% {
-                    opacity: 0.3;
-                    stroke-width: 2;
-                  }
-                  50% {
-                    opacity: 0.8;
-                    stroke-width: 4;
-                  }
-                  100% {
-                    opacity: 0.3;
-                    stroke-width: 2;
-                  }
-                }
-                @keyframes pulseConnect {
-                  0%, 100% {
-                    opacity: 0;
-                    stroke-width: 1;
-                  }
-                  40%, 60% {
-                    opacity: 0.6;
-                    stroke-width: 2;
-                  }
-                }
-                @keyframes aiPulseCore {
-                  0%, 100% {
-                    r: 45;
-                    opacity: 0.4;
-                  }
-                  50% {
-                    r: 55;
-                    opacity: 0.8;
-                  }
-                }
-                @keyframes aiRotateBorder {
-                  0% {
-                    stroke-dashoffset: 0;
-                  }
-                  100% {
-                    stroke-dashoffset: -314;
-                  }
-                }
-              `}</style>
-            </defs>
+        {/* Main Flow Diagram */}
+        <motion.div
+          ref={containerRef}
+          className="relative rounded-2xl border border-gray-800/80 bg-gray-900/40 backdrop-blur-sm overflow-hidden"
+          initial={{ opacity: 0, y: 40 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+        >
+          {/* Top gradient accent bar */}
+          <div className="h-[2px] w-full bg-gradient-to-r from-[#FF6B6B] via-[#3B82F6] via-[#8B5CF6] to-[#06B6D4]" />
 
-            {/* Main Data Flow Curved Line */}
-            <path
-              className="animated-flow-line"
-              d="M 150 250 Q 400 220, 650 250 T 1550 250"
-              fill="none"
-              filter="url(#connectionGlow)"
+          {/* Background ambient glow */}
+          <div className="absolute inset-0 pointer-events-none">
+            <div
+              className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[300px] rounded-full opacity-[0.03]"
+              style={{
+                background: `radial-gradient(ellipse, ${stages[activeDataPoint]?.color || "#7FC6C4"}, transparent 70%)`,
+                transition: "background 2s ease",
+              }}
             />
+          </div>
 
-            {/* Feedback Loop from Analytics to AI */}
-            <path
-              className="connection-line"
-              d="M 1450 280 Q 1100 380, 800 300"
-              stroke="#06B6D4"
-              fill="none"
-              filter="url(#connectionGlow)"
-              opacity="0.2"
-            />
-
-            {/* AI to Stage Connection Lines - Animated */}
-            <path className="ai-connection" d="M 800 160 L 280 250" />
-            <path className="ai-connection" d="M 800 160 L 550 250" />
-            <path className="ai-connection" d="M 800 160 L 850 250" />
-            <path className="ai-connection" d="M 800 160 L 1100 250" />
-            <path className="ai-connection" d="M 800 160 L 1350 250" />
-            <path className="ai-connection" d="M 800 160 L 1450 250" />
-
-            {/* Central AI Orchestration Core */}
-            {/* Outer glow effect */}
-            <circle
-              cx="800"
-              cy="140"
-              r="60"
-              fill="#06B6D4"
-              opacity="0.08"
-              style={
-                !prefersReducedMotion
-                  ? {
-                      animation: "aiGlowExpand 6s ease-in-out infinite",
-                    }
-                  : {}
-              }
-            />
-
-            {/* Main AI Core with gradient border */}
-            <circle
-              cx="800"
-              cy="140"
-              r="45"
-              fill="none"
-              stroke="url(#aiGradient)"
-              strokeWidth="3"
-              filter="url(#aiGlow)"
-              style={
-                !prefersReducedMotion
-                  ? {
-                      animation: "aiPulseCore 3s ease-in-out infinite",
-                    }
-                  : {}
-              }
-            />
-
-            {/* Rotating dashed border */}
-            <circle
-              cx="800"
-              cy="140"
-              r="45"
-              fill="none"
-              stroke="#7FC6C4"
-              strokeWidth="2"
-              strokeDasharray="6, 4"
-              opacity="0.5"
-              style={
-                !prefersReducedMotion
-                  ? {
-                      animation: "aiRotateBorder 8s linear infinite",
-                    }
-                  : {}
-              }
-            />
-
-            {/* AI Label */}
-            <text
-              x="800"
-              y="150"
-              textAnchor="middle"
-              fontSize="14"
-              fontWeight="700"
-              fill="#7FC6C4"
+          <div className="p-6 md:p-8">
+            {/* Central AI Hub */}
+            <motion.div
+              className="flex justify-center mb-8"
+              initial={{ opacity: 0, scale: 0.8 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.4 }}
             >
-              AI
-            </text>
+              <div className="relative">
+                {/* Outer rotating ring */}
+                <motion.div
+                  className="absolute inset-[-12px] rounded-full border border-dashed border-[#7FC6C4]/30"
+                  animate={{ rotate: 360 }}
+                  transition={{
+                    duration: 20,
+                    repeat: Infinity,
+                    ease: "linear",
+                  }}
+                />
+                {/* Pulsing glow */}
+                <motion.div
+                  className="absolute inset-[-6px] rounded-full bg-[#7FC6C4]/5"
+                  animate={{
+                    scale: [1, 1.15, 1],
+                    opacity: [0.3, 0.6, 0.3],
+                  }}
+                  transition={{ duration: 3, repeat: Infinity }}
+                />
+                {/* Core badge */}
+                <div className="relative px-6 py-2.5 rounded-full bg-gradient-to-r from-cyan-500/10 to-purple-500/10 border border-[#7FC6C4]/40 backdrop-blur-sm">
+                  <div className="flex items-center gap-2">
+                    <motion.span
+                      className="text-lg"
+                      animate={{ rotate: [0, 10, -10, 0] }}
+                      transition={{ duration: 4, repeat: Infinity }}
+                    >
+                      🤖
+                    </motion.span>
+                    <span className="text-sm font-bold bg-gradient-to-r from-[#7FC6C4] to-purple-400 bg-clip-text text-transparent">
+                      AI Orchestration Layer
+                    </span>
+                    <motion.span
+                      className="w-2 h-2 rounded-full bg-emerald-400"
+                      animate={{ opacity: [1, 0.3, 1] }}
+                      transition={{ duration: 1.5, repeat: Infinity }}
+                    />
+                  </div>
+                </div>
+                {/* Connection line down */}
+                <div className="absolute top-full left-1/2 -translate-x-1/2 w-[2px] h-6 bg-gradient-to-b from-[#7FC6C4]/40 to-transparent" />
+              </div>
+            </motion.div>
 
-            {/* Human-in-the-Loop indicator */}
-            <g opacity={hoveredStage ? "1" : "0"} style={{ transition: "opacity 0.3s" }}>
-              <rect x="750" y="180" width="100" height="24" rx="4" fill="#7C3AED" opacity="0.1" />
-              <text x="800" y="196" textAnchor="middle" fontSize="11" fill="#7C3AED">
-                🤖 + 👤 Human-AI Loop
-              </text>
-            </g>
+            {/* Flow Pipeline with Stages */}
+            <div className="flex items-start gap-0 relative">
+              {/* Flowing particles layer */}
+              <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-xl">
+                {[0, 1, 2, 3, 4, 5].map((i) => (
+                  <FlowParticle key={i} index={i} />
+                ))}
+              </div>
 
-            {/* AI Layer Box - Full Width Background */}
-            <rect
-              x="100"
-              y="20"
-              width="1400"
-              height="460"
-              fill="#7FC6C4"
-              opacity="0.02"
-              rx="12"
-            />
-            <rect
-              x="100"
-              y="20"
-              width="1400"
-              height="460"
-              fill="none"
-              stroke="#7FC6C4"
-              strokeWidth="2"
-              strokeDasharray="8, 5"
-              opacity="0.4"
-              rx="12"
-              style={
-                !prefersReducedMotion
-                  ? {
-                      animation: "dashFlow 15s linear infinite",
-                    }
-                  : {}
-              }
-            />
-          </svg>
-
-          {/* Content Layer */}
-          <div className="relative z-10">
-            {/* Stage Groups - Horizontal Layout */}
-            <div className="flex justify-between gap-6 mb-12">
-              {stageFlow.map((stage) => {
-                const stageTools = tools.filter((t) => t.stage === stage.id);
+              {stages.map((stage, idx) => {
+                const stageTools = tools.filter(
+                  (t) => t.stage === stage.id
+                );
                 const isHovered = hoveredStage === stage.id;
-                return (
-                  <div
-                    key={stage.id}
-                    className="flex-1 transition-all duration-300"
-                    onMouseEnter={() => setHoveredStage(stage.id)}
-                    onMouseLeave={() => setHoveredStage(null)}
-                    style={{
-                      opacity: hoveredStage && !isHovered ? 0.4 : 1,
-                    }}
-                  >
-                    {/* Stage Header */}
-                    <div className="mb-4">
-                      <h3
-                        className="text-xs font-bold uppercase tracking-wider text-center transition-all duration-300"
-                        style={{
-                          color: stage.color,
-                          textShadow: isHovered ? `0 0 12px ${stage.color}80` : "none",
-                        }}
-                      >
-                        {stage.title}
-                      </h3>
-                    </div>
 
-                    {/* Tools in Stage */}
-                    <div className="flex flex-col gap-2">
-                      {stageTools.map((tool) => (
-                        <div
-                          key={tool.name}
-                          className="p-3 rounded-lg border-2 border-dashed backdrop-blur-sm hover:border-solid transition-all duration-300 group cursor-pointer"
-                          style={{
-                            borderColor: `${tool.color}${isHovered ? "CC" : "60"}`,
-                            backgroundColor: `${tool.color}${isHovered ? "18" : "08"}`,
-                            boxShadow: isHovered ? `0 0 16px ${tool.color}40` : "none",
-                          }}
-                        >
-                          <div className="flex items-center gap-2 mb-1.5">
-                            <div
-                              className="w-7 h-7 rounded flex items-center justify-center text-sm group-hover:scale-110 transition-transform"
-                              style={{
-                                backgroundColor: `${tool.color}20`,
-                                border: `1px solid ${tool.color}`,
-                              }}
-                            >
-                              {tool.icon}
-                            </div>
-                            <p
-                              className="text-xs font-bold"
-                              style={{ color: tool.color }}
-                            >
-                              {tool.name}
-                            </p>
-                          </div>
-                          <p className="text-[10px] text-gray-400 ml-9 leading-snug">
-                            {tool.role}
-                          </p>
-                        </div>
-                      ))}
-                    </div>
+                return (
+                  <div key={stage.id} className="contents">
+                    <StageColumn
+                      stage={stage}
+                      stageTools={stageTools}
+                      isHovered={isHovered}
+                      isAnyHovered={!!hoveredStage}
+                      onHover={() => setHoveredStage(stage.id)}
+                      onLeave={() => setHoveredStage(null)}
+                    />
+                    {idx < stages.length - 1 && (
+                      <StageConnector
+                        color={stage.color}
+                        nextColor={stages[idx + 1].color}
+                        isActive={
+                          isHovered ||
+                          hoveredStage === stages[idx + 1].id
+                        }
+                      />
+                    )}
                   </div>
                 );
               })}
             </div>
 
-            {/* Data Flow Description */}
-            <div className="grid grid-cols-3 md:grid-cols-6 gap-2 text-center">
-              <div className="text-[10px] text-gray-400">
-                <span className="block font-semibold text-gray-300 mb-1">
-                  ① Research
+            {/* Feedback Loop Indicator */}
+            <motion.div
+              className="mt-6 flex items-center justify-center gap-3"
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.8 }}
+            >
+              <div className="h-[1px] flex-1 max-w-[100px] bg-gradient-to-r from-transparent to-[#06B6D4]/30" />
+              <div className="flex items-center gap-2 px-4 py-1.5 rounded-full bg-gray-800/50 border border-gray-700/50">
+                <motion.span
+                  className="text-[10px]"
+                  animate={{ rotate: [0, 360] }}
+                  transition={{
+                    duration: 4,
+                    repeat: Infinity,
+                    ease: "linear",
+                  }}
+                >
+                  ��
+                </motion.span>
+                <span className="text-[10px] text-gray-400 font-medium">
+                  Continuous feedback loop — Analytics insights refine
+                  every upstream stage
                 </span>
-                Extract contact & company data
               </div>
-              <div className="text-[10px] text-gray-400">
-                <span className="block font-semibold text-gray-300 mb-1">
-                  ② Enrich
-                </span>
-                Clean & standardize records
-              </div>
-              <div className="text-[10px] text-gray-400">
-                <span className="block font-semibold text-gray-300 mb-1">
-                  ③ Store
-                </span>
-                Centralize in CRM system
-              </div>
-              <div className="text-[10px] text-gray-400">
-                <span className="block font-semibold text-gray-300 mb-1">
-                  ④ Execute
-                </span>
-                Engage & score leads
-              </div>
-              <div className="text-[10px] text-gray-400">
-                <span className="block font-semibold text-gray-300 mb-1">
-                  ⑤ Activate
-                </span>
-                Run targeted campaigns
-              </div>
-              <div className="text-[10px] text-gray-400">
-                <span className="block font-semibold text-gray-300 mb-1">
-                  ⑥ Analyze
-                </span>
-                Measure & forecast results
-              </div>
-            </div>
+              <div className="h-[1px] flex-1 max-w-[100px] bg-gradient-to-l from-transparent to-[#FF6B6B]/30" />
+            </motion.div>
           </div>
+        </motion.div>
 
-          {/* Animated Particles */}
-          <div className="absolute inset-0 pointer-events-none overflow-hidden rounded-2xl">
-            {[0, 3, 6, 9].map((delay) => (
-              <AnimatedParticle
-                key={`particle-${delay}`}
-                delay={delay}
-                prefersReducedMotion={prefersReducedMotion}
-              />
-            ))}
-          </div>
-
-          {/* CSS Animations */}
-          <style>{`
-            @keyframes flowParticle {
-              0% {
-                left: 5%;
-                opacity: 0;
-              }
-              5% {
-                opacity: 1;
-              }
-              25% {
-                filter: hue-rotate(0deg);
-              }
-              50% {
-                filter: hue-rotate(90deg);
-              }
-              75% {
-                filter: hue-rotate(180deg);
-              }
-              95% {
-                opacity: 1;
-              }
-              100% {
-                left: 95%;
-                opacity: 0;
-              }
-            }
-
-            @keyframes dashFlow {
-              0% {
-                stroke-dashoffset: 10;
-              }
-              100% {
-                stroke-dashoffset: 0;
-              }
-            }
-
-            @keyframes flowAcross {
-              0% {
-                opacity: 0.3;
-                stroke-width: 2;
-              }
-              50% {
-                opacity: 0.8;
-                stroke-width: 4;
-              }
-              100% {
-                opacity: 0.3;
-                stroke-width: 2;
-              }
-            }
-
-            @keyframes aiGlowExpand {
-              0%, 100% {
-                r: 60;
-                opacity: 0.05;
-              }
-              50% {
-                r: 85;
-                opacity: 0.15;
-              }
-            }
-
-            @keyframes aiPulseCore {
-              0%, 100% {
-                r: 45;
-                opacity: 0.4;
-              }
-              50% {
-                r: 55;
-                opacity: 0.8;
-              }
-            }
-
-            @keyframes aiRotateBorder {
-              0% {
-                stroke-dashoffset: 0;
-              }
-              100% {
-                stroke-dashoffset: -314;
-              }
-            }
-
-            @keyframes pulseConnect {
-              0%, 100% {
-                opacity: 0;
-                stroke-width: 1;
-              }
-              40%, 60% {
-                opacity: 0.6;
-                stroke-width: 2;
-              }
-            }
-
-            @media (prefers-reduced-motion: reduce) {
-              @keyframes flowParticle, @keyframes aiGlowExpand, @keyframes aiPulseCore, @keyframes aiRotateBorder, @keyframes pulseConnect {
-                0%, 100% { opacity: 0.5; }
-              }
-            }
-          `}</style>
-        </div>
-
-        {/* AI Intelligence Capabilities */}
-        <div className="mt-8 p-6 rounded-lg border border-[#7FC6C4]/30 bg-gradient-to-r from-[#7FC6C4]/5 to-cyan-400/5">
-          <h3 className="text-sm font-bold text-[#7FC6C4] text-center mb-4">
-            AI Intelligence Powers
-          </h3>
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-3">
-            {[
-              "Lead Scoring",
-              "Smart Routing",
-              "Personalization",
-              "Automation",
-              "Revenue Insights",
-            ].map((capability, idx) => (
+        {/* AI Capabilities Bar */}
+        <motion.div
+          className="mt-6 grid grid-cols-2 md:grid-cols-5 gap-3"
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+        >
+          {aiCapabilities.map((cap, idx) => (
+            <motion.div
+              key={cap.label}
+              className="group relative flex items-center gap-2.5 px-4 py-3 rounded-xl bg-gray-900/60 border border-gray-800/60 hover:border-[#7FC6C4]/40 transition-all duration-300 cursor-default"
+              whileHover={{ y: -2, scale: 1.02 }}
+              transition={{
+                type: "spring",
+                stiffness: 400,
+                damping: 25,
+              }}
+            >
+              <span className="text-lg">{cap.icon}</span>
+              <div>
+                <p className="text-xs font-semibold text-gray-200 group-hover:text-[#7FC6C4] transition-colors">
+                  {cap.label}
+                </p>
+                <p className="text-[9px] text-gray-500">{cap.desc}</p>
+              </div>
+              {/* Hover glow */}
               <div
-                key={idx}
-                className="text-center text-xs font-semibold text-gray-300 py-2 px-3 rounded border border-[#7FC6C4]/20 hover:border-[#7FC6C4]/50 hover:text-[#7FC6C4] transition-all duration-300"
-              >
-                {capability}
-              </div>
-            ))}
-          </div>
-        </div>
+                className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none"
+                style={{
+                  boxShadow:
+                    "inset 0 0 20px rgba(127,198,196,0.05)",
+                }}
+              />
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
     </section>
   );
