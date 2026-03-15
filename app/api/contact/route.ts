@@ -1,6 +1,9 @@
 import { NextRequest, NextResponse } from 'next/server';
 import nodemailer from 'nodemailer';
 
+// Force Node.js runtime (not Edge)
+export const runtime = 'nodejs';
+
 // Create Zoho SMTP transporter
 const createTransporter = () => {
   if (!process.env.ZOHO_SMTP_HOST || !process.env.ZOHO_SMTP_USER || !process.env.ZOHO_SMTP_PASSWORD) {
@@ -376,10 +379,22 @@ export async function POST(request: NextRequest) {
   }
 }
 
-// Health check endpoint
+// Health check endpoint with diagnostics
 export async function GET() {
   return NextResponse.json(
-    { status: 'ok', message: 'Contact API is healthy' },
+    {
+      status: 'ok',
+      message: 'Contact API is healthy',
+      smtp_configured: !!(process.env.ZOHO_SMTP_HOST && process.env.ZOHO_SMTP_USER && process.env.ZOHO_SMTP_PASSWORD),
+      env_check: {
+        ZOHO_SMTP_HOST: process.env.ZOHO_SMTP_HOST ? 'SET' : 'MISSING',
+        ZOHO_SMTP_PORT: process.env.ZOHO_SMTP_PORT ? 'SET' : 'MISSING',
+        ZOHO_SMTP_USER: process.env.ZOHO_SMTP_USER ? 'SET' : 'MISSING',
+        ZOHO_SMTP_PASSWORD: process.env.ZOHO_SMTP_PASSWORD ? 'SET' : 'MISSING',
+        ZOHO_SENDER_EMAIL: process.env.ZOHO_SENDER_EMAIL ? 'SET' : 'MISSING',
+        CONTACT_EMAIL: process.env.CONTACT_EMAIL ? 'SET' : 'MISSING',
+      },
+    },
     { status: 200 }
   );
 }
