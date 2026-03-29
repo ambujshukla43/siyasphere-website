@@ -8,9 +8,13 @@ export default function Footer() {
   const footerLinks = {
     Solutions: [
       { href: "/solutions", label: "All Solutions" },
-      { href: "/solutions#lead-routing", label: "Lead Routing" },
-      { href: "/solutions#salesforce-optimization", label: "Salesforce Optimization" },
-      { href: "/solutions#revops", label: "RevOps & Analytics" },
+      { href: "/solutions#revops-transformation", label: "RevOps Transformation" },
+      { href: "/solutions#marketing-intelligence", label: "Marketing Intelligence" },
+      { href: "/solutions#sales-intelligence", label: "Sales Intelligence" },
+      { href: "/solutions#data-visualization", label: "Executive Dashboards" },
+      { href: "/solutions#ai-human-workflow", label: "AI + Human Workflows" },
+      { href: "/solutions#ai-tech-stack", label: "GTM Tech Stack" },
+      { href: "/solutions#account-intelligence", label: "Account Intelligence" },
     ],
     Company: [
       { href: "/about", label: "About Us" },
