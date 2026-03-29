@@ -166,6 +166,23 @@ const useCases = [
     ],
     tools: ["Salesforce", "LeanData", "Ringlead", "Data Enrichment", "Lead Routing Automation"],
   },
+  {
+    company: "Leading Data & Analytics Consulting Firm",
+    industry: "GTM Strategy / Data & Analytics",
+    challenge:
+      "The consulting firm needed to identify and prioritise target accounts in the mid-market and enterprise space running legacy data infrastructure—outdated EDW, ETL, and BI platforms. With a large account universe but limited technology intelligence and decision-maker contact data, their outbound sales team lacked the visibility needed to prioritise and activate meaningful outreach campaigns.",
+    solution:
+      "SiyaSphere researched and mapped legacy data technologies (EDW, ETL & BI platforms) and incumbent vendors across 450+ target accounts. The team identified key decision makers across Data, Analytics, AI, and Cloud functions—from C-Suite to senior individual contributors—with verified LinkedIn profiles and contact details. Full firmographic enrichment per account (industry, HQ, revenue, employee count, company LinkedIn) was delivered to enable precision targeting.",
+    results: [
+      "450 companies researched and profiled",
+      "346 companies with confirmed legacy tech signals",
+      "964 qualified decision maker contacts identified",
+      "224 companies ready for targeted outreach",
+      "100% verified contact data",
+      "Scope-qualified opportunity list",
+    ],
+    tools: ["Market Research", "Technology Intelligence", "Contact Enrichment", "Firmographic Data", "Decision-Maker Mapping"],
+  },
 ];
 
 export default function UseCases() {
