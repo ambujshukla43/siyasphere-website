@@ -88,6 +88,19 @@ const solutions = [
       "Future-proof your infrastructure with modular, scalable AI integrations that adapt to your evolving needs",
     ],
   },
+  {
+    id: "market-research-intelligence",
+    title: "Market Research & Decision-Maker Intelligence",
+    value: "Turn market data into precision targeting and account strategy.",
+    outcomes: [
+      "Map competitive technology landscapes across your target market to identify accounts with specific pain points or legacy infrastructure",
+      "Research and profile thousands of accounts with verified firmographic data (industry, revenue, employee count, tech stack) for accurate targeting",
+      "Identify and verify decision-makers across multiple functions (C-Suite to senior ICs) with LinkedIn profiles and contact details",
+      "Build scope-qualified opportunity lists with confirmed technology signals aligned to your solution",
+      "Enable your sales team with intelligence-backed account research that accelerates qualification and personalization",
+      "Support ABM strategies with deep firmographic and technographic insights across target segments",
+    ],
+  },
 ];
 
 export default function SolutionsGrid() {
