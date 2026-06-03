@@ -5,6 +5,7 @@ import GTMFlow from "@/components/sections/GTMFlow";
 import CoreOfferings from "@/components/sections/CoreOfferings";
 import SocialProof from "@/components/sections/SocialProof";
 import CTASection from "@/components/sections/CTASection";
+import GTMTechStack from "@/components/sections/GTMTechStack";
 
 export const metadata: Metadata = {
   title: "SiyaSphere | AI-Powered Go-To-Market Systems",
@@ -26,6 +27,7 @@ export default function Home() {
       <ValueProposition />
       <GTMFlow />
       <CoreOfferings />
+      <GTMTechStack />
       <CTASection />
     </>
   );
