@@ -323,6 +323,27 @@ const caseStudies: CaseStudy[] = [
     keyMetric: "964",
     keyMetricLabel: "Decision-Makers Mapped",
   },
+  {
+    company: "Growth-Stage B2B SaaS",
+    clientType: "8-Person SDR Team",
+    category: "Sales Automation",
+    headline: "Custom Salesforce SDR Engine Replaces Spreadsheet Chaos",
+    challengeSummary: "SDR activity tracked in spreadsheets. No visibility into cadence performance, handoffs, or SLA compliance.",
+    challenge:
+      "The SDR team was logging outreach activity across disconnected spreadsheets and the standard Salesforce Task object, which wasn't built to capture multi-channel cadence data. Leadership had no visibility into which touchpoints were driving meetings, handoffs to AEs were inconsistent and often dropped, and there was no enforced SLA for lead follow-up. Reporting on SDR performance required manual data pulls that took hours each week.",
+    solution:
+      "SiyaSphere designed and built a custom SDR Touchpoint object in Salesforce, related to Lead, Contact, and Opportunity, with fields capturing sequence step, channel (call, email, LinkedIn), disposition code, and next-action date. Flow-based automation auto-created touchpoint records from Outreach activity syncs, advanced lead status once engagement thresholds were met, and triggered SLA-based reassignment when a lead went untouched past the defined window. Validation rules enforced mandatory disposition codes on every touchpoint, and a custom report type plus dashboard gave managers real-time visibility into SDR-to-AE handoff status.",
+    results: [
+      "SDR activity visibility: 0% → 100% real-time in Salesforce",
+      "Lead-to-meeting conversion improved 22%",
+      "SDR-to-AE handoff time reduced from 2 days to under 4 hours",
+      "SLA compliance on first-touch follow-up: 96%",
+      "Weekly manual reporting time eliminated (was 5+ hrs/week)",
+    ],
+    tools: ["Salesforce Custom Objects", "Salesforce Flow", "Outreach", "Salesforce Dashboards"],
+    keyMetric: "96%",
+    keyMetricLabel: "SLA Compliance",
+  },
 ];
 
 const ALL_CATEGORIES = [
