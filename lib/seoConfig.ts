@@ -66,10 +66,6 @@ export const baseMetadata: Metadata = {
       "SiyaSphere (Siya Sphere) - Scale revenue with AI-powered RevOps, Marketing Automation, and Tech Integration for B2B SaaS. Transform your Go-To-Market system with Siya.",
     images: ["https://siyasphere.in/og-image.png"],
   },
-  icons: {
-    icon: "/favicon.ico",
-    apple: "/apple-touch-icon.png",
-  },
   manifest: "/manifest.json",
   verification: {
     google: "your-google-verification-code",

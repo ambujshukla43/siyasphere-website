@@ -10,12 +10,12 @@
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/favicon.ico",
+      "src": "/icon",
       "sizes": "32x32",
-      "type": "image/x-icon"
+      "type": "image/png"
     },
     {
-      "src": "/apple-touch-icon.png",
+      "src": "/apple-icon",
       "sizes": "180x180",
       "type": "image/png",
       "purpose": "any"
@@ -38,7 +38,7 @@
       "url": "/contact",
       "icons": [
         {
-          "src": "/favicon.ico",
+          "src": "/icon",
           "sizes": "32x32"
         }
       ]
@@ -50,7 +50,7 @@
       "url": "/case-studies",
       "icons": [
         {
-          "src": "/favicon.ico",
+          "src": "/icon",
           "sizes": "32x32"
         }
       ]
