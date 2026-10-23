@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "@/components/layout/Header";
 import Footer from "@/components/layout/Footer";
 import BookingBar from "@/components/sections/BookingBar";
+import { Analytics } from "@vercel/analytics/next";
 import { baseMetadata, organizationSchema, localBusinessSchema, serviceSchema } from "@/lib/seoConfig";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -37,6 +38,7 @@ export default function RootLayout({
         <main>{children}</main>
         <BookingBar />
         <Footer />
+        <Analytics />
       </body>
     </html>
   );
