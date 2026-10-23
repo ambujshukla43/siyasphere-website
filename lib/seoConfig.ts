@@ -67,6 +67,8 @@ export const organizationSchema = {
     "@type": "Person",
     name: "Abhi Shukla",
     jobTitle: "Founder",
+    url: "https://www.linkedin.com/in/abhi-shukla-4268971a5/",
+    sameAs: ["https://www.linkedin.com/in/abhi-shukla-4268971a5/"],
     worksFor: { "@type": "Organization", name: "SiyaSphere" },
   },
   contactPoint: {
