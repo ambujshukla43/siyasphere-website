@@ -6,7 +6,17 @@ Engagements typically follow an 8-week process from GTM audit to launch, for B2B
 
 ## Services
 
-- [GTM Solutions](https://www.siyasphere.in/solutions): RevOps transformation, GTM data migration and system modernization, marketing intelligence and analytics, sales intelligence and analytics, executive dashboards, AI + human GTM workflows, AI-powered GTM tech stack, account intelligence and prospect research
+- [All GTM Solutions](https://www.siyasphere.in/solutions)
+- [RevOps Consulting & Transformation](https://www.siyasphere.in/solutions/revops-consulting): Align your entire GTM engine for predictable growth.
+- [Lead Routing & Lead Data Quality](https://www.siyasphere.in/solutions/lead-routing): Every lead to the right rep, fast, with clean data.
+- [Salesforce Consulting & Org Optimisation](https://www.siyasphere.in/solutions/salesforce-consulting): A Salesforce org your team actually wants to use.
+- [GTM Data Migration & System Modernisation](https://www.siyasphere.in/solutions/crm-data-migration): Move fast without breaking anything.
+- [Marketing Intelligence & Attribution](https://www.siyasphere.in/solutions/marketing-analytics-attribution): Know what works. Prove what matters.
+- [Sales Intelligence & Forecasting](https://www.siyasphere.in/solutions/sales-analytics-forecasting): Empower reps to close more deals, faster.
+- [Executive GTM Dashboards & Data Visualisation](https://www.siyasphere.in/solutions/gtm-dashboards): One source of truth for your entire GTM operation.
+- [AI + Human Workflows for GTM](https://www.siyasphere.in/solutions/ai-gtm-workflows): Scale without sacrificing judgement.
+- [AI-Powered GTM Tech Stack](https://www.siyasphere.in/solutions/ai-gtm-tech-stack): Modern GTM infrastructure, built for speed and reliability.
+- [Account Intelligence & Prospect Research](https://www.siyasphere.in/solutions/account-research-prospect-intelligence): Know your buyers before you reach out.
 - [The Modern GTM Stack](https://www.siyasphere.in/gtm-stack): How SiyaSphere connects marketing automation, RevOps, and AI workflows into one go-to-market system
 - [How It Works](https://www.siyasphere.in/how-it-works): The 8-week GTM transformation process
 

@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import Logo from "@/components/ui/Logo";
+import { solutions } from "@/lib/solutions";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -8,13 +9,7 @@ export default function Footer() {
   const footerLinks = {
     Solutions: [
       { href: "/solutions", label: "All Solutions" },
-      { href: "/solutions#revops-transformation", label: "RevOps Transformation" },
-      { href: "/solutions#marketing-intelligence", label: "Marketing Intelligence" },
-      { href: "/solutions#sales-intelligence", label: "Sales Intelligence" },
-      { href: "/solutions#data-visualization", label: "Executive Dashboards" },
-      { href: "/solutions#ai-human-workflow", label: "AI + Human Workflows" },
-      { href: "/solutions#ai-tech-stack", label: "GTM Tech Stack" },
-      { href: "/solutions#account-intelligence", label: "Account Intelligence" },
+      ...solutions.map((s) => ({ href: `/solutions/${s.slug}`, label: s.navLabel })),
     ],
     Company: [
       { href: "/about", label: "About Us" },

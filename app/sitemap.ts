@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next'
 import { caseStudies } from '@/lib/caseStudies'
+import { solutions } from '@/lib/solutions'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://www.siyasphere.in'
@@ -68,5 +69,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.75,
   }))
 
-  return [...routes, ...caseStudyRoutes]
+  const solutionRoutes = solutions.map((s) => ({
+    url: `${baseUrl}/solutions/${s.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'monthly' as const,
+    priority: 0.85,
+  }))
+
+  return [...routes, ...solutionRoutes, ...caseStudyRoutes]
 }

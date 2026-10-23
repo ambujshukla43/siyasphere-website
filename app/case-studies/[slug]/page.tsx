@@ -8,6 +8,7 @@ import {
   getCaseStudy,
   getRelatedCaseStudies,
 } from "@/lib/caseStudies";
+import { solutions } from "@/lib/solutions";
 
 const baseUrl = "https://www.siyasphere.in";
 
@@ -42,6 +43,7 @@ export default function CaseStudyPage({ params }: Props) {
 
   const color = CATEGORY_COLORS[cs.category] ?? "#00D4FF";
   const related = getRelatedCaseStudies(cs);
+  const relatedSolutions = solutions.filter((s) => s.caseStudySlugs.includes(cs.slug));
   const url = `${baseUrl}/case-studies/${cs.slug}`;
 
   const articleSchema = {
@@ -218,6 +220,18 @@ export default function CaseStudyPage({ params }: Props) {
                   <div>
                     <dt className="text-gray-500">Timeline</dt>
                     <dd className="text-gray-200">{cs.timeline}</dd>
+                  </div>
+                )}
+                {relatedSolutions.length > 0 && (
+                  <div>
+                    <dt className="text-gray-500">Related solutions</dt>
+                    {relatedSolutions.map((s) => (
+                      <dd key={s.slug}>
+                        <Link href={`/solutions/${s.slug}`} className="text-[#7FC6C4] hover:opacity-80">
+                          {s.navLabel}
+                        </Link>
+                      </dd>
+                    ))}
                   </div>
                 )}
                 <div>
