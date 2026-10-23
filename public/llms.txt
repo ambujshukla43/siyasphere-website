@@ -12,7 +12,23 @@ Engagements typically follow an 8-week process from GTM audit to launch, for B2B
 
 ## Case studies
 
-- [Case Studies](https://www.siyasphere.in/case-studies): Results include eliminating 35% lead leakage through GTM redesign, raising contact rate 40% with intelligent lead routing, improving pipeline forecast accuracy 35% with AI forecasting, cutting manual work 80% with human-in-the-loop AI, unlocking 30% marketing efficiency with multi-touch attribution, a zero-downtime CRM migration, and a Salesforce org cleanup that cut page load 60%
+All case studies: https://www.siyasphere.in/case-studies
+
+- [3.2x Pipeline in 90 Days with Seamless AI + Clay](https://www.siyasphere.in/case-studies/ai-prospecting-engine-seamless-ai-clay)
+- [Win Rate from 14% to 26% with Actively AI](https://www.siyasphere.in/case-studies/actively-ai-account-prioritization)
+- [$1.8M Pipeline Revived with a Conversica AI SDR](https://www.siyasphere.in/case-studies/conversica-ai-sdr-dormant-leads)
+- [$0 to $480K ARR in 5.5 Months with a Lean Outbound Stack](https://www.siyasphere.in/case-studies/outbound-gtm-launch-apollo-seamless-ai)
+- [35% Less Lead Leakage with a RevOps Funnel Redesign](https://www.siyasphere.in/case-studies/revops-gtm-redesign-lead-leakage)
+- [Zero-Downtime CRM Migration with 100% Data Integrity](https://www.siyasphere.in/case-studies/zero-downtime-crm-migration)
+- [40% Higher Contact Rate with LeanData Lead Routing](https://www.siyasphere.in/case-studies/salesforce-lead-routing-leandata)
+- [30% Marketing Efficiency Gain from Multi-Touch Attribution](https://www.siyasphere.in/case-studies/multi-touch-attribution-marketing-efficiency)
+- [35% More Accurate Forecasts with AI Pipeline Analytics](https://www.siyasphere.in/case-studies/ai-sales-forecasting-accuracy)
+- [80% Less Manual Work with Human-in-the-Loop AI](https://www.siyasphere.in/case-studies/human-in-the-loop-ai-gtm-automation)
+- [One Source of Truth Across Four GTM Systems](https://www.siyasphere.in/case-studies/unified-gtm-reporting-single-source-of-truth)
+- [60% Faster Salesforce After an Org Cleanup](https://www.siyasphere.in/case-studies/salesforce-org-cleanup-performance)
+- [92% Better Lead Data Quality with LeanData + RingLead](https://www.siyasphere.in/case-studies/leandata-ringlead-data-quality-routing)
+- [964 Decision-Makers Mapped Across 450 Accounts](https://www.siyasphere.in/case-studies/account-research-decision-maker-mapping)
+- [Custom Salesforce SDR Engine: 96% SLA Compliance](https://www.siyasphere.in/case-studies/salesforce-sdr-custom-object)
 
 ## Company
 
