@@ -63,6 +63,12 @@ export const organizationSchema = {
     addressCountry: "IN",
   },
   foundingDate: "2023",
+  founder: {
+    "@type": "Person",
+    name: "Abhi Shukla",
+    jobTitle: "Founder",
+    worksFor: { "@type": "Organization", name: "SiyaSphere" },
+  },
   contactPoint: {
     "@type": "ContactPoint",
     contactType: "Customer Support",
