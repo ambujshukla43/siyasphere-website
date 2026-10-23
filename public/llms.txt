@@ -17,7 +17,7 @@ Engagements typically follow an 8-week process from GTM audit to launch, for B2B
 - [AI + Human Workflows for GTM](https://www.siyasphere.in/solutions/ai-gtm-workflows): Scale without sacrificing judgement.
 - [AI-Powered GTM Tech Stack](https://www.siyasphere.in/solutions/ai-gtm-tech-stack): Modern GTM infrastructure, built for speed and reliability.
 - [Account Intelligence & Prospect Research](https://www.siyasphere.in/solutions/account-research-prospect-intelligence): Know your buyers before you reach out.
-- [The Modern GTM Stack](https://www.siyasphere.in/gtm-stack): How SiyaSphere connects marketing automation, RevOps, and AI workflows into one go-to-market system
+- [The Modern GTM Stack: A Practical Guide](https://www.siyasphere.in/gtm-stack): The seven layers of a B2B SaaS go-to-market tech stack, which tools fit each growth stage, and common mistakes
 - [How It Works](https://www.siyasphere.in/how-it-works): The 8-week GTM transformation process
 
 ## Case studies

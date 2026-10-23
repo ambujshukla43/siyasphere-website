@@ -1,12 +1,14 @@
 "use client";
 
+import LineIcon, { type IconName } from "@/components/ui/LineIcon";
+
 import { useEffect, useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 /* ─── Data Model ─── */
 interface Tool {
   name: string;
-  icon: string;
+  icon: IconName;
   color: string;
   stage: string;
   role: string;
@@ -75,7 +77,7 @@ const stages: Stage[] = [
 const tools: Tool[] = [
   {
     name: "ZoomInfo",
-    icon: "🔍",
+    icon: "search",
     color: "#FF6B6B",
     stage: "data",
     role: "Lead Intelligence",
@@ -84,7 +86,7 @@ const tools: Tool[] = [
   },
   {
     name: "Clearbit",
-    icon: "🏢",
+    icon: "building",
     color: "#FF6B6B",
     stage: "data",
     role: "Company Enrichment",
@@ -93,7 +95,7 @@ const tools: Tool[] = [
   },
   {
     name: "6sense",
-    icon: "🎯",
+    icon: "target",
     color: "#FF6B6B",
     stage: "data",
     role: "Intent Signals",
@@ -102,7 +104,7 @@ const tools: Tool[] = [
   },
   {
     name: "Dedup Engine",
-    icon: "🔄",
+    icon: "merge",
     color: "#F59E0B",
     stage: "enrich",
     role: "Deduplication",
@@ -111,7 +113,7 @@ const tools: Tool[] = [
   },
   {
     name: "Normalize",
-    icon: "⚙️",
+    icon: "sliders",
     color: "#F59E0B",
     stage: "enrich",
     role: "Standardization",
@@ -120,7 +122,7 @@ const tools: Tool[] = [
   },
   {
     name: "Validation",
-    icon: "✅",
+    icon: "shieldCheck",
     color: "#F59E0B",
     stage: "enrich",
     role: "Quality Gate",
@@ -129,7 +131,7 @@ const tools: Tool[] = [
   },
   {
     name: "Salesforce",
-    icon: "☁️",
+    icon: "cloud",
     color: "#3B82F6",
     stage: "crm",
     role: "Account Hub",
@@ -138,7 +140,7 @@ const tools: Tool[] = [
   },
   {
     name: "HubSpot",
-    icon: "📊",
+    icon: "users",
     color: "#3B82F6",
     stage: "crm",
     role: "Contact Management",
@@ -147,7 +149,7 @@ const tools: Tool[] = [
   },
   {
     name: "Outreach",
-    icon: "📞",
+    icon: "send",
     color: "#8B5CF6",
     stage: "sales",
     role: "Sales Engagement",
@@ -156,7 +158,7 @@ const tools: Tool[] = [
   },
   {
     name: "Salesloft",
-    icon: "🎯",
+    icon: "activity",
     color: "#8B5CF6",
     stage: "sales",
     role: "Revenue Intelligence",
@@ -165,7 +167,7 @@ const tools: Tool[] = [
   },
   {
     name: "Marketo",
-    icon: "📧",
+    icon: "mail",
     color: "#EC4899",
     stage: "marketing",
     role: "Campaign Automation",
@@ -174,7 +176,7 @@ const tools: Tool[] = [
   },
   {
     name: "Pardot",
-    icon: "🤝",
+    icon: "layers",
     color: "#EC4899",
     stage: "marketing",
     role: "Lead Nurture",
@@ -183,7 +185,7 @@ const tools: Tool[] = [
   },
   {
     name: "Snowflake",
-    icon: "❄️",
+    icon: "database",
     color: "#06B6D4",
     stage: "analytics",
     role: "Data Warehouse",
@@ -192,7 +194,7 @@ const tools: Tool[] = [
   },
   {
     name: "Looker",
-    icon: "📈",
+    icon: "lineChart",
     color: "#06B6D4",
     stage: "analytics",
     role: "BI Dashboards",
@@ -201,7 +203,7 @@ const tools: Tool[] = [
   },
   {
     name: "Tableau",
-    icon: "📊",
+    icon: "pieChart",
     color: "#06B6D4",
     stage: "analytics",
     role: "Visual Analytics",
@@ -211,11 +213,11 @@ const tools: Tool[] = [
 ];
 
 const aiCapabilities = [
-  { label: "Lead Scoring", icon: "🎯", desc: "Predict conversion probability" },
-  { label: "Smart Routing", icon: "🔀", desc: "Auto-assign to best rep" },
-  { label: "Personalization", icon: "✨", desc: "Dynamic content at scale" },
-  { label: "Forecasting", icon: "📈", desc: "AI pipeline predictions" },
-  { label: "Revenue Intel", icon: "💰", desc: "Deal health & risk signals" },
+  { label: "Lead Scoring", icon: "target" as IconName, desc: "Predict conversion probability" },
+  { label: "Smart Routing", icon: "route" as IconName, desc: "Auto-assign to best rep" },
+  { label: "Personalization", icon: "sparkles" as IconName, desc: "Dynamic content at scale" },
+  { label: "Forecasting", icon: "lineChart" as IconName, desc: "AI pipeline predictions" },
+  { label: "Revenue Intel", icon: "dollar" as IconName, desc: "Deal health & risk signals" },
 ];
 
 /* ─── Flowing Particle ─── */
@@ -361,11 +363,12 @@ function ToolCard({
           <div
             className="w-7 h-7 rounded-md flex items-center justify-center text-sm flex-shrink-0"
             style={{
+              color: tool.color,
               background: `linear-gradient(135deg, ${tool.color}30, ${tool.color}10)`,
               border: `1px solid ${tool.color}60`,
             }}
           >
-            {tool.icon}
+            <LineIcon name={tool.icon} className="h-4 w-4" />
           </div>
           <div className="min-w-0">
             <p
@@ -399,7 +402,9 @@ function ToolCard({
               }}
             >
               <div className="flex items-center gap-2 mb-2">
-                <span className="text-base">{tool.icon}</span>
+                <span style={{ color: tool.color }}>
+                  <LineIcon name={tool.icon} className="h-4 w-4" />
+                </span>
                 <span
                   className="text-sm font-bold"
                   style={{ color: tool.color }}
@@ -650,7 +655,7 @@ export default function AIDataFlow() {
                       animate={{ rotate: [0, 10, -10, 0] }}
                       transition={{ duration: 4, repeat: Infinity }}
                     >
-                      🤖
+                      <LineIcon name="cpu" className="h-5 w-5 text-[#7FC6C4]" />
                     </motion.span>
                     <span className="text-sm font-bold bg-gradient-to-r from-[#7FC6C4] to-purple-400 bg-clip-text text-transparent">
                       AI Orchestration Layer
@@ -757,7 +762,7 @@ export default function AIDataFlow() {
                 damping: 25,
               }}
             >
-              <span className="text-lg">{cap.icon}</span>
+              <LineIcon name={cap.icon} className="h-5 w-5 text-[#7FC6C4] flex-shrink-0" />
               <div>
                 <p className="text-xs font-semibold text-gray-200 group-hover:text-[#7FC6C4] transition-colors">
                   {cap.label}

@@ -97,6 +97,7 @@ interface ContactFormData {
   company?: string;
   phone?: string;
   website?: string; // Honeypot field
+  startedAt?: number; // Client timestamp when the form was rendered
 }
 
 export async function POST(request: NextRequest) {
@@ -113,6 +114,16 @@ export async function POST(request: NextRequest) {
     if (body.website && body.website.length > 0) {
       // Honeypot field should be empty - likely a bot
       console.warn(`[SPAM] Honeypot triggered from IP: ${clientIp}`);
+      return NextResponse.json(
+        { error: 'Invalid submission' },
+        { status: 400 }
+      );
+    }
+
+    // ====== MINIMUM FILL TIME ======
+    // Bots submit instantly; people take at least a couple of seconds
+    if (typeof body.startedAt === 'number' && Date.now() - body.startedAt < 2500) {
+      console.warn(`[SPAM] Submitted too fast from IP: ${clientIp}`);
       return NextResponse.json(
         { error: 'Invalid submission' },
         { status: 400 }

@@ -1,5 +1,7 @@
 "use client";
 
+import LineIcon, { type IconName } from "@/components/ui/LineIcon";
+
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -13,7 +15,7 @@ interface FlowStage {
   title: string;
   subtitle: string;
   description: string;
-  icon: string;
+  icon: IconName;
   color: string;
   gradient: string;
   glowColor: string;
@@ -28,7 +30,7 @@ const flowStages: FlowStage[] = [
     subtitle: "Demand Generation",
     description:
       "Launch multi-channel campaigns that capture high-intent leads. AI scores and segments every visitor, turning anonymous traffic into qualified MQLs at scale.",
-    icon: "📢",
+    icon: "megaphone",
     color: "#3B82F6",
     gradient: "from-blue-500 to-blue-600",
     glowColor: "rgba(59,130,246,0.15)",
@@ -51,7 +53,7 @@ const flowStages: FlowStage[] = [
     subtitle: "Pipeline Development",
     description:
       "Intelligent lead routing ensures every prospect reaches the right rep instantly. Automated enrichment fills in firmographic gaps so reps sell, not research.",
-    icon: "🎯",
+    icon: "target",
     color: "#8B5CF6",
     gradient: "from-purple-500 to-purple-600",
     glowColor: "rgba(139,92,246,0.15)",
@@ -77,7 +79,7 @@ const flowStages: FlowStage[] = [
     subtitle: "Revenue Execution",
     description:
       "Accelerate deals with conversation intelligence, content recommendations, and AI-guided selling. Every interaction is captured, analyzed, and optimized.",
-    icon: "💼",
+    icon: "briefcase",
     color: "#10B981",
     gradient: "from-emerald-500 to-emerald-600",
     glowColor: "rgba(16,185,129,0.15)",
@@ -101,7 +103,7 @@ const flowStages: FlowStage[] = [
     subtitle: "Intelligence & Analytics",
     description:
       "Unify every data point across your GTM engine into a single source of truth. AI-driven forecasting and attribution show you exactly what's working — and what's not.",
-    icon: "📊",
+    icon: "barChart",
     color: "#F59E0B",
     gradient: "from-amber-500 to-orange-500",
     glowColor: "rgba(245,158,11,0.15)",
@@ -287,7 +289,7 @@ function StageCard({
               className={`w-14 h-14 rounded-xl bg-gradient-to-br ${stage.gradient} flex items-center justify-center text-2xl shadow-lg`}
               whileHover={{ scale: 1.1, rotate: 5 }}
             >
-              {stage.icon}
+              <LineIcon name={stage.icon} className="h-7 w-7 text-white" strokeWidth={1.8} />
             </motion.div>
 
             {/* Step number + metric */}
@@ -446,7 +448,9 @@ export default function GTMFlow() {
                   border: `1px solid ${activeIndex === idx ? `${stage.color}50` : "rgba(75,85,99,0.3)"}`,
                 }}
               >
-                <span className="text-sm">{stage.icon}</span>
+                <span style={{ color: stage.color }}>
+                  <LineIcon name={stage.icon} className="h-4 w-4" />
+                </span>
                 <span
                   className="text-xs font-semibold transition-colors duration-300"
                   style={{
@@ -535,10 +539,10 @@ export default function GTMFlow() {
               {/* Left: icons + text */}
               <div className="flex-1 text-center lg:text-left">
                 <div className="flex justify-center lg:justify-start gap-3 mb-4">
-                  {["⚡", "🤖", "🔗", "📈"].map((emoji, i) => (
+                  {(["zap", "cpu", "link", "lineChart"] as IconName[]).map((icon, i) => (
                     <motion.span
-                      key={i}
-                      className="text-2xl"
+                      key={icon}
+                      className="flex h-11 w-11 items-center justify-center rounded-xl border border-[#7FC6C4]/30 bg-[#7FC6C4]/10 text-[#7FC6C4]"
                       animate={{ y: [0, -4, 0] }}
                       transition={{
                         duration: 2,
@@ -546,7 +550,7 @@ export default function GTMFlow() {
                         repeat: Infinity,
                       }}
                     >
-                      {emoji}
+                      <LineIcon name={icon} className="h-5 w-5" />
                     </motion.span>
                   ))}
                 </div>

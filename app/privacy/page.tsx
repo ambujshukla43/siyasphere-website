@@ -1,3 +1,4 @@
+import LineIcon from "@/components/ui/LineIcon";
 import Link from "next/link";
 
 export const metadata = {
@@ -11,13 +12,11 @@ export default function PrivacyPolicy() {
     {
       number: 1,
       title: "Introduction",
-      icon: "📋",
       content: "SiyaSphere Consulting is committed to protecting your privacy. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website and use our services.",
     },
     {
       number: 2,
       title: "Information We Collect",
-      icon: "📊",
       subsections: [
         {
           title: "Information You Provide Directly",
@@ -48,7 +47,6 @@ export default function PrivacyPolicy() {
     {
       number: 3,
       title: "How We Use Your Information",
-      icon: "🎯",
       items: [
         "To provide and maintain our services",
         "To respond to your inquiries and requests",
@@ -63,7 +61,6 @@ export default function PrivacyPolicy() {
     {
       number: 4,
       title: "How We Share Your Information",
-      icon: "🔗",
       items: [
         { label: "Service Providers", desc: "Third parties who assist in operating our website and conducting business" },
         { label: "Business Transfers", desc: "In connection with a merger, acquisition, or sale of assets" },
@@ -75,13 +72,11 @@ export default function PrivacyPolicy() {
     {
       number: 5,
       title: "Data Security",
-      icon: "🔒",
       content: "We implement appropriate technical and organizational security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the Internet is 100% secure.",
     },
     {
       number: 6,
       title: "Cookies and Tracking",
-      icon: "🍪",
       items: [
         "Authentication and session management",
         "Preferences and settings storage",
@@ -92,7 +87,6 @@ export default function PrivacyPolicy() {
     {
       number: 7,
       title: "Your Privacy Rights",
-      icon: "✋",
       items: [
         { label: "Right to Access", desc: "Request a copy of your personal data" },
         { label: "Right to Correction", desc: "Update or correct inaccurate information" },
@@ -104,25 +98,21 @@ export default function PrivacyPolicy() {
     {
       number: 8,
       title: "Third-Party Links",
-      icon: "🔗",
       content: "Our website may contain links to third-party websites. We are not responsible for the privacy practices of external sites. Please review their privacy policies before providing personal information.",
     },
     {
       number: 9,
       title: "Children's Privacy",
-      icon: "👨",
       content: "Our services are not intended for children under the age of 13. We do not knowingly collect personal information from children. If we become aware that we have collected information from a child under 13, we will take steps to delete such information.",
     },
     {
       number: 10,
       title: "International Data Transfers",
-      icon: "🌍",
       content: "Your information may be transferred to, stored in, and processed in countries other than your country of residence. These countries may have data protection laws that differ from your home country.",
     },
     {
       number: 11,
       title: "Policy Changes",
-      icon: "📝",
       content: "We may update this Privacy Policy from time to time. We will notify you of significant changes by posting the new policy on our website and updating the &lsquo;Last updated&rsquo; date. Your continued use of the website constitutes acceptance of the updated policy.",
     },
   ];
@@ -152,7 +142,7 @@ export default function PrivacyPolicy() {
         <div className="max-w-4xl mx-auto">
           <div className="bg-gradient-to-r from-gray-900 to-gray-900/50 border border-[#7FC6C4]/20 rounded-lg p-6 mb-12">
             <h2 className="text-white font-semibold mb-4 flex items-center gap-2">
-              <span className="text-[#7FC6C4]">📑</span> Quick Navigation
+              Quick Navigation
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {sections.map((section) => (
@@ -175,11 +165,6 @@ export default function PrivacyPolicy() {
           {sections.map((section) => (
             <div key={section.number} id={`section-${section.number}`} className="scroll-mt-20">
               <div className="flex items-start gap-4">
-                {/* Icon */}
-                <div className="flex-shrink-0 text-3xl mt-1">
-                  {section.icon}
-                </div>
-
                 {/* Content */}
                 <div className="flex-grow">
                   <div className="flex items-baseline gap-3 mb-4">
@@ -251,7 +236,9 @@ export default function PrivacyPolicy() {
           <div className="mt-16 pt-12 border-t border-gray-800">
             <div className="bg-gradient-to-r from-[#7FC6C4]/10 to-cyan-400/10 border border-[#7FC6C4]/20 rounded-lg p-8">
               <div className="flex items-start gap-4 mb-4">
-                <span className="text-3xl">📧</span>
+                <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl border border-[#7FC6C4]/30 bg-[#7FC6C4]/10 text-[#7FC6C4]">
+                  <LineIcon name="mail" className="h-6 w-6" />
+                </span>
                 <div>
                   <h3 className="text-2xl font-bold text-white mb-2">
                     Questions About Your Privacy?

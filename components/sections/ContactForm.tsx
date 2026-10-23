@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 import Card from "@/components/ui/Card";
 import { useState } from "react";
 import Button from "@/components/ui/Button";
+import { track } from "@vercel/analytics";
 
 export default function ContactForm() {
   const [formData, setFormData] = useState({
@@ -14,6 +15,7 @@ export default function ContactForm() {
     website: "", // Honeypot field (should remain empty)
   });
 
+  const [startedAt] = useState(() => Date.now());
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -83,7 +85,7 @@ export default function ContactForm() {
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, startedAt }),
       });
 
       const data = await response.json();
@@ -92,6 +94,7 @@ export default function ContactForm() {
         throw new Error(data.error || "Failed to submit form");
       }
 
+      track("lead_submitted", { source: "contact_form" });
       setSubmitted(true);
       setFormData({ email: "", name: "", company: "", phone: "", website: "" });
     } catch (err) {

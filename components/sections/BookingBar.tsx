@@ -2,11 +2,14 @@
 
 import { useState } from "react";
 import { usePathname } from "next/navigation";
+import { track } from "@vercel/analytics";
 import Button from "@/components/ui/Button";
 
 export default function BookingBar() {
   const pathname = usePathname();
   const [email, setEmail] = useState("");
+  const [honeypot, setHoneypot] = useState("");
+  const [startedAt] = useState(() => Date.now());
   const [submitted, setSubmitted] = useState(false);
   const [error, setError] = useState("");
   const [loading, setLoading] = useState(false);
@@ -65,7 +68,8 @@ export default function BookingBar() {
           name: "",
           company: "",
           phone: "",
-          website: "", // Honeypot
+          website: honeypot,
+          startedAt,
         }),
       });
 
@@ -75,6 +79,7 @@ export default function BookingBar() {
         throw new Error(data.error || "Failed to submit");
       }
 
+      track("lead_submitted", { source: "booking_bar" });
       setSubmitted(true);
       setEmail("");
       setTimeout(() => setSubmitted(false), 3000);
@@ -115,6 +120,16 @@ export default function BookingBar() {
             {error && (
               <p className="text-red-400 text-xs whitespace-nowrap hidden md:block">{error}</p>
             )}
+            <div className="hidden" aria-hidden="true">
+              <input
+                type="text"
+                name="website"
+                value={honeypot}
+                onChange={(e) => setHoneypot(e.target.value)}
+                tabIndex={-1}
+                autoComplete="off"
+              />
+            </div>
             <div className="flex-1 md:flex-initial relative">
               <input
                 type="email"

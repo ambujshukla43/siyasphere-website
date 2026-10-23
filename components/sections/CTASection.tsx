@@ -37,7 +37,7 @@ export default function CTASection() {
               href="/case-studies"
               className="border-2 border-[#7FC6C4] text-white hover:bg-[#7FC6C4]/10 text-lg px-8 py-4"
             >
-              View Use Cases
+              View Case Studies
             </Button>
           </div>
         </motion.div>

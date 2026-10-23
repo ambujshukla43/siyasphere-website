@@ -9,7 +9,7 @@ export default function Hero() {
       {/* Background decoration */}
       <div className="absolute inset-0 overflow-hidden">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-primary-500/20 rounded-full filter blur-xl opacity-40 animate-blob"></div>
-        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-accent-500/20 rounded-full filter blur-xl opacity-40 animate-blob animation-delay-2000"></div>
+        <div className="absolute -bottom-40 -left-40 w-80 h-80 bg-[#7FC6C4]/20 rounded-full filter blur-xl opacity-40 animate-blob animation-delay-2000"></div>
       </div>
 
       <div className="container-custom relative z-10">
@@ -21,7 +21,7 @@ export default function Hero() {
             className="text-4xl sm:text-5xl lg:text-6xl font-bold text-gray-100 mb-6 leading-tight"
           >
             Scale Revenue by Fixing Your{" "}
-            <span className="bg-gradient-to-r from-primary-400 to-accent-400 bg-clip-text text-transparent">
+            <span className="bg-gradient-to-r from-[#7FC6C4] to-cyan-400 bg-clip-text text-transparent">
               Broken Go-To-Market Systems
             </span>
           </motion.h1>
@@ -46,7 +46,7 @@ export default function Hero() {
               Start Your GTM Audit
             </Button>
             <Button href="/case-studies" variant="outline" className="text-lg px-8 py-4">
-              View Use Cases
+              View Case Studies
             </Button>
           </motion.div>
 

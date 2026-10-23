@@ -18,7 +18,7 @@ export default function Footer() {
       { href: "/contact", label: "Contact" },
     ],
     Resources: [
-      { href: "/case-studies", label: "Use Cases" },
+      { href: "/gtm-stack", label: "The Modern GTM Stack" },
       { href: "/contact", label: "Schedule Audit" },
     ],
   };

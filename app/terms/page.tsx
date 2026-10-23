@@ -1,3 +1,4 @@
+import LineIcon from "@/components/ui/LineIcon";
 import Link from "next/link";
 
 export const metadata = {
@@ -11,13 +12,11 @@ export default function TermsOfService() {
     {
       number: 1,
       title: "Acceptance of Terms",
-      icon: "✅",
       content: "By accessing and using the SiyaSphere Consulting website and services, you accept and agree to be bound by the terms and provision of this agreement. If you do not agree to abide by the above, please do not use this service.",
     },
     {
       number: 2,
       title: "Use License",
-      icon: "📜",
       items: [
         "Modify or copy the materials",
         "Use the materials for any commercial purpose or for any public display",
@@ -33,43 +32,36 @@ export default function TermsOfService() {
     {
       number: 3,
       title: "Disclaimer",
-      icon: "⚠️",
       content: "The materials on SiyaSphere&rsquo;s website are provided on an &lsquo;as is&rsquo; basis. SiyaSphere makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties including, without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights.",
     },
     {
       number: 4,
       title: "Limitations of Liability",
-      icon: "⚖️",
       content: "In no event shall SiyaSphere or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption) arising out of the use or inability to use the materials on SiyaSphere&rsquo;s website, even if SiyaSphere or an authorized representative has been notified orally or in writing of the possibility of such damage.",
     },
     {
       number: 5,
       title: "Accuracy of Materials",
-      icon: "📋",
       content: "The materials appearing on SiyaSphere&rsquo;s website could include technical, typographical, or photographic errors. SiyaSphere does not warrant that any of the materials on its website are accurate, complete, or current. SiyaSphere may make changes to the materials contained on its website at any time without notice.",
     },
     {
       number: 6,
       title: "Links",
-      icon: "🔗",
       content: "SiyaSphere has not reviewed all of the sites linked to its website and is not responsible for the contents of any such linked site. The inclusion of any link does not imply endorsement by SiyaSphere of the site. Use of any such linked website is at the user&rsquo;s own risk.",
     },
     {
       number: 7,
       title: "Modifications",
-      icon: "🔄",
       content: "SiyaSphere may revise these terms of service for its website at any time without notice. By using this website, you are agreeing to be bound by the then current version of these terms of service.",
     },
     {
       number: 8,
       title: "Governing Law",
-      icon: "⚖️",
       content: "These terms and conditions are governed by and construed in accordance with the laws of the United States, and you irrevocably submit to the exclusive jurisdiction of the courts in that location.",
     },
     {
       number: 9,
       title: "User Responsibilities",
-      icon: "👤",
       items: [
         "Provide accurate and complete information when requested",
         "Maintain the confidentiality of any account credentials",
@@ -83,31 +75,26 @@ export default function TermsOfService() {
     {
       number: 10,
       title: "Service Availability",
-      icon: "🔌",
       content: "SiyaSphere makes no guarantee regarding the availability, performance, or reliability of its website or services. We reserve the right to modify, suspend, or discontinue services with or without notice.",
     },
     {
       number: 11,
       title: "Intellectual Property Rights",
-      icon: "🔐",
       content: "All content on our website, including text, graphics, logos, images, and software, is the property of SiyaSphere or its content suppliers and is protected by international copyright laws.",
     },
     {
       number: 12,
       title: "Third-Party Services",
-      icon: "🌐",
       content: "Our website may integrate with third-party services and platforms. Your use of these services is subject to their respective terms and conditions. SiyaSphere is not responsible for third-party services or their operations.",
     },
     {
       number: 13,
       title: "Limitation of Warranties",
-      icon: "🛡️",
       content: "To the fullest extent permitted by applicable law, SiyaSphere disclaims all warranties, express or implied, including but not limited to implied warranties of merchantability, fitness for a particular purpose, and non-infringement.",
     },
     {
       number: 14,
       title: "Indemnification",
-      icon: "📄",
       content: "You agree to indemnify, defend, and hold harmless SiyaSphere and its officers, directors, employees, and agents from any and all claims, damages, losses, costs, and expenses arising out of your use of the website or violation of these terms.",
     },
   ];
@@ -137,7 +124,7 @@ export default function TermsOfService() {
         <div className="max-w-4xl mx-auto">
           <div className="bg-gradient-to-r from-gray-900 to-gray-900/50 border border-[#7FC6C4]/20 rounded-lg p-6 mb-12">
             <h2 className="text-white font-semibold mb-4 flex items-center gap-2">
-              <span className="text-[#7FC6C4]">📑</span> Quick Navigation
+              Quick Navigation
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
               {sections.map((section) => (
@@ -160,11 +147,6 @@ export default function TermsOfService() {
           {sections.map((section) => (
             <div key={section.number} id={`section-${section.number}`} className="scroll-mt-20">
               <div className="flex items-start gap-4">
-                {/* Icon */}
-                <div className="flex-shrink-0 text-3xl mt-1">
-                  {section.icon}
-                </div>
-
                 {/* Content */}
                 <div className="flex-grow">
                   <div className="flex items-baseline gap-3 mb-4">
@@ -210,7 +192,9 @@ export default function TermsOfService() {
           <div className="mt-16 pt-12 border-t border-gray-800">
             <div className="bg-gradient-to-r from-[#7FC6C4]/10 to-cyan-400/10 border border-[#7FC6C4]/20 rounded-lg p-8">
               <div className="flex items-start gap-4 mb-4">
-                <span className="text-3xl">📧</span>
+                <span className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-xl border border-[#7FC6C4]/30 bg-[#7FC6C4]/10 text-[#7FC6C4]">
+                  <LineIcon name="mail" className="h-6 w-6" />
+                </span>
                 <div>
                   <h3 className="text-2xl font-bold text-white mb-2">
                     Questions About Our Terms?
