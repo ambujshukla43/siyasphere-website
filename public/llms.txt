@@ -1,0 +1,21 @@
+# SiyaSphere
+
+> SiyaSphere is a GTM and RevOps consultancy (Indore, India; serving clients worldwide) that fixes broken go-to-market systems for B2B SaaS companies. We design and implement RevOps frameworks, marketing automation, Salesforce and HubSpot architecture, lead routing, sales analytics, and AI-powered GTM workflows with human-in-the-loop review.
+
+Engagements typically follow an 8-week process from GTM audit to launch, for B2B SaaS companies from roughly $2M to $100M+ ARR. A free 30-minute GTM audit is available at https://www.siyasphere.in/contact.
+
+## Services
+
+- [GTM Solutions](https://www.siyasphere.in/solutions): RevOps transformation, GTM data migration and system modernization, marketing intelligence and analytics, sales intelligence and analytics, executive dashboards, AI + human GTM workflows, AI-powered GTM tech stack, account intelligence and prospect research
+- [The Modern GTM Stack](https://www.siyasphere.in/gtm-stack): How SiyaSphere connects marketing automation, RevOps, and AI workflows into one go-to-market system
+- [How It Works](https://www.siyasphere.in/how-it-works): The 8-week GTM transformation process
+
+## Case studies
+
+- [Case Studies](https://www.siyasphere.in/case-studies): Results include eliminating 35% lead leakage through GTM redesign, raising contact rate 40% with intelligent lead routing, improving pipeline forecast accuracy 35% with AI forecasting, cutting manual work 80% with human-in-the-loop AI, unlocking 30% marketing efficiency with multi-touch attribution, a zero-downtime CRM migration, and a Salesforce org cleanup that cut page load 60%
+
+## Company
+
+- [About](https://www.siyasphere.in/about): Who we are and how we work
+- [Contact](https://www.siyasphere.in/contact): Book a free GTM audit (contact@siyasphere.in)
+- [LinkedIn](https://www.linkedin.com/company/siyasphere/)

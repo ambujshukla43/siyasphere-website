@@ -8,10 +8,7 @@ import { baseMetadata, organizationSchema, localBusinessSchema, serviceSchema } 
 
 const inter = Inter({ subsets: ["latin"] });
 
-export const metadata: Metadata = {
-  ...baseMetadata,
-  title: "SiyaSphere | AI-Powered GTM Systems",
-};
+export const metadata: Metadata = baseMetadata;
 
 export default function RootLayout({
   children,
@@ -34,21 +31,6 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceSchema) }}
         />
-        
-        {/* Additional SEO Meta Tags */}
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta httpEquiv="x-ua-compatible" content="IE=edge" />
-        <meta name="language" content="English" />
-        <meta name="author" content="SiyaSphere" />
-        <meta name="revisit-after" content="7 days" />
-        
-        {/* Preconnect to external domains */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        
-        {/* Alternative links for international SEO */}
-        <link rel="alternate" hrefLang="en" href="https://siyasphere.in" />
       </head>
       <body className={inter.className}>
         <Header />

@@ -45,7 +45,7 @@ export default function Breadcrumbs() {
       "@type": "ListItem",
       position: index + 1,
       name: item.label,
-      item: `https://siyasphere.in${item.href}`,
+      item: `https://www.siyasphere.in${item.href}`,
     })),
   };
 

@@ -74,13 +74,13 @@ async function UnsubscribePage({
             </p>
             <div className="space-y-2">
               <a
-                href="https://siyasphere.in/contact"
+                href="https://www.siyasphere.in/contact"
                 className="block text-sm text-[#7FC6C4] hover:text-[#7FC6C4]/80 transition-colors"
               >
                 Contact Us
               </a>
               <a
-                href="https://siyasphere.in/privacy"
+                href="https://www.siyasphere.in/privacy"
                 className="block text-sm text-[#7FC6C4] hover:text-[#7FC6C4]/80 transition-colors"
               >
                 Privacy Policy
@@ -94,7 +94,7 @@ async function UnsubscribePage({
           <p className="text-xs text-gray-500">
             SiyaSphere • contact@siyasphere.in •{' '}
             <a
-              href="https://siyasphere.in"
+              href="https://www.siyasphere.in"
               className="text-[#7FC6C4] hover:text-[#7FC6C4]/80 transition-colors"
             >
               www.siyasphere.in

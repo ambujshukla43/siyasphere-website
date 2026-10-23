@@ -6,6 +6,7 @@ import CoreOfferings from "@/components/sections/CoreOfferings";
 import SocialProof from "@/components/sections/SocialProof";
 import CTASection from "@/components/sections/CTASection";
 import GTMTechStack from "@/components/sections/GTMTechStack";
+import FAQ from "@/components/sections/FAQ";
 
 export const metadata: Metadata = {
   title: "SiyaSphere | AI-Powered Go-To-Market Systems",
@@ -14,9 +15,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: "SiyaSphere | AI-Powered GTM Systems",
     description: "Scale revenue by fixing broken go-to-market systems through AI and RevOps.",
-    url: "https://siyasphere.in",
+    url: "https://www.siyasphere.in",
     type: "website",
   },
+  alternates: { canonical: "/" },
 };
 
 export default function Home() {
@@ -28,6 +30,7 @@ export default function Home() {
       <GTMFlow />
       <CoreOfferings />
       <GTMTechStack />
+      <FAQ />
       <CTASection />
     </>
   );

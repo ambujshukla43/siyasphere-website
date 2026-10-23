@@ -10,9 +10,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Case Studies | SiyaSphere",
     description: "Real results from real companies scaling their GTM systems.",
-    url: "https://siyasphere.in/case-studies",
+    url: "https://www.siyasphere.in/case-studies",
     type: "website",
+    images: ["/opengraph-image"],
   },
+  alternates: { canonical: "/case-studies" },
 };
 
 export default function CaseStudiesPage() {

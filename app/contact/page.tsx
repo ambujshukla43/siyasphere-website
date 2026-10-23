@@ -9,9 +9,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Contact SiyaSphere",
     description: "Book your free GTM audit today.",
-    url: "https://siyasphere.in/contact",
+    url: "https://www.siyasphere.in/contact",
     type: "website",
+    images: ["/opengraph-image"],
   },
+  alternates: { canonical: "/contact" },
 };
 
 export default function ContactPage() {

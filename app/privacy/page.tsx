@@ -3,6 +3,7 @@ import Link from "next/link";
 export const metadata = {
   title: "Privacy Policy | SiyaSphere",
   description: "Privacy Policy for SiyaSphere Consulting - Learn how we protect your data.",
+  alternates: { canonical: "/privacy" },
 };
 
 export default function PrivacyPolicy() {

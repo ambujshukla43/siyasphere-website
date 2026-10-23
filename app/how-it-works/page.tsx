@@ -10,9 +10,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: "How It Works | SiyaSphere",
     description: "Our proven 8-week process from GTM audit to launch.",
-    url: "https://siyasphere.in/how-it-works",
+    url: "https://www.siyasphere.in/how-it-works",
     type: "website",
+    images: ["/opengraph-image"],
   },
+  alternates: { canonical: "/how-it-works" },
 };
 
 export default function HowItWorksPage() {

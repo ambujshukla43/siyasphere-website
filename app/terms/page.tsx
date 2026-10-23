@@ -3,6 +3,7 @@ import Link from "next/link";
 export const metadata = {
   title: "Terms of Service | SiyaSphere",
   description: "Terms of Service for SiyaSphere Consulting - Review our terms and conditions.",
+  alternates: { canonical: "/terms" },
 };
 
 export default function TermsOfService() {

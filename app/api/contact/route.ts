@@ -277,7 +277,7 @@ export async function POST(request: NextRequest) {
             </p>
             
             <div style="text-align: center; margin: 30px 0;">
-              <a href="https://siyasphere.in/case-studies" style="background-color: #7FC6C4; color: white; padding: 14px 32px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block; font-size: 15px;">
+              <a href="https://www.siyasphere.in/case-studies" style="background-color: #7FC6C4; color: white; padding: 14px 32px; text-decoration: none; border-radius: 6px; font-weight: bold; display: inline-block; font-size: 15px;">
                 View Case Studies
               </a>
             </div>
@@ -292,14 +292,14 @@ export async function POST(request: NextRequest) {
             <div style="background-color: #f9f9f9; padding: 20px; border-radius: 6px; font-size: 13px; color: #666; line-height: 1.6;">
               <p style="margin: 0 0 15px 0;"><strong>SiyaSphere</strong></p>
               <p style="margin: 0;"><strong>Email:</strong> contact@siyasphere.in</p>
-              <p style="margin: 0;"><strong>Website:</strong> https://siyasphere.in</p>
+              <p style="margin: 0;"><strong>Website:</strong> https://www.siyasphere.in</p>
               <p style="margin: 15px 0 0 0; border-top: 1px solid #ddd; padding-top: 15px;">
                 We respect your privacy. You received this email because you submitted a contact form on our website. 
-                <a href="https://siyasphere.in/privacy" style="color: #7FC6C4; text-decoration: none;">View our Privacy Policy</a>.
+                <a href="https://www.siyasphere.in/privacy" style="color: #7FC6C4; text-decoration: none;">View our Privacy Policy</a>.
               </p>
               <p style="margin: 10px 0 0 0;">
                 <strong>Want to stop receiving emails?</strong> 
-                <a href="https://siyasphere.in/unsubscribe?email=${encodeURIComponent(body.email)}" style="color: #7FC6C4; text-decoration: none;">Unsubscribe here</a> 
+                <a href="https://www.siyasphere.in/unsubscribe?email=${encodeURIComponent(body.email)}" style="color: #7FC6C4; text-decoration: none;">Unsubscribe here</a> 
                 (though we'd love to hear from you!)
               </p>
             </div>

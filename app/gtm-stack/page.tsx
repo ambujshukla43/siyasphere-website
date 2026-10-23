@@ -9,8 +9,10 @@ export const metadata: Metadata = {
   openGraph: {
     title: "The Modern GTM Stack | SiyaSphere",
     description: "Unified go-to-market platform: marketing automation, RevOps, AI workflows, and GTM tech integration.",
-    url: "https://siyasphere.com/gtm-stack",
+    url: "https://www.siyasphere.in/gtm-stack",
+    images: ["/opengraph-image"],
   },
+  alternates: { canonical: "/gtm-stack" },
 };
 
 export default function GTMStackPage() {
@@ -25,11 +27,11 @@ export default function GTMStackPage() {
             "@type": "WebPage",
             name: "The Modern GTM Stack | SiyaSphere",
             description: "SiyaSphere provides go-to-market stack solutions including marketing automation, RevOps, and AI workflows.",
-            url: "https://siyasphere.com/gtm-stack",
+            url: "https://www.siyasphere.in/gtm-stack",
             publisher: {
               "@type": "Organization",
               name: "SiyaSphere",
-              logo: "https://siyasphere.com/logo.png",
+              logo: "https://www.siyasphere.in/logo.png",
             },
             mainEntity: {
               "@type": "Product",
