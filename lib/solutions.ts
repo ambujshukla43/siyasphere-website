@@ -422,6 +422,66 @@ export const solutions: Solution[] = [
     ],
   },
   {
+    slug: "ai-workflow-deployment",
+    anchor: "ai-workflow-deployment",
+    title: "AI Workflow & Agent Deployment",
+    navLabel: "AI Workflow Deployment",
+    tagline: "From AI pilot to production workflows your team relies on.",
+    metaTitle: "AI Workflow & AI Agent Deployment for GTM Teams",
+    metaDescription:
+      "Design, build, and deploy production AI workflows and AI agents for sales and marketing: n8n, Clay, OpenAI, and Claude connected to your CRM, with guardrails, monitoring, and handover.",
+    summary:
+      "SiyaSphere takes AI from experiments to production workflows your GTM team runs every day. We design the use case, build AI agents and automations with tools like n8n, Clay, OpenAI, and Claude, and connect them to Salesforce, HubSpot, and your sales engagement stack. Every deployment ships with guardrails, human review steps, monitoring, and documentation, so it keeps working after launch.",
+    signs: [
+      "AI pilots and prompts live in personal accounts and never reach production.",
+      "Teams want AI agents for research, enrichment, or follow-up but don't know where to start.",
+      "Existing automations break silently and nobody owns them.",
+      "Leadership is cautious about data security and AI output quality.",
+    ],
+    outcomes: [
+      "A prioritised list of AI use cases ranked by time saved and revenue impact",
+      "Production AI agents for research, enrichment, qualification, routing, and follow-up",
+      "Workflows connected to your CRM, marketing automation, and sales engagement tools",
+      "Guardrails, human approval steps, and logging for every AI action",
+      "Monitoring, alerting, and documentation so workflows stay reliable after handover",
+      "Team training so reps and ops know how to use, review, and improve the workflows",
+    ],
+    approach: [
+      { title: "Use-case discovery", detail: "Find the repetitive GTM work where AI saves the most time, and define what good output looks like." },
+      { title: "Build and connect", detail: "Build agents and workflows in n8n, Clay, and LLM APIs, connected to your CRM and GTM tools." },
+      { title: "Guardrails and testing", detail: "Add human review steps, validation, and test runs on real data before anything goes live." },
+      { title: "Deploy, monitor, hand over", detail: "Launch with monitoring and alerts, document every workflow, and train your team to own it." },
+    ],
+    tools: ["n8n", "Clay", "OpenAI", "Claude", "Make", "Zapier", "Salesforce", "HubSpot"],
+    caseStudySlugs: [
+      "human-in-the-loop-ai-gtm-automation",
+      "conversica-ai-sdr-dormant-leads",
+      "ai-prospecting-engine-seamless-ai-clay",
+    ],
+    faqs: [
+      {
+        question: "What is AI workflow deployment?",
+        answer:
+          "AI workflow deployment is taking an AI use case, such as account research, lead enrichment, or follow-up drafting, and turning it into a reliable, production workflow connected to your systems. It covers building the workflow, adding guardrails and human review, testing, monitoring, and handing it over to your team.",
+      },
+      {
+        question: "Which tools do you use to build AI workflows and agents?",
+        answer:
+          "We typically use n8n for orchestration, Clay for enrichment and research, and LLMs such as OpenAI and Claude, connected to Salesforce or HubSpot and tools like Outreach. We choose tools based on your stack, data requirements, and who will maintain the workflow.",
+      },
+      {
+        question: "How do you keep AI workflows safe and accurate?",
+        answer:
+          "Every workflow has human review steps for critical actions, validation on inputs and outputs, logging of what the AI did, and monitoring with alerts. We test on real data before launch and only automate decisions once the team trusts the output.",
+      },
+      {
+        question: "How is this different from AI + Human Workflows?",
+        answer:
+          "AI + Human Workflows focuses on redesigning GTM processes around AI and human checkpoints. AI Workflow Deployment is the engineering side: building, deploying, monitoring, and maintaining the agents and automations in production.",
+      },
+    ],
+  },
+  {
     slug: "ai-gtm-tech-stack",
     anchor: "ai-tech-stack",
     title: "AI-Powered GTM Tech Stack",

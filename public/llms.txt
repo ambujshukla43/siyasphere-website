@@ -15,6 +15,7 @@ Engagements typically follow an 8-week process from GTM audit to launch, for B2B
 - [Sales Intelligence & Forecasting](https://www.siyasphere.in/solutions/sales-analytics-forecasting): Empower reps to close more deals, faster.
 - [Executive GTM Dashboards & Data Visualisation](https://www.siyasphere.in/solutions/gtm-dashboards): One source of truth for your entire GTM operation.
 - [AI + Human Workflows for GTM](https://www.siyasphere.in/solutions/ai-gtm-workflows): Scale without sacrificing judgement.
+- [AI Workflow & Agent Deployment](https://www.siyasphere.in/solutions/ai-workflow-deployment): From AI pilot to production workflows your team relies on.
 - [AI-Powered GTM Tech Stack](https://www.siyasphere.in/solutions/ai-gtm-tech-stack): Modern GTM infrastructure, built for speed and reliability.
 - [Account Intelligence & Prospect Research](https://www.siyasphere.in/solutions/account-research-prospect-intelligence): Know your buyers before you reach out.
 - [The Modern GTM Stack: A Practical Guide](https://www.siyasphere.in/gtm-stack): The seven layers of a B2B SaaS go-to-market tech stack, which tools fit each growth stage, and common mistakes

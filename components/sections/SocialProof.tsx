@@ -5,11 +5,36 @@ import { motion } from "framer-motion";
 const logos = [
   "Salesforce",
   "HubSpot",
-  "Marketo",
+  "Clay",
+  "Apollo.io",
+  "Gong",
+  "Actively AI",
+  "Instantly.ai",
   "Outreach",
+  "Salesloft",
+  "Marketo",
   "LeanData",
-  "RingLead",
+  "6sense",
+  "ZoomInfo",
+  "n8n",
+  "OpenAI",
+  "Claude",
 ];
+
+function LogoRow({ hidden = false }: { hidden?: boolean }) {
+  return (
+    <ul className="flex flex-shrink-0 items-center gap-10 lg:gap-14 pr-10 lg:pr-14" aria-hidden={hidden || undefined}>
+      {logos.map((logo) => (
+        <li
+          key={logo}
+          className="whitespace-nowrap text-gray-400 font-semibold text-lg lg:text-xl hover:text-[#7FC6C4] transition-colors"
+        >
+          {logo}
+        </li>
+      ))}
+    </ul>
+  );
+}
 
 export default function SocialProof() {
   return (
@@ -24,22 +49,13 @@ export default function SocialProof() {
         >
           Integrated with leading GTM platforms
         </motion.p>
-        <div className="flex flex-wrap items-center justify-center gap-8 lg:gap-12">
-          {logos.map((logo, index) => (
-            <motion.div
-              key={logo}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-              className="text-gray-400 font-semibold text-lg lg:text-xl hover:text-primary-400 transition-colors"
-            >
-              {logo}
-            </motion.div>
-          ))}
+        <div className="relative overflow-hidden [mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]">
+          <div className="flex w-max animate-marquee hover:[animation-play-state:paused]">
+            <LogoRow />
+            <LogoRow hidden />
+          </div>
         </div>
       </div>
     </section>
   );
 }
-
