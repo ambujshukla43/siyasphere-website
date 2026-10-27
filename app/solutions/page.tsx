@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import SolutionsHero from "@/components/sections/SolutionsHero";
 import SolutionsGrid from "@/components/sections/SolutionsGrid";
-import AIDataFlow from "@/components/sections/AIDataFlow";
+import GTMSystemFilm from "@/components/sections/GTMSystemFilm";
 import SolutionsDifferentiation from "@/components/sections/SolutionsDifferentiation";
 import SolutionsCTA from "@/components/sections/SolutionsCTA";
 
@@ -24,7 +24,7 @@ export default function SolutionsPage() {
     <>
       <SolutionsHero />
       <SolutionsGrid />
-      <AIDataFlow />
+      <GTMSystemFilm />
       <SolutionsDifferentiation />
       <SolutionsCTA />
     </>

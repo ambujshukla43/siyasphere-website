@@ -1,4 +1,4 @@
-import type { ReactNode } from "react";
+import type { ReactNode, SVGProps } from "react";
 
 const paths = {
   network: (
@@ -169,11 +169,12 @@ export default function LineIcon({
   name,
   className = "h-5 w-5",
   strokeWidth = 1.6,
+  ...svgProps
 }: {
   name: IconName;
   className?: string;
   strokeWidth?: number;
-}) {
+} & Omit<SVGProps<SVGSVGElement>, "name">) {
   return (
     <svg
       viewBox="0 0 24 24"
@@ -184,6 +185,7 @@ export default function LineIcon({
       strokeLinecap="round"
       strokeLinejoin="round"
       aria-hidden="true"
+      {...svgProps}
     >
       {paths[name]}
     </svg>
